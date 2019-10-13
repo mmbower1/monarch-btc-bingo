@@ -1,0 +1,35 @@
+import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
+
+
+const Landing = ({ isAuthenticated, setAlert }) => {
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />
+  }
+
+  const onClick = () => {
+    setAlert('Sorry, you are not of age to play :(', 'danger');
+  }
+
+  return (
+      <div className="landing">
+        <h2>Are you over 18?</h2>
+        <Link to='/login' className="btn btn-primary"><button className="yes-button">Yes</button></Link>&nbsp;
+        <Link to='#!' className="btn btn-primary"><button onClick={onClick} className="no-button">No</button></Link>
+      </div>
+  )
+}
+
+Landing.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  setAlert: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { setAlert })(Landing)

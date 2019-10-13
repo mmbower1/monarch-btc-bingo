@@ -1,22 +1,433 @@
-.App {
-  text-align: center;
+/* Global Styles */
+:root {
+	--primary-color: #17a2b8;
+	--dark-color: #343a40;
+	--light-color: #f4f4f4;
+	--danger-color: #dc3545;
+	--success-color: #28a745;
 }
 
-.App-logo {
-  height: 40vmin;
+* {
+	box-sizing: border-box;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat';
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+	font-size: 1rem;
+	justify-content: center;
+	line-height: 1.6;
+	background-color: #fff;
+	color: #333;
 }
 
-.App-link {
-  color: #09d3ac;
+#aboutUs-modal,
+#ourMission-modal,
+#meetOurTeam-modal,
+#testimonials-modal,
+#gameArchives-modal,
+#bingoExplained-modal {
+	cursor: pointer;
+}
+
+#realTimeNews-modal,
+#education-modal,
+#live-community-blog,
+#ads-relative-to-blockchain,
+#gameStream-modal {
+	cursor: pointer;
+	width: 200px;
+}
+
+.alert {
+	padding: 0.8rem;
+	margin: 1rem 0;
+	opacity: 0.9;
+	background: var(--light-color);
+	color: #333;
+}
+
+.btn-light,
+.bg-light,
+.badge-light,
+.alert-light {
+	background: var(--light-color);
+	color: #333;
+}
+
+.btn-dark,
+.bg-dark,
+.badge-dark,
+.alert-dark {
+	background: var(--dark-color);
+	color: #fff;
+}
+
+.btn-danger,
+.bg-danger,
+.badge-danger,
+.alert-danger {
+	background: var(--danger-color);
+	color: #fff;
+}
+
+.btn-success,
+.bg-success,
+.badge-success,
+.alert-success {
+	background: var(--success-color);
+	color: #fff;
+}
+
+.btn-white,
+.bg-white,
+.badge-white,
+.alert-white {
+	background: #fff;
+	color: #333;
+	border: #ccc solid 1px;
+}
+
+.bg-modal {
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	opacity: 0.7;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+#b1,
+#i2,
+#g4,
+#o5,
+#b4,
+#g2,
+#n5,
+#b2,
+#b3,
+#b4 {
+	background: red;
+	border-radius: 50%;
+	padding: 4px;
+	/* display: inline-block; */
+}
+
+.bingo-logo-right {
+	display: grid;
+}
+
+.buttons {
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	font-size: 20px;
+	height: 175px;
+	width: 285px;
+}
+
+.btn {
+	display: inline-block;
+	background: var(--light-color);
+	color: #333;
+	padding: 0.4rem 1.3rem;
+	font-size: 1rem;
+	border: none;
+	cursor: pointer;
+	margin-right: 0.5rem;
+	transition: opacity 0.2s ease-in;
+	outline: none;
+}
+
+.btn:hover {
+	opacity: 0.8;
+}
+
+.close-modal {
+	cursor: pointer;
+	font-size: 42px;
+	position: absolute;
+	right: 14px;
+	top: 0;
+	transform: rotate(45deg);
+}
+
+/* Utilities */
+.container {
+	/* max-width: 1100px; */
+	margin: auto;
+	overflow: hidden;
+	margin-top: 6rem;
+	margin-bottom: 3rem;
+}
+
+/* Overlay */
+.dark-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.dashboard-container {
+	text-align: center;
+	margin-top: 170px;
+}
+
+.dashboard-title {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.enter-site {
+	margin-top: 200px;
+}
+
+.form {
+	text-align: center;
+}
+
+.form input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='phoneNumber'],
+input[type='erc20'] {
+	font-size: 15px;
+	padding: 5px;
+	width: 250px;
+}
+
+.form-group {
+	margin: 10px;
+}
+
+.gameboard {
+	display: grid;
+	margin-bottom: 25px;
+}
+
+.gameboard-top-row {
+	color: blue;
+}
+
+h1 {
+	font-size: 40px;
+}
+
+.hide-sm {
+	display: inline-block;
+}
+
+.landing {
+	display: grid;
+	margin-top: 200px;
+}
+
+.landing-inner {
+	color: #fff;
+	/* height: 100%;
+	width: 100%; */
+	margin: auto;
+	display: flex;
+	/* flex-direction: column; */
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.logout-button {
+	margin-left: 350px;
+}
+
+.modal-content {
+	background-color: white;
+	border-radius: 5px;
+	height: 450px;
+	margin-top: 180px;
+	position: relative;
+	text-align: center;
+	width: 1200px;
+}
+
+#n3 {
+	background: red;
+	border-radius: 50%;
+	padding: 4px;
+	font-size: 12px;
+}
+
+/* Navbar */
+.navbar {
+	align-items: center;
+	background-color: #26436fbb;
+	border-bottom: solid 1px var(--primary-color);
+	display: flex;
+	height: 250px;
+	font-size: 15px;
+	/* justify-content: space-between; */
+	opacity: 0.9;
+	padding: 0.7rem 2rem;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+}
+
+.navbar a {
+	color: #fff;
+}
+
+.nav-table-children .hide-sm {
+	display: flex;
+}
+
+.navbar h1 {
+	font-size: 50px;
+	padding-right: 180px;
+}
+
+.random-number {
+	font-size: 30px;
+	margin-left: 55px;
+	/* outline: 2px solid blue; */
+}
+
+.row-1 {
+	display: grid;
+}
+
+.row-2 {
+	display: grid;
+	grid-gap: 600px;
+	grid-template-columns: 100px 100px;
+	margin-bottom: 25px;
+	margin-right: 60px;
+}
+
+.row-3 {
+	display: grid;
+	grid-gap: 600px;
+	grid-template-columns: 100px 100px;
+	margin-right: 60px;
+}
+
+.top-tr {
+	display: grid;
+}
+
+th {
+	border: 1px solid black;
+	padding: 20px;
+}
+
+.welcome-title {
+	font-size: 20px;
+}
+
+.yes-button,
+.no-button {
+	border-radius: 6px;
+	height: 75%;
+	width: 75%;
+}
+
+/* Mobile Styles */
+
+@media (max-width: 780px) {
+	* {
+		margin: auto;
+		padding: auto;
+	}
+
+	.bg-modal {
+		font-size: 11px;
+	}
+
+	.dashboard-title {
+		font-size: 18px;
+	}
+
+	/* .gameboard {
+		margin-right: 70px;
+	} */
+
+	.gameboard th {
+		font-size: 20px;
+		margin-right: 300px;
+	}
+
+	.hide-sms {
+		display: none;
+	}
+
+	.modal-content {
+		margin-top: 250px;
+		width: 90%;
+	}
+
+	.modal-content h3 {
+		margin-top: 25px;
+	}
+
+	.navbar {
+		display: grid;
+	}
+
+	.navbar h1 {
+		font-size: 20px;
+		margin-left: 175px;
+	}
+
+	.navbar h1 {
+		font-size: 20px;
+	}
+
+	.navbar .bingo-logo-right {
+		height: 150px;
+		width: 150px;
+	}
+
+	.nav-table-children {
+		font-size: 10px;
+		display: flex;
+		/* display: none; */
+	}
+
+	.row-2, .row-3 {
+		display: inline-block;
+		margin-top: 10px;
+		margin-left: 50px;
+		grid-gap: 600px;
+	}
+
+	th {
+		padding: 6px;
+		font-size: 12px;
+	}
+}
+
+/* for centering placeholders */
+::-webkit-input-placeholder {
+	text-align: center;
+}
+
+:-moz-placeholder {
+	/* Firefox 18- */
+	text-align: center;
+}
+
+::-moz-placeholder {
+	/* Firefox 19+ */
+	text-align: center;
+}
+
+:-ms-input-placeholder {
+	text-align: center;
 }

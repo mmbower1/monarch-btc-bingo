@@ -8,8 +8,8 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 // @route    GET api/auth
-// @desc     Test
-// @access   Public
+// @desc     Test route
+// @access   Private
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');

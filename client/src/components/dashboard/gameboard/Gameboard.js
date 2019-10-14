@@ -3,10 +3,6 @@ import RedDot from '../../layout/RedDot';
 
 const Gameboard = () => {
 
-  // addRedDot(() => {
-  //   <RedDot />
-  // })
-
   return (
     <table className="gameboard">
       <tbody>

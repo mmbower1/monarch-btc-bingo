@@ -303,6 +303,10 @@ h1 {
 	/* outline: 2px solid blue; */
 }
 
+.row-1 {
+	display: grid;
+}
+
 .row-2 {
 	display: grid;
 	grid-gap: 600px;

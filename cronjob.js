@@ -43,8 +43,6 @@ const cronjob = () => {
     console.log(" ");
     console.log(" ");
     console.log(" ");
-    console.log(" ");
-    console.log(" ");
     console.log("================================================================");
     try {
       // Step 1)
@@ -55,32 +53,32 @@ const cronjob = () => {
         console.log("--> Create new DrawnNumbers");
         availableNumbersObj = new DrawnNumbers({ numbers: originalArray});
         availableNumbers = availableNumbersObj.numbers;
-       
-      }else if(availableNumbersObj.numbers.length === 0){
-        console.log("--> Reset DrawnNumbers");
+
+      } else if (availableNumbersObj.numbers.length === 0){
+        console.log("--> RESET DRAWN NUMBERS");
         availableNumbers = originalArray;
-      }else {
+      } else {
         availableNumbers = availableNumbersObj.numbers;
       }
-
-      console.log("Length: " + availableNumbers.length);
       console.log("--> Drawn numbers retrieved: " + availableNumbers);
-      
+      console.log(" ");
 
       // Step 2)
-      console.log("Length: " + availableNumbers.length);
       console.log("--> availableNumbers length is: " + availableNumbers.length);
-      
 
+      console.log(" ");
       console.log("--> availableNumbers type : " + typeof availableNumbers);
       let index =  Math.floor(Math.random() * availableNumbers.length);
+      console.log(" ");
       console.log("--> Random index picked: " + index);
       let random = availableNumbers[index];
+      console.log(" ");
       console.log("--> Random number picked: " + random);
 
 
       // Step 3)
       availableNumbers.splice(index, 1);
+      console.log(" ");
       console.log("--> Updated availableNumbers: " + availableNumbers);
       // TODO
       // Save updated array to database
@@ -93,11 +91,6 @@ const cronjob = () => {
       });
 
       console.log(" ");
-      console.log(" ");
-      console.log(" ");
-      console.log(" ");
-      console.log(" ");
-      console.log(" ");
 
       // Step 4)
       // Send random number to backend so it can be saved in the db
@@ -108,7 +101,7 @@ const cronjob = () => {
           return console.error(err)
         };
         console.log("--> Updated Random Numbers: " + randomNumberObj.random);
-      });  
+      });
 
       // if(availableNumbers == null || availableNumbers.numbers.length == 75){
       //   console.log("--> No array found or array is full");
@@ -127,7 +120,6 @@ const cronjob = () => {
       //   availableNumbers.numbers.push(random);
       // }
 
-      
 
 
 

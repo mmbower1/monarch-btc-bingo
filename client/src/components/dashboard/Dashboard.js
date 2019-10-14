@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import Navbar from '../layout/Navbar';
 import Spinner from '../layout/Spinner';
+import RedDot from '../layout/RedDot';
 import RandomNumber from './randNum/RandomNumber';
 import Gameboard from './gameboard/Gameboard';
 
@@ -22,36 +23,7 @@ import EducationModal from '../../modals/gameboard/EduResourcesModal';
 
 // import cronjob from '../../cronjob.js';
 
-
-function ComponentDidUpdate() {
-  
-  const [count, setCount] = React.useState(0);
-  
-  const isFirstUpdate = React.useRef(true);
-  React.useEffect(() => {
-    if (isFirstUpdate.current) {
-      isFirstUpdate.current = false;
-      return;
-    }
-
-    console.log(" ");
-    console.log(" ");
-    console.log(" ");
-    console.log(" ");
-    console.log(" ");
-    console.log("------------------------------------ componentDidUpdate  !!!!!!!!!!!!!!!! -----------------------");
-  });
-}
-
-
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
-
-  
-    
-  
-     
-
-
   // titlebar modals
   const [isAboutUsModalOpen, setIsAboutUsModalOpen] = useState(false);
   const [isOurMissionModalOpen, setIsOurMissionModalOpen] = useState(false);
@@ -76,13 +48,9 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
     getCurrentProfile();
   }, []);
 
-  
-
   return (
     <div className="dashboard-container">
       <Navbar />
-      <p>componentDidUpdate: {count} times</p>
-      
       {/* titlebar modals*/}
       <AboutUsModal open={isAboutUsModalOpen} close={() => setIsAboutUsModalOpen(false)} onClose={() => setIsAboutUsModalOpen(false)}/>
       <OurMissionModal open={isOurMissionModalOpen} close={() => setIsOurMissionModalOpen(false)} onClose={() => setIsOurMissionModalOpen(false)}/>
@@ -95,7 +63,6 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
       <EducationModal open={isEducationModalOpen} close={() => setIsEducationModalOpen(false)} onClose={() => setIsEducationModalOpen(false)}/>
 
       <nav>
-        
         <h2 className="dashboard-title">Cryptocurrency Simplified for Mass Adoption</h2>
         {loading && profile === null ? (
           <Spinner />
@@ -123,27 +90,28 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
           </tbody>
         </table>
       </nav>
-      <div className="row-1">
-        <br />
-        <br />
-        <br />
-        <th className="gameStream-modal">Game Stream</th>
-      </div>
+      <br />
       <RandomNumber />
-      <br />
-      <br />
-      <br />
-      <div className="row-2">
-        <th id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News Feed</th>
-        <th id="live-community-blog">Live Community Blog</th>
+      <div className="dashboard-body">
+        <div className="row-1">
+          <br />
+          <br />
+          <br />
+          <th className="gameStream-modal">Game Stream</th>
+        </div>
+        <br />
+        <div className="row-2">
+          <th id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News Feed</th>
+          <th id="live-community-blog">Live Community Blog</th>
+        </div>
+        <Gameboard />
+        <div className="row-3">
+          <th id="education-modal" onClick={openEducationModal}>Educational Resources</th>
+          <th id="ads-relative-to-blockchain">Ads Relative Only to Blockchains</th>
+        </div>
+        <br />
+        <br />
       </div>
-      <Gameboard />
-      <div className="row-3">
-        <th id="education-modal" onClick={openEducationModal}>Educational Resources</th>
-        <th id="ads-relative-to-blockchain">Ads Relative Only to Blockchains</th>
-      </div>
-      <br />
-      <br />
     </div>
   )
 }

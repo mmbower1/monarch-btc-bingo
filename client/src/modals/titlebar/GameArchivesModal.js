@@ -39,7 +39,7 @@ class GameArchivesModal extends Component  {
           Game Archives Modal
           <br />
           <br />
-          <h3>hi</h3>
+          <h3></h3>
         </div>
       </Modal>
     )

@@ -40,7 +40,7 @@ class OurMissionModal extends Component {
           Our Mission Modal
           <br />
           <br />
-          <h3>hi</h3>
+          <h3></h3>
         </div>
       </Modal>
     )

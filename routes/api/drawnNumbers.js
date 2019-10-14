@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const DrawnNumbers = require('../../models/DrawnNumbers');
+
+
 // root: api/drawnNumbers
 // Return all drawn numbers
 router.get('/', async (req, res) => {
@@ -12,6 +14,7 @@ router.get('/', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+
 
 // Add new available numbers array to the database
 // Can be used for reload the available numbers array
@@ -38,7 +41,7 @@ router.post('/', async (req, res) => {
     if (err) {
       return console.error(err)
     };
-    console.log("=====> saved");
+    console.log("=====> saved in db");
     res.json(drawnNumbers);
   });
   console.log("=====> Done with saving");
@@ -68,7 +71,6 @@ router.post('/addNumber', async (req, res) => {
     };
     console.log("--> Created new Array");
   });
-
   console.log("--> drawn numbers are: " + drawnNumbers);
   res.json(drawnNumbers);
 });

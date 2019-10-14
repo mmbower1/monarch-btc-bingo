@@ -6,10 +6,10 @@ const RandomNumber = () => {
   const [availableNumbers, setavailableNumbers] = useState([]);
 
   const grabRandomNumber = async () => {
+    let drawnNumbers = [];
     const randomObj = await axios.get('/api/randomNumber');
     //console.log("---> randomObj: " + JSON.stringify(randomObj));
     const currentRandomNumber = randomObj.data.random;
-
     //console.log("Post grabRandomNumber")
     // console.log("Random Number: " + currentRandomNumber);
 
@@ -20,45 +20,43 @@ const RandomNumber = () => {
     return currentRandomNumber;
   }
 
-  const grabAvailableNumbers = async () => {
-    const availableNumbersObj = await axios.get('/api/drawnNumbers');
-    //console.log("---> randomObj: " + JSON.stringify(randomObj));
-    const currentAvailableNumbers = availableNumbersObj.data.numbers;
-    let drawnNumbers = [];
-
-    //console.log("Post grabRandomNumber")
-    // console.log("Current Available Numbers Number: " + currentAvailableNumbers);
-
-    if (currentAvailableNumbers) {
-      // console.log("Current Available Numbers Number is being updated...")
-      for(let i = 1; i < 75; i++){
-        if (currentAvailableNumbers.indexOf(i) == -1){
-          drawnNumbers.push(i);
+  useEffect(() => {
+    const grabAvailableNumbers = async () => {
+      const availableNumbersObj = await axios.get('/api/drawnNumbers');
+      //console.log("---> randomObj: " + JSON.stringify(randomObj));
+      const currentAvailableNumbers = availableNumbersObj.data.numbers;
+      let drawnNumbers = [];
+      // console.log("Post grabRandomNumber")
+      // console.log("Current Available Numbers Number: " + currentAvailableNumbers);
+      if (currentAvailableNumbers) {
+        // console.log("Current Available Numbers Number is being updated...")
+        for (let i = 1; i < 75; i++){
+          if (currentAvailableNumbers.indexOf(i) == -1){
+            drawnNumbers.push(i);
+          }
         }
+        setavailableNumbers(drawnNumbers);
       }
-      setavailableNumbers(drawnNumbers);
+      return drawnNumbers;
     }
-    return drawnNumbers;
-  }
+    grabAvailableNumbers();
+  }, [])
 
   grabRandomNumber();
-  // console.log("--> isRandomNumber: " + randomNumber);
-  grabAvailableNumbers();
-  // console.log("--> AvailableNumbers: " + randomNumber);
+  // grabAvailableNumbers();
 
   // Call to the randomNumber endpoint
 
-  
+
   // Set results to 'random'
-  
+
   return (
     <div className="random-number-container">
       <div className="random-number">
         {randomNumber}
       </div>
-      <br />
       <div className="already-drawn">
-        Numbers drawn {availableNumbers.toString()}
+        Numbers drawn - {availableNumbers.toString()}
       </div>
     </div>
   )

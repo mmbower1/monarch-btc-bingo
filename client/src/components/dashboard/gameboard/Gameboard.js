@@ -1,6 +1,12 @@
-import React from 'react'
+import React from 'react';
+import RedDot from '../../layout/RedDot';
 
 const Gameboard = () => {
+
+  // addRedDot(() => {
+  //   <RedDot />
+  // })
+
   return (
     <table className="gameboard">
       <tbody>
@@ -18,7 +24,7 @@ const Gameboard = () => {
           <th id="g1" className="bingo-square">46</th>
           <th id="o1" className="bingo-square">75</th>
         </tr>
-        <tr className="i-column"> 
+        <tr className="i-column">
           <th id="b2" className="bingo-square">5</th>
           <th id="i2" className="bingo-square">18</th>
           <th id="n2" className="bingo-square">34</th>

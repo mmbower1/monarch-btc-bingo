@@ -102,7 +102,7 @@ body {
 	top: 0;
 	width: 100%;
 }
-
+/* 
 #b1,
 #i2,
 #g4,
@@ -116,8 +116,8 @@ body {
 	background: red;
 	border-radius: 50%;
 	padding: 4px;
-	/* display: inline-block; */
-}
+	display: inline-block;
+} */
 
 .bingo-logo-right {
 	display: grid;
@@ -217,6 +217,11 @@ input[type='erc20'] {
 	color: blue;
 }
 
+.gameStream-modal {
+	display: grid;
+	width: 200px;
+}
+
 h1 {
 	font-size: 40px;
 }
@@ -294,13 +299,8 @@ h1 {
 }
 
 .random-number {
-	font-size: 30px;
-	margin-left: 55px;
+	font-size: 40px;
 	/* outline: 2px solid blue; */
-}
-
-.row-1 {
-	display: grid;
 }
 
 .row-2 {
@@ -378,6 +378,7 @@ th {
 
 	.navbar {
 		display: grid;
+		position: absolute;
 	}
 
 	.navbar h1 {
@@ -397,6 +398,7 @@ th {
 	.nav-table-children {
 		font-size: 10px;
 		display: flex;
+		margin-right: 100px;
 		/* display: none; */
 	}
 

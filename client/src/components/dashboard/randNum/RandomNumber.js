@@ -20,6 +20,15 @@ const RandomNumber = () => {
     return currentRandomNumber;
   }
 
+  const setMarker = async () => {
+    let elements = document.getElementsByClassName("bingo-square");
+    console.log("elements[1]: " + elements[1]);
+    console.log("elements.length: " + elements.length);
+    console.log("elements[1].innerHTML: " + elements[1].innerHTML);
+  }
+
+  
+
   useEffect(() => {
     const grabAvailableNumbers = async () => {
       const availableNumbersObj = await axios.get('/api/drawnNumbers');
@@ -39,16 +48,10 @@ const RandomNumber = () => {
       }
       return drawnNumbers;
     }
+    grabRandomNumber();
     grabAvailableNumbers();
+    setMarker();
   }, [])
-
-  grabRandomNumber();
-  // grabAvailableNumbers();
-
-  // Call to the randomNumber endpoint
-
-
-  // Set results to 'random'
 
   return (
     <div className="random-number-container">

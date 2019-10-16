@@ -1,10 +1,7 @@
 import React from 'react';
-import RedDot from '../../layout/RedDot';
-
 
 const Gameboard = () => {
 
-  
   return (
     <table className="gameboard">
       <tbody>

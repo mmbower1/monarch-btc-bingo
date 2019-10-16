@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import Navbar from '../layout/Navbar';
 import Spinner from '../layout/Spinner';
-import RedDot from '../layout/RedDot';
+// import RedDot from '../layout/RedDot';
 import RandomNumber from './randNum/RandomNumber';
 import Gameboard from './gameboard/Gameboard';
+import axios from 'axios';
 
 // titlebar modals
 import AboutUsModal from '../../modals/titlebar/AboutUsModal';
@@ -42,11 +43,26 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
   const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
   const openEducationModal = () => { setIsEducationModalOpen(true) }
   const openRealTimeNewsModal = () => { setIsRealTimeNewsModalOpen(true) }
+  const [randomNumber, setRandomNumber] = useState(0);
 
   // empty array at end allows it only run once
   useEffect(() => {
     getCurrentProfile();
+    grabRandomNumber();
   }, []);
+
+  const grabRandomNumber = async () => {
+    const randomObj = await axios.get('/api/randomNumber');
+    const currentRandomNumber = randomObj.data.random;
+    console.log("currentRandomNumber: " + currentRandomNumber);
+    if (currentRandomNumber) {
+      console.log("setting randomNumber to " + currentRandomNumber);
+      setRandomNumber(currentRandomNumber);
+      console.log("currentRandomNumber state: " + randomNumber);
+    }
+    console.log("currentRandomNumber state after if: " + randomNumber);
+    return currentRandomNumber;
+  }
 
   return (
     <div className="dashboard-container">
@@ -91,7 +107,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         </table>
       </nav>
       <br />
-      <RandomNumber />
+      <RandomNumber randomNumber={randomNumber} />
       <div className="dashboard-body">
         <div className="row-1">
           <br />

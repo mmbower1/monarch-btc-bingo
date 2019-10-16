@@ -14,13 +14,13 @@ export const boardSetup = () => {
       let index =  Math.floor(Math.random() * availableNumbers.length);
       let randomString = availableNumbers[index];
       let randomInt = randomString;
-      availableNumbers.splice(index, 1);
       let element = document.getElementById(cellsIdNames[i]);
-      element.innerHTML = randomString; 
+      availableNumbers.splice(index, 1);
+      element.innerHTML = randomString;
       cellValues[i] = randomString;
     }
   } catch (err) {
-    
+
   }
 
   function markCell(cellValue){

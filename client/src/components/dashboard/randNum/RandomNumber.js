@@ -1,33 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const RandomNumber = () => {
+const RandomNumber = (props) => {
   const [randomNumber, setRandomNumber] = useState(0);
   const [availableNumbers, setavailableNumbers] = useState([]);
 
-  const grabRandomNumber = async () => {
-    let drawnNumbers = [];
-    const randomObj = await axios.get('/api/randomNumber');
-    //console.log("---> randomObj: " + JSON.stringify(randomObj));
-    const currentRandomNumber = randomObj.data.random;
-    //console.log("Post grabRandomNumber")
-    // console.log("Random Number: " + currentRandomNumber);
-
-    if (currentRandomNumber) {
-      // console.log("Random number is being updated...")
-      setRandomNumber(currentRandomNumber);
-    }
-    return currentRandomNumber;
-  }
-
   const setMarker = async () => {
+    const randomObj = await axios.get('/api/randomNumber');
     let elements = document.getElementsByClassName("bingo-square");
+    // for (var i = 0; i <= elements.length; i++) {
+    //   if (elements.innerHTML === randomObj) {
+    //     elements.push('hello');
+    //   }
+    // }
     console.log("elements[1]: " + elements[1]);
     console.log("elements.length: " + elements.length);
     console.log("elements[1].innerHTML: " + elements[1].innerHTML);
   }
-
-  
 
   useEffect(() => {
     const grabAvailableNumbers = async () => {
@@ -48,7 +37,8 @@ const RandomNumber = () => {
       }
       return drawnNumbers;
     }
-    grabRandomNumber();
+    setRandomNumber(props.randomNumber);
+    console.log("Random number is set to the following: " + randomNumber);
     grabAvailableNumbers();
     setMarker();
   }, [])

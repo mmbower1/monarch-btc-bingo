@@ -37,10 +37,10 @@ class OurMissionModal extends Component {
       > 
         <div className="modal-content">
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-          Our Mission Modal
+          Our Mission
           <br />
           <br />
-          <h3></h3>
+          <h3>To provide the best Bingo experience possibe, combined with dapp features using the one-and-only first ever invented cryptocurrency, Bitcoin for winnings.</h3>
         </div>
       </Modal>
     )

@@ -17,7 +17,6 @@ import OurMissionModal from '../../modals/titlebar/OurMissionModal';
 import TestimonialsModal from '../../modals/titlebar/TestimonialsModal';
 import BingoExplainedModal from '../../modals/titlebar/BingoExplainedModal';
 import GameArchivesModal from '../../modals/titlebar/GameArchivesModal';
-
 // gameboard modals
 import RealTimeNewsModal from '../../modals/gameboard/RealTimeNewsModal';
 import EducationModal from '../../modals/gameboard/EduResourcesModal';
@@ -43,6 +42,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
   const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
   const openEducationModal = () => { setIsEducationModalOpen(true) }
   const openRealTimeNewsModal = () => { setIsRealTimeNewsModalOpen(true) }
+
   const [randomNumber, setRandomNumber] = useState(0);
 
   // empty array at end allows it only run once

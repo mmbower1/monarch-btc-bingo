@@ -1,11 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { logout } from '../../actions/auth';
+// navbar modals
+import AccountModal from '../../modals/navbar/AccountModal';
+import ProfileModal from '../../modals/navbar/ProfileModal';
+import WalletModal from '../../modals/navbar/WalletModal';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const logo = require('../../img/bingo.png');
+
+  // navbar modals
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+
+  const openAccountModal = () => { setIsAccountModalOpen(true) };
+  const openProfileModal = () => { setIsProfileModalOpen(true) };
+  const openWalletModal = () => { setIsWalletModalOpen(true) };
 
   const authLinks = (
     <Fragment>
@@ -16,12 +29,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               <span className="hide-sm"><i className="fas fa-sign-out-alt"></i>&nbsp;Logout</span>
             </a>
             <div className="hide-sms">
-              <span className="hide-sm">Profile</span>
-              <span className="hide-sm">Account</span>
-              <span className="hide-sm">Security</span>
-              <span className="hide-sm">Settings</span>
-              <span className="hide-sm">Wallet</span>
-              <span className="hide-sm">Next Gamecard</span>
+              <span id="profile-modal" className="hide-sm" onClick={openProfileModal}>Profile</span>
+              <span id="account-modal" className="hide-sm" onClick={openAccountModal}>Account</span>
+              <span id="security-modal" className="hide-sm">Security</span>
+              <span id="settings-modal" className="hide-sm">Settings</span>
+              <span id="wallet-modal" className="hide-sm" onClick={openWalletModal}>Wallet</span>
+              <span id="nextGamecard-modal" className="hide-sm">Next Gamecard</span>
             </div>
           </div>
         </ul>
@@ -38,14 +51,22 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </ul>
   );
 
+
   return (
-    <nav className="navbar bg-dark">
-        <img src={logo} className="bingo-logo-right" width="260px" alt=""/>
-        <h1>
-          Bitcoin Bingo
-        </h1>
-      { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>) }
-    </nav>
+    <div className="navbar-container">
+      {/* navbar modals */}
+      <AccountModal open={isAccountModalOpen} close={() => setIsAccountModalOpen(false)} onClose={() => setIsAccountModalOpen(false)}/>
+      <ProfileModal open={isProfileModalOpen} close={() => setIsProfileModalOpen(false)} onClose={() => setIsProfileModalOpen(false)}/>
+      <WalletModal open={isWalletModalOpen} close={() => setIsWalletModalOpen(false)} onClose={() => setIsWalletModalOpen(false)}/>
+
+      <nav className="navbar bg-dark">
+          <img src={logo} className="bingo-logo-right" width="260px" alt=""/>
+          <h1>
+            Bitcoin Bingo
+          </h1>
+        { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>) }
+      </nav>
+    </div>
   )
 }
 

@@ -28,7 +28,10 @@ body {
 #meetOurTeam-modal,
 #testimonials-modal,
 #gameArchives-modal,
-#bingoExplained-modal {
+#bingoExplained-modal,
+#profile-modal,
+#account-modal,
+#wallet-modal {
 	cursor: pointer;
 }
 
@@ -121,6 +124,10 @@ body {
 
 .bingo-logo-right {
 	display: grid;
+}
+
+.bingo-square {
+	font-size: 18px;
 }
 
 .buttons {
@@ -268,6 +275,13 @@ h1 {
 	font-size: 12px;
 }
 
+#n3 {
+	background: red;
+	border-radius: 50%;
+	font-size: 14px;
+	padding: 4px;
+}
+
 /* Navbar */
 .navbar {
 	align-items: center;
@@ -365,6 +379,7 @@ th {
 	.gameboard th {
 		font-size: 20px;
 		margin-right: 300px;
+		padding: 12px;
 	}
 
 	.hide-sms {
@@ -378,6 +393,13 @@ th {
 
 	.modal-content h3 {
 		margin-top: 25px;
+	}
+
+	#n3 {
+		background: red;
+		border-radius: 50%;
+		font-size: 12px;
+		padding: 4px;
 	}
 
 	.navbar {

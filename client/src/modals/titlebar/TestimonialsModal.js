@@ -36,7 +36,7 @@ class TestimonialsModal extends Component {
       > 
         <div className="modal-content">
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-          Testimonials Modal
+          Testimonials
           <br />
           <br />
           <h3></h3>

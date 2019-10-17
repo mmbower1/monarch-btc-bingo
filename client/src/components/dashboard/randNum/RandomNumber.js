@@ -28,8 +28,8 @@ const RandomNumber = (props) => {
       // console.log("Current Available Numbers Number: " + currentAvailableNumbers);
       if (currentAvailableNumbers) {
         // console.log("Current Available Numbers Number is being updated...")
-        for (let i = 1; i < 75; i++){
-          if (currentAvailableNumbers.indexOf(i) == -1){
+        for (let i = 1; i < 75; i++) {
+          if (currentAvailableNumbers.indexOf(i) === -1) {
             drawnNumbers.push(i);
           }
         }
@@ -37,7 +37,7 @@ const RandomNumber = (props) => {
       }
       return drawnNumbers;
     }
-    setRandomNumber(props.randomNumber);
+    setRandomNumber(randomNumber);
     console.log("Random number is set to the following: " + randomNumber);
     grabAvailableNumbers();
     setMarker();

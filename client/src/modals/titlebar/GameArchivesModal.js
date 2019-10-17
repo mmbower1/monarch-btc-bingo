@@ -36,7 +36,7 @@ class GameArchivesModal extends Component  {
       > 
         <div className="modal-content">
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-          Game Archives Modal
+          Game Archives
           <br />
           <br />
           <h3></h3>

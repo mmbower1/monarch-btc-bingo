@@ -8,18 +8,18 @@ const DrawnNumbers = require('./models/DrawnNumbers');
 app = express();
 
 // Approach 2)
-// 1) Every n seconds retrieve random numbers array 
+// 1) Every n seconds retrieve random numbers array
 // 2) Generate random number
 // 3) Check if random number is in drawn numbers
 // 4) If not add it
-// 5) Regenerate until valid random number has been drawn 
+// 5) Regenerate until valid random number has been drawn
 // 6) store into drawn numbers array where they cant be drawn again (1-75), then cycle starts over again once all 75 nubmners are drawn
 
 const cronjob = () => {
   let originalArray = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
-    "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", 
-    "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", 
+    "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43",
+    "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64",
     "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75"
   ];
   cron.schedule("*/5 * * * * *", async () => {
@@ -32,9 +32,8 @@ const cronjob = () => {
       // Check if available numbers have been exhausted
       if (!availableNumbersObj) {
         console.log("--> Create new DrawnNumbers");
-        availableNumbersObj = new DrawnNumbers({ numbers: originalArray});
+        availableNumbersObj = new DrawnNumbers({ numbers: originalArray });
         availableNumbers = availableNumbersObj.numbers;
-
       } else if (availableNumbersObj.numbers.length === 0){
         console.log("--> RESET DRAWN NUMBERS");
         availableNumbers = originalArray;
@@ -53,12 +52,10 @@ const cronjob = () => {
       console.log(" ");
       console.log("--> Random number picked: " + random);
 
-
       // Update / save available number set with the random number removed
       availableNumbers.splice(index, 1);
       console.log(" ");
       console.log("--> Updated availableNumbers: " + availableNumbers);
-      // TODO
       // Save updated array to database
        availableNumbersObj.numbers = availableNumbers;
        availableNumbersObj.save(function (err, num) {

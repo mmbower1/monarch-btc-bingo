@@ -41,7 +41,7 @@ class RealTimeNewsModal extends Component  {
       <Modal className="bg-modal" isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} appElement={document.getElementById('root')}> 
         <div className="modal-content">
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-          Real Time News Modal
+          Real Time News
           <br />
           <br />
             {items.map(item => (

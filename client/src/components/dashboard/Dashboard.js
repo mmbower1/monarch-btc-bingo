@@ -120,7 +120,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
           <th id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News Feed</th>
           <th id="live-community-blog">Live Community Blog</th>
         </div>
-        <Gameboard />
+        <Gameboard user={user}/>
         <div className="row-3">
           <th id="education-modal" onClick={openEducationModal}>Educational Resources</th>
           <th id="ads-relative-to-blockchain">Ads Relative Only to Blockchains</th>

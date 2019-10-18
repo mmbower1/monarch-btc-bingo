@@ -23,8 +23,9 @@ if (localStorage.token) {
 const App = () => {
   // used in functional components, not class based components where componentDidMount() is used instead
   useEffect(() => {
-    store.dispatch(loadUser());
-    boardSetup();
+    let user = loadUser();
+    store.dispatch(user);
+    boardSetup(user);
   }, [])
 
   return (

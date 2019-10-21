@@ -8,7 +8,7 @@ import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
-import { boardSetup } from './actions/boardSetup';
+import  boardSetup  from './actions/boardSetup';
 import setAuthToken from './utils/setAuthToken';
 // redux
 import { Provider } from 'react-redux';
@@ -23,9 +23,7 @@ if (localStorage.token) {
 const App = () => {
   // used in functional components, not class based components where componentDidMount() is used instead
   useEffect(() => {
-    let user = loadUser();
-    store.dispatch(user);
-    boardSetup(user);
+    store.dispatch(loadUser());
   }, [])
 
   return (

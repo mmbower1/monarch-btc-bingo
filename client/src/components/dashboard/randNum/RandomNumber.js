@@ -13,9 +13,9 @@ const RandomNumber = (props) => {
     //     elements.push('hello');
     //   }
     // }
-    console.log("elements[1]: " + elements[1]);
-    console.log("elements.length: " + elements.length);
-    console.log("elements[1].innerHTML: " + elements[1].innerHTML);
+    // console.log("elements[1]: " + elements[1]);
+    // console.log("elements.length: " + elements.length);
+    // console.log("elements[1].innerHTML: " + elements[1].innerHTML);
   }
 
   useEffect(() => {

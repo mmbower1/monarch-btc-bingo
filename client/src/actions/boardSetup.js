@@ -1,12 +1,13 @@
 //import axios from 'axios';
 //import { setAlert } from './alert';
 //import { GET_PROFILE, PROFILE_ERROR } from './types';
+import React, { Fragment, useEffect, useState } from 'react';
+// import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export const boardSetup = (user) => {
-  console.log(" ");
-  console.log(" ");
-  console.log(" ");
-  console.log("==================== USER ================= " + user);
+
+const boardSetup = (userObj) => {
   let b_column = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
   let i_column = ["16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];
   let n_column = ["31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45"];
@@ -20,6 +21,37 @@ export const boardSetup = (user) => {
   let o_cellIdNames = ["o1", "o2", "o3", "o4", "o5"];
 
   let cellValues = [];
+  //let cardNumbers = userObj.user.cardNumbers;
+  let user = userObj.user.user
+  let cardNumbersKey = "cardNumbers";
+  let userObjParsed  = JSON.parse(JSON.stringify(user));
+
+  console.log(" ");
+  console.log(" ");
+  console.log(" ");
+  console.log("user: " + typeof user);
+  console.log("user == null " + user == null );
+  console.log("user != null " + user != null );
+  // console.log("userObjParsed[cardNumbersKey]: " + userObjParsed[cardNumbersKey]);
+  console.log(user);
+  let key;
+  for (key in user) {
+    if(key == cardNumbersKey){
+      console.log("------> Found cardNumbers key");
+    }
+    console.log("key: " + key);
+    console.log("typeof key: " + typeof key);
+    console.log("user[key]: " + user[key]);
+    console.log(" ");
+    console.log(" ");
+    console.log(" ");
+}
+  //console.log("user: " + JSON.stringify(user.user.user));
+  
+  //console.log("Card Numbers: " + cardNumbers);
+  console.log(" ");
+  console.log(" ");
+  console.log(" ");
   try {
     // localStorage.setItem(
     //   'b_cellIdNames',
@@ -85,11 +117,11 @@ export const boardSetup = (user) => {
         cellValues[i] = randomString;
       }
     }
-    fill_b_column();
-    fill_i_column();
-    fill_n_column();
-    fill_g_column();
-    fill_o_column();
+    // fill_b_column();
+    // fill_i_column();
+    // fill_n_column();
+    // fill_g_column();
+    // fill_o_column();
 
   } catch (err) {
     console.error(err.message);
@@ -99,3 +131,6 @@ export const boardSetup = (user) => {
     console.log("Marking... " + cellValue);
   }
 }
+
+export default boardSetup;
+

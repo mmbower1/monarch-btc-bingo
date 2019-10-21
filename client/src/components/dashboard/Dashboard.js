@@ -54,16 +54,16 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
   const grabRandomNumber = async () => {
     const randomObj = await axios.get('/api/randomNumber');
     const currentRandomNumber = randomObj.data.random;
-    console.log("currentRandomNumber: " + currentRandomNumber);
+    //console.log("currentRandomNumber: " + currentRandomNumber);
     if (currentRandomNumber) {
-      console.log("setting randomNumber to " + currentRandomNumber);
+      //console.log("setting randomNumber to " + currentRandomNumber);
       setRandomNumber(currentRandomNumber);
       console.log("currentRandomNumber state: " + randomNumber);
     }
-    console.log("currentRandomNumber state after if: " + randomNumber);
+    //console.log("currentRandomNumber state after if: " + randomNumber);
     return currentRandomNumber;
   }
-
+  
   return (
     <div className="dashboard-container">
       <Navbar />

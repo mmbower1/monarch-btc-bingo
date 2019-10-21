@@ -5,33 +5,8 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 const User = require('../../models/User');
+const generateCardNumbers = require('../../helpers/generateCardNumbers');
 
-
-function generateCardNumbers(){
-  //[] --> [1-15, 16-30, 31-45, 46-60, 61-75]
-  let lowerRange = 1;
-  let upperRange = 0;
-  let cardNumbers = [];1
-  console.log("================= Before loop ");
-  for (var i = 0; i < 5; i++) {
-    console.log("================= Outer loop ");
-    upperRange += 15;
-    console.log("================= Lower Range " + lowerRange);
-    console.log("================= Upper Range " + upperRange);
-    for (var j = 0; j < 5; j++) {
-      console.log("================= Inner loop ");
-      let random = Math.floor(Math.random() * (upperRange - lowerRange + 1)) + lowerRange;
-      while(cardNumbers.indexOf(random) != -1){
-        random = Math.floor(Math.random() * (upperRange - lowerRange + 1)) + lowerRange;
-      }
-      
-      cardNumbers.push(random);
-    }
-    lowerRange += 15;
-  }
-  console.log("randomNumbers in generateCardNumbers " + cardNumbers) ;
-  return cardNumbers;
-}
 
 // @route    POST api/users
 // @desc     Register User

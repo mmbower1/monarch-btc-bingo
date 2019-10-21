@@ -1,7 +1,8 @@
 import React from 'react';
+import boardSetup from '../../../actions/boardSetup';
 
-const Gameboard = () => {
-
+const Gameboard = (user) => {
+  boardSetup({user});
   return (
     <table className="gameboard">
       <tbody>

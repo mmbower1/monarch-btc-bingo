@@ -27,8 +27,6 @@ const boardSetup = (userObj) => {
   let userObjParsed  = JSON.parse(JSON.stringify(user));
 
   console.log(" ");
-  console.log(" ");
-  console.log(" ");
   console.log("user: " + typeof user);
   console.log("user == null " + user == null );
   console.log("user != null " + user != null );
@@ -43,15 +41,9 @@ const boardSetup = (userObj) => {
     console.log("typeof key: " + typeof key);
     console.log("user[key]: " + user[key]);
     console.log(" ");
-    console.log(" ");
-    console.log(" ");
 }
   //console.log("user: " + JSON.stringify(user.user.user));
-  
   //console.log("Card Numbers: " + cardNumbers);
-  console.log(" ");
-  console.log(" ");
-  console.log(" ");
   try {
     // localStorage.setItem(
     //   'b_cellIdNames',
@@ -117,11 +109,11 @@ const boardSetup = (userObj) => {
         cellValues[i] = randomString;
       }
     }
-    // fill_b_column();
-    // fill_i_column();
-    // fill_n_column();
-    // fill_g_column();
-    // fill_o_column();
+    fill_b_column();
+    fill_i_column();
+    fill_n_column();
+    fill_g_column();
+    fill_o_column();
 
   } catch (err) {
     console.error(err.message);
@@ -132,5 +124,5 @@ const boardSetup = (userObj) => {
   }
 }
 
-export default boardSetup;
+export default connect()(boardSetup);
 

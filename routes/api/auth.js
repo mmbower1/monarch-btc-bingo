@@ -24,11 +24,11 @@ router.get('/', auth, async (req, res) => {
 // @desc     Authenticate User and get token
 // @access   Public
 router.post(
-  '/', 
+  '/',
   [
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Password is required').exists()
-  ], 
+  ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -47,19 +47,17 @@ router.post(
       if (!isMatch) {
         return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
-
       // return json webtoken
       const payload = {
         user: {
           id: user.id
         }
       }
-
       // set to 3600 (1 hr) in production
       jwt.sign(
-        payload, 
-        config.get('jwtSecret'), 
-        { expiresIn: 360000 }, 
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });

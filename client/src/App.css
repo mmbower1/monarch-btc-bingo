@@ -37,8 +37,8 @@ body {
 
 #realTimeNews-modal,
 #education-modal,
-#live-community-blog,
-#ads-relative-to-blockchain,
+/* #live-community-blog, */
+/* #ads-relative-to-blockchain, */
 #gameStream-modal {
 	cursor: pointer;
 	width: 200px;
@@ -50,6 +50,10 @@ body {
 	opacity: 0.9;
 	background: var(--light-color);
 	color: #333;
+}
+
+.already-drawn {
+	font-size: 12px;
 }
 
 .btn-light,
@@ -105,22 +109,6 @@ body {
 	top: 0;
 	width: 100%;
 }
-/* 
-#b1,
-#i2,
-#g4,
-#o5,
-#b4,
-#g2,
-#n5,
-#b2,
-#b3,
-#b4 {
-	background: red;
-	border-radius: 50%;
-	padding: 4px;
-	display: inline-block;
-} */
 
 .bingo-logo-right {
 	display: grid;
@@ -268,12 +256,19 @@ h1 {
 	width: 1200px;
 }
 
+/* #b1, #b2, #b3, #b5,
+#i2, #i3, #i4, #i5,
+#g4 #g1, #g3,
+#o5,
+#b4,
+#g2,
+#n5,
+#b2,
+#b3,
 #o4 {
 	background: red;
 	border-radius: 50%;
-	padding: 4px;
-	font-size: 12px;
-}
+} */
 
 #n3 {
 	background: red;

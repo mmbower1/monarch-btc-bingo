@@ -15,7 +15,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
-
   const openAccountModal = () => { setIsAccountModalOpen(true) };
   const openProfileModal = () => { setIsProfileModalOpen(true) };
   const openWalletModal = () => { setIsWalletModalOpen(true) };

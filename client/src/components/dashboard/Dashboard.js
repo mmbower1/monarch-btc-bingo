@@ -48,22 +48,8 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
   // empty array at end allows it only run once
   useEffect(() => {
     getCurrentProfile();
-    grabRandomNumber();
   }, []);
 
-  const grabRandomNumber = async () => {
-    const randomObj = await axios.get('/api/randomNumber');
-    const currentRandomNumber = randomObj.data.random;
-    //console.log("currentRandomNumber: " + currentRandomNumber);
-    if (currentRandomNumber) {
-      //console.log("setting randomNumber to " + currentRandomNumber);
-      setRandomNumber(currentRandomNumber);
-      console.log("currentRandomNumber state: " + randomNumber);
-    }
-    //console.log("currentRandomNumber state after if: " + randomNumber);
-    return currentRandomNumber;
-  }
-  
   return (
     <div className="dashboard-container">
       <Navbar />
@@ -107,7 +93,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         </table>
       </nav>
       <br />
-      <RandomNumber randomNumber={randomNumber} />
+      <RandomNumber />
       <div className="dashboard-body">
         <div className="row-1">
           <br />
@@ -120,7 +106,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
           <th id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News Feed</th>
           <th id="live-community-blog">Live Community Blog</th>
         </div>
-        <Gameboard user={user}/>
+        <Gameboard />
         <div className="row-3">
           <th id="education-modal" onClick={openEducationModal}>Educational Resources</th>
           <th id="ads-relative-to-blockchain">Ads Relative Only to Blockchains</th>

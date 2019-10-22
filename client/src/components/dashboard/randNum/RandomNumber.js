@@ -1,33 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const RandomNumber = (props) => {
+const RandomNumber = () => {
   const [randomNumber, setRandomNumber] = useState(0);
   const [availableNumbers, setavailableNumbers] = useState([]);
 
-  const setMarker = async () => {
+  const grabRandomNumber = async () => {
     const randomObj = await axios.get('/api/randomNumber');
-    let elements = document.getElementsByClassName("bingo-square");
-    // for (var i = 0; i <= elements.length; i++) {
-    //   if (elements.innerHTML === randomObj) {
-    //     elements.push('hello');
-    //   }
-    // }
-    // console.log("elements[1]: " + elements[1]);
-    // console.log("elements.length: " + elements.length);
-    // console.log("elements[1].innerHTML: " + elements[1].innerHTML);
+    const currentRandomNumber = randomObj.data.random;
+    if (currentRandomNumber) {
+      console.log("setting randomNumber to " + currentRandomNumber);
+      setRandomNumber(currentRandomNumber);
+      console.log("currentRandomNumber state: " + randomNumber);
+    }
+    console.log("currentRandomNumber state after if: " + randomNumber);
+    return currentRandomNumber;
   }
 
   useEffect(() => {
     const grabAvailableNumbers = async () => {
       const availableNumbersObj = await axios.get('/api/drawnNumbers');
-      //console.log("---> randomObj: " + JSON.stringify(randomObj));
       const currentAvailableNumbers = availableNumbersObj.data.numbers;
       let drawnNumbers = [];
-      // console.log("Post grabRandomNumber")
-      // console.log("Current Available Numbers Number: " + currentAvailableNumbers);
       if (currentAvailableNumbers) {
-        // console.log("Current Available Numbers Number is being updated...")
         for (let i = 1; i < 75; i++) {
           if (currentAvailableNumbers.indexOf(i) === -1) {
             drawnNumbers.push(i);
@@ -37,10 +32,9 @@ const RandomNumber = (props) => {
       }
       return drawnNumbers;
     }
-    setRandomNumber(randomNumber);
-    console.log("Random number is set to the following: " + randomNumber);
+    grabRandomNumber();
     grabAvailableNumbers();
-    setMarker();
+    console.log("Random number is set to the following: " + randomNumber);
   }, [])
 
   return (
@@ -48,8 +42,9 @@ const RandomNumber = (props) => {
       <div className="random-number">
         {randomNumber}
       </div>
+      Numbers drawn -
       <div className="already-drawn">
-        Numbers drawn - {availableNumbers.toString()}
+        {availableNumbers.toString()}
       </div>
     </div>
   )

@@ -8,19 +8,60 @@ import RandomNumber from '../randNum/RandomNumber';
 const Gameboard = ({ auth: { user } }) => {
 
   const setMarker = async () => {
+    console.log("-----> setMarker")
     // const [marker, setMarker] = useState(false);
     const randomObj = await axios.get('/api/randomNumber');
+    let availableNumbers = await axios.get('/api/drawnNumbers');
+    availableNumbers = availableNumbers.data.numbers;
+    console.log("-----> drawnNumbers: " + availableNumbers);
     let elements = document.getElementsByClassName("bingo-square");
-    if (randomObj.data.random === elements.value) {
-      elements.value = 'red';
-      console.log('fill red square')
+    //console.log(elements);
+    let randomNumber = randomObj.data.random;
+    let currentNumber = 0;
+    let randomNumberString = randomObj.data.random.toString();
+    let currentNumberString = "0";
+    let currentElement;
+    for (var i = 0; i < elements.length; i++) {
+      currentElement = elements[i];
+      currentNumber = Number(currentElement.innerHTML);
+      if(!availableNumbers.includes(currentNumber)){
+        elements[i].className = "redCell"; 
+      }
+      //  console.log("-----> randomNumberString: " +   randomNumberString);
+      //  console.log("-----> currentNumberString: " +   currentNumberString);
+      //  console.log("-----> randomNumberString == currentNumberString: " + randomNumberString == currentNumberString);
+      //  console.log(" ");
+      //  console.log(" ");
+      //  console.log(" ");
+
+      // if (currentNumber === randomNumber) {
+      //   elements[i].className = "redCell"; 
+      //    console.log(" ");
+      //    console.log(" ");
+      //    console.log(" ");
+      //    console.log('fill red square');
+      // }
     }
     // if (availableNumbers === elements) {
     //   elements.value = 'red';
     // }
     // console.log("-----> randomObj.data.random: " + JSON.stringify(randomObj.data.random));
-    setMarker();
+    //setMarker();
     // return elements;
+
+
+    // for (var i = 0; i < user.cardNumbers.length; i++) {
+    //   if(user.cardNumbers[i] === randomNumber){
+    //     console.log(" ");
+    //    console.log(" ");
+    //    console.log(" ");
+    //     console.log("Found a match!")
+    //     console.log(" ");
+    //    console.log(" ");
+    //    console.log(" ");
+    //   }
+    // }
+
   }
 
   useEffect(() => {

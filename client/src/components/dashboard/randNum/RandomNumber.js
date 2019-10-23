@@ -5,6 +5,7 @@ const RandomNumber = () => {
   const [randomNumber, setRandomNumber] = useState(0);
   const [availableNumbers, setavailableNumbers] = useState([]);
 
+  //
   const grabRandomNumber = async () => {
     const randomObj = await axios.get('/api/randomNumber');
     const currentRandomNumber = randomObj.data.random;
@@ -17,6 +18,7 @@ const RandomNumber = () => {
     return currentRandomNumber;
   }
 
+  //
   useEffect(() => {
     const grabAvailableNumbers = async () => {
       const availableNumbersObj = await axios.get('/api/drawnNumbers');

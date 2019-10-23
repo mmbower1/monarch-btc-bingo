@@ -37,9 +37,7 @@ body {
 
 #realTimeNews-modal,
 #education-modal,
-/* #live-community-blog, */
-/* #ads-relative-to-blockchain, */
-#gameStream-modal {
+/* #live-community-blog, */ /* #ads-relative-to-blockchain, */ #gameStream-modal {
 	cursor: pointer;
 	width: 200px;
 }
@@ -277,6 +275,13 @@ h1 {
 	padding: 4px;
 }
 
+.redCell {
+	background: red;
+	border-radius: 50%;
+	font-size: 14px;
+	padding: 4px;
+}
+
 /* Navbar */
 .navbar {
 	align-items: center;
@@ -423,7 +428,8 @@ th {
 		/* display: none; */
 	}
 
-	.row-2, .row-3 {
+	.row-2,
+	.row-3 {
 		display: inline-block;
 		margin-top: 10px;
 		margin-left: 50px;

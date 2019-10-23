@@ -8,7 +8,8 @@ import Spinner from '../layout/Spinner';
 // import RedDot from '../layout/RedDot';
 import RandomNumber from './randNum/RandomNumber';
 import Gameboard from './gameboard/Gameboard';
-import axios from 'axios';
+import Winner from './winner/Winner';
+// import axios from 'axios';
 
 // titlebar modals
 import AboutUsModal from '../../modals/titlebar/AboutUsModal';
@@ -80,20 +81,20 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
           )
         }
         <table className="top-tr">
-          <tbody>
-          <tr>
-            <th id="aboutUs-modal" onClick={openAboutUsModal}>About Us</th>
-            <th id="ourMission-modal" onClick={openOurMissionModal}>Our Mission & Vision</th>
-            <th id="meetOurTeam-modal" onClick={openMeetOurTeamModal}>Meet Our Team</th>
-            <th id="testimonials-modal" onClick={openTestimonialsModal}>Testimonials</th>
-            <th id="gameArchives-modal" onClick={openGameArchivesModal}>Game Archives</th>
-            <th id="bingoExplained-modal" onClick={openBingoExplainedModal}>Bitcoin Bingo Explained</th>
-          </tr>
-          </tbody>
+          <thead>
+              <th id="aboutUs-modal" onClick={openAboutUsModal}>About Us</th>
+              <th id="ourMission-modal" onClick={openOurMissionModal}>Our Mission & Vision</th>
+              <th id="meetOurTeam-modal" onClick={openMeetOurTeamModal}>Meet Our Team</th>
+              <th id="testimonials-modal" onClick={openTestimonialsModal}>Testimonials</th>
+              <th id="gameArchives-modal" onClick={openGameArchivesModal}>Game Archives</th>
+              <th id="bingoExplained-modal" onClick={openBingoExplainedModal}>Bitcoin Bingo Explained</th>
+          </thead>
         </table>
       </nav>
       <br />
       <RandomNumber />
+      <br />
+      <Winner />
       <div className="dashboard-body">
         <div className="row-1">
           <br />
@@ -104,6 +105,9 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         <br />
         <div className="row-2">
           <th id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News Feed</th>
+            {/* <div className="winner-div">
+              
+            </div> */}
           <th id="live-community-blog">Live Community Blog</th>
         </div>
         <Gameboard />

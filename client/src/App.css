@@ -356,6 +356,10 @@ th {
 	width: 75%;
 }
 
+.winner-div {
+	display: flex;
+}
+
 /* Mobile Styles */
 
 @media (max-width: 780px) {

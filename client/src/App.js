@@ -8,7 +8,7 @@ import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
-import  boardSetup  from './actions/boardSetup';
+// import  boardSetup  from './actions/boardSetup';
 import setAuthToken from './utils/setAuthToken';
 // redux
 import { Provider } from 'react-redux';

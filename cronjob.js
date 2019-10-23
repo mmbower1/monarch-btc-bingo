@@ -22,7 +22,7 @@ const cronjob = () => {
     "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64",
     "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75"
   ];
-  cron.schedule("*/5 * * * * *", async () => {
+  cron.schedule("*/6 * * * * *", async () => {
     console.log(" ");
     console.log("================================================================");
     try {
@@ -40,20 +40,19 @@ const cronjob = () => {
       } else {
         availableNumbers = availableNumbersObj.numbers;
       }
-      console.log("--> Drawn numbers retrieved: " + availableNumbers);
+      console.log("Drawn numbers retrieved: " + availableNumbers);
       console.log(" ");
-      console.log("--> availableNumbers length is: " + availableNumbers.length);
+      console.log("availableNumbers length is: " + availableNumbers.length);
 
       // Pick a random number from this set
       let index =  Math.floor(Math.random() * availableNumbers.length);
-      console.log(" ");
-      console.log("--> Random index picked: " + index);
       let random = availableNumbers[index];
       console.log(" ");
-      console.log("--> Random number picked: " + random);
+      console.log("Random number picked: " + random);
 
       // Update / save available number set with the random number removed
       availableNumbers.splice(index, 1);
+      console.log(" ");
       console.log(" ");
       console.log("--> Updated availableNumbers: " + availableNumbers);
       // Save updated array to database

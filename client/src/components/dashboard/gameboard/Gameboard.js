@@ -3,70 +3,42 @@ import { connect } from 'react-redux';
 // import { loadUser } from '../../../actions/auth';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import RandomNumber from '../randNum/RandomNumber';
+// import RandomNumber from '../randNum/RandomNumber';
+import Winner from '../winner/Winner';
 
 const Gameboard = ({ auth: { user } }) => {
+  const elements = document.getElementsByClassName("bingo-square");
+  var currentNumber = 0;
+  // const [redMarker, setRedMarker] = useState(false);
 
+  // fills gameboard
   const setMarker = async () => {
-    console.log("-----> setMarker")
-    // const [marker, setMarker] = useState(false);
-    const randomObj = await axios.get('/api/randomNumber');
     let availableNumbers = await axios.get('/api/drawnNumbers');
-    availableNumbers = availableNumbers.data.numbers;
-    console.log("-----> drawnNumbers: " + availableNumbers);
-    let elements = document.getElementsByClassName("bingo-square");
-    //console.log(elements);
-    let randomNumber = randomObj.data.random;
-    let currentNumber = 0;
-    let randomNumberString = randomObj.data.random.toString();
-    let currentNumberString = "0";
     let currentElement;
+    availableNumbers = availableNumbers.data.numbers;
+    // const randomObj = await axios.get('/api/randomNumber');
+    console.log("-----> setMarker")
+    console.log("-----> availableNumbers: " + availableNumbers);
     for (var i = 0; i < elements.length; i++) {
       currentElement = elements[i];
       currentNumber = Number(currentElement.innerHTML);
-      if(!availableNumbers.includes(currentNumber)){
-        elements[i].className = "redCell"; 
+      if (!availableNumbers.includes(currentNumber)) {
+        elements[i].className = "redCell";
+        // <Winner />
       }
-      //  console.log("-----> randomNumberString: " +   randomNumberString);
-      //  console.log("-----> currentNumberString: " +   currentNumberString);
-      //  console.log("-----> randomNumberString == currentNumberString: " + randomNumberString == currentNumberString);
-      //  console.log(" ");
-      //  console.log(" ");
-      //  console.log(" ");
-
-      // if (currentNumber === randomNumber) {
-      //   elements[i].className = "redCell"; 
-      //    console.log(" ");
-      //    console.log(" ");
-      //    console.log(" ");
-      //    console.log('fill red square');
-      // }
     }
-    // if (availableNumbers === elements) {
-    //   elements.value = 'red';
-    // }
-    // console.log("-----> randomObj.data.random: " + JSON.stringify(randomObj.data.random));
-    //setMarker();
-    // return elements;
+  }
 
+  // alert winner and send exact time to db
+  const setWinner = () => {
+    if (elements) {
 
-    // for (var i = 0; i < user.cardNumbers.length; i++) {
-    //   if(user.cardNumbers[i] === randomNumber){
-    //     console.log(" ");
-    //    console.log(" ");
-    //    console.log(" ");
-    //     console.log("Found a match!")
-    //     console.log(" ");
-    //    console.log(" ");
-    //    console.log(" ");
-    //   }
-    // }
-
+    }
   }
 
   useEffect(() => {
     setMarker();
-  }, [])
+  })
 
   return (
     <table className="gameboard">
@@ -79,7 +51,7 @@ const Gameboard = ({ auth: { user } }) => {
           <th className="gameboard-top-row"><h2>O</h2></th>
         </tr>
         <tr className="b-column">
-          <th id="b1" className="bingo-square" setMarker={setMarker()}>{ user && user.cardNumbers[0] }</th>
+          <th id="b1" className="bingo-square">{ user && user.cardNumbers[0] }</th>
           <th id="i1" className="bingo-square">{ user && user.cardNumbers[5] }</th>
           <th id="n1" className="bingo-square">{ user && user.cardNumbers[10] }</th>
           <th id="g1" className="bingo-square">{ user && user.cardNumbers[15] }</th>

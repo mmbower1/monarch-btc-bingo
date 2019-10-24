@@ -9,25 +9,29 @@ import Winner from '../winner/Winner';
 const Gameboard = ({ auth: { user } }) => {
   const elements = document.getElementsByClassName("bingo-square");
   var currentNumber = 0;
-  // const [redMarker, setRedMarker] = useState(false);
+  const [redMarker, setRedMarker] = useState(false);
 
   // fills gameboard
-  const setMarker = async () => {
-    let availableNumbers = await axios.get('/api/drawnNumbers');
-    let currentElement;
-    availableNumbers = availableNumbers.data.numbers;
-    // const randomObj = await axios.get('/api/randomNumber');
-    console.log("-----> setMarker")
-    console.log("-----> availableNumbers: " + availableNumbers);
-    for (var i = 0; i < elements.length; i++) {
-      currentElement = elements[i];
-      currentNumber = Number(currentElement.innerHTML);
-      if (!availableNumbers.includes(currentNumber)) {
-        elements[i].className = "redCell";
-        // <Winner />
+  useEffect(() => {
+    const setMarker = async () => {
+      let availableNumbers = await axios.get('/api/drawnNumbers');
+      let currentElement;
+      availableNumbers = availableNumbers.data.numbers;
+      // const randomObj = await axios.get('/api/randomNumber');
+      console.log("-----> setMarker")
+      console.log("-----> availableNumbers: " + availableNumbers);
+      for (var i = 0; i < elements.length; i++) {
+        currentElement = elements[i];
+        currentNumber = Number(currentElement.innerHTML);
+        if (!availableNumbers.includes(currentNumber)) {
+          elements[i].className = "redCell";
+          setRedMarker(true);
+        }
       }
     }
-  }
+    setMarker();
+  }, [])
+
 
   // alert winner and send exact time to db
   const setWinner = () => {
@@ -36,15 +40,11 @@ const Gameboard = ({ auth: { user } }) => {
     }
   }
 
-  useEffect(() => {
-    setMarker();
-  })
-
   return (
     <table className="gameboard">
       <tbody>
         <tr>
-          <th className="gameboard-top-row"><h2>B</h2></th>
+          <th className="gameboard-top-row" open={redMarker} onClose={() => setRedMarker(false)}><h2>B</h2></th>
           <th className="gameboard-top-row"><h2>I</h2></th>
           <th className="gameboard-top-row"><h2>N</h2></th>
           <th className="gameboard-top-row"><h2>G</h2></th>

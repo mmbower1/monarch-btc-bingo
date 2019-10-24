@@ -54,9 +54,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <div className="navbar-container">
       {/* navbar modals */}
-      <AccountModal open={isAccountModalOpen} close={() => setIsAccountModalOpen(false)} onClose={() => setIsAccountModalOpen(false)}/>
-      <ProfileModal open={isProfileModalOpen} close={() => setIsProfileModalOpen(false)} onClose={() => setIsProfileModalOpen(false)}/>
-      <WalletModal open={isWalletModalOpen} close={() => setIsWalletModalOpen(false)} onClose={() => setIsWalletModalOpen(false)}/>
+      <AccountModal open={isAccountModalOpen} onClose={() => setIsAccountModalOpen(false)}/>
+      <ProfileModal open={isProfileModalOpen} onClose={() => setIsProfileModalOpen(false)}/>
+      <WalletModal open={isWalletModalOpen} onClose={() => setIsWalletModalOpen(false)}/>
 
       <nav className="navbar bg-dark">
           <img src={logo} className="bingo-logo-right" width="260px" alt=""/>

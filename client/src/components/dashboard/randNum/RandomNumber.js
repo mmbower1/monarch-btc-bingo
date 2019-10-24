@@ -5,21 +5,19 @@ const RandomNumber = () => {
   const [randomNumber, setRandomNumber] = useState(0);
   const [availableNumbers, setavailableNumbers] = useState([]);
 
-  //
-  const grabRandomNumber = async () => {
-    const randomObj = await axios.get('/api/randomNumber');
-    const currentRandomNumber = randomObj.data.random;
-    if (currentRandomNumber) {
-      console.log("setting randomNumber to " + currentRandomNumber);
-      setRandomNumber(currentRandomNumber);
-      console.log("currentRandomNumber state: " + randomNumber);
-    }
-    console.log("currentRandomNumber state after if: " + randomNumber);
-    return currentRandomNumber;
-  }
-
-  //
   useEffect(() => {
+    const grabRandomNumber = async () => {
+      const randomObj = await axios.get('/api/randomNumber');
+      const currentRandomNumber = randomObj.data.random;
+      if (currentRandomNumber) {
+        // console.log("setting randomNumber to " + currentRandomNumber);
+        setRandomNumber(currentRandomNumber);
+        console.log("currentRandomNumber state: " + randomNumber);
+      }
+      // console.log("currentRandomNumber state after if: " + randomNumber);
+      return currentRandomNumber;
+    }
+
     const grabAvailableNumbers = async () => {
       const availableNumbersObj = await axios.get('/api/drawnNumbers');
       const currentAvailableNumbers = availableNumbersObj.data.numbers;
@@ -34,9 +32,10 @@ const RandomNumber = () => {
       }
       return drawnNumbers;
     }
+
     grabRandomNumber();
     grabAvailableNumbers();
-    console.log("Random number is set to the following: " + randomNumber);
+    // console.log("Random number is set to the following: " + randomNumber);
   }, [])
 
   return (
@@ -46,7 +45,7 @@ const RandomNumber = () => {
       </div>
       Numbers drawn -
       <div className="already-drawn">
-        {availableNumbers.toString()}
+        {availableNumbers.toString('').replace(/,/g, ', ')}
       </div>
     </div>
   )

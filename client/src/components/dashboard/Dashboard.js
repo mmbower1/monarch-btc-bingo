@@ -55,15 +55,15 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
     <div className="dashboard-container">
       <Navbar />
       {/* titlebar modals*/}
-      <AboutUsModal open={isAboutUsModalOpen} close={() => setIsAboutUsModalOpen(false)} onClose={() => setIsAboutUsModalOpen(false)}/>
-      <OurMissionModal open={isOurMissionModalOpen} close={() => setIsOurMissionModalOpen(false)} onClose={() => setIsOurMissionModalOpen(false)}/>
-      <MeetOurTeamModal open={isMeetOurTeamModalOpen} close={() => setIsMeetOurTeamModalOpen(false)} onClose={() => setIsMeetOurTeamModalOpen(false)}/>
-      <TestimonialsModal open={isTestimonialsModalOpen} close={() => setIsTestimonialsModalOpen(false)} onClose={() => setIsTestimonialsModalOpen(false)}/>
-      <GameArchivesModal open={isGameArchivesModalOpen} close={() => setIsGameArchivesModalOpen(false)} onClose={() => setIsGameArchivesModalOpen(false)}/>
-      <BingoExplainedModal open={isBingoExplainedModalOpen} close={() => setIsBingoExplainedModalOpen(false)} onClose={() => setIsBingoExplainedModalOpen(false)}/>
+      <AboutUsModal open={isAboutUsModalOpen} onClose={() => setIsAboutUsModalOpen(false)}/>
+      <OurMissionModal open={isOurMissionModalOpen} onClose={() => setIsOurMissionModalOpen(false)}/>
+      <MeetOurTeamModal open={isMeetOurTeamModalOpen} onClose={() => setIsMeetOurTeamModalOpen(false)}/>
+      <TestimonialsModal open={isTestimonialsModalOpen} onClose={() => setIsTestimonialsModalOpen(false)}/>
+      <GameArchivesModal open={isGameArchivesModalOpen} onClose={() => setIsGameArchivesModalOpen(false)}/>
+      <BingoExplainedModal open={isBingoExplainedModalOpen} onClose={() => setIsBingoExplainedModalOpen(false)}/>
       {/* gameboard modals */}
-      <RealTimeNewsModal open={isRealTimeNewsModalOpen} close={() => setIsRealTimeNewsModalOpen(false)} onClose={() => setIsRealTimeNewsModalOpen(false)}/>
-      <EducationModal open={isEducationModalOpen} close={() => setIsEducationModalOpen(false)} onClose={() => setIsEducationModalOpen(false)}/>
+      <RealTimeNewsModal open={isRealTimeNewsModalOpen} onClose={() => setIsRealTimeNewsModalOpen(false)}/>
+      <EducationModal open={isEducationModalOpen} onClose={() => setIsEducationModalOpen(false)}/>
 
       <nav>
         <h2 className="dashboard-title">Cryptocurrency Simplified for Mass Adoption</h2>
@@ -94,7 +94,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
       <br />
       <RandomNumber />
       <br />
-      <Winner />
+      {<Winner />}
       <div className="dashboard-body">
         <div className="row-1">
           <br />
@@ -106,7 +106,6 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         <div className="row-2">
           <th id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News Feed</th>
             {/* <div className="winner-div">
-              
             </div> */}
           <th id="live-community-blog">Live Community Blog</th>
         </div>

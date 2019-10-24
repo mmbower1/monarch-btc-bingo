@@ -116,6 +116,11 @@ body {
 	font-size: 18px;
 }
 
+.bingo-winner {
+	color: green;
+	font-size: 25px;
+}
+
 .buttons {
 	background-color: #bbb;
 	border-radius: 50%;
@@ -354,10 +359,6 @@ th {
 	border-radius: 6px;
 	height: 75%;
 	width: 75%;
-}
-
-.winner-div {
-	display: flex;
 }
 
 /* Mobile Styles */

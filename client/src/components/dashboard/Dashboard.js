@@ -71,7 +71,8 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
           <Spinner />
         ) : (
           <Fragment>
-            <p className="welcome-title">- Welcome { user && user.name } -</p>
+            <p className="welcome-title">
+              <i class="fa fa-angle-double-right"></i> Welcome { user && user.name } <i class="fa fa-angle-double-left"></i></p>
             {/* {profile !== null ? (
               <Fragment>has</Fragment>
             ) : (
@@ -94,7 +95,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
       <br />
       <RandomNumber />
       <br />
-      {<Winner />}
+      <Winner />
       <div className="dashboard-body">
         <div className="row-1">
           <br />

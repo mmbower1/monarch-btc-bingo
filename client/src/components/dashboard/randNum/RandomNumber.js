@@ -35,7 +35,7 @@ const RandomNumber = () => {
 
     grabRandomNumber();
     grabAvailableNumbers();
-    // console.log("Random number is set to the following: " + randomNumber);
+    console.log("Random number is set to the following: " + randomNumber);
   }, [])
 
   return (
@@ -43,7 +43,7 @@ const RandomNumber = () => {
       <div className="random-number">
         {randomNumber}
       </div>
-      Numbers drawn -
+      Drawn numbers -
       <div className="already-drawn">
         {availableNumbers.toString('').replace(/,/g, ', ')}
       </div>

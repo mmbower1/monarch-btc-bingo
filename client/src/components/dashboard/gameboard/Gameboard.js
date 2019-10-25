@@ -32,14 +32,6 @@ const Gameboard = ({ auth: { user } }) => {
     setMarker();
   }, [])
 
-
-  // alert winner and send exact time to db
-  const setWinner = () => {
-    if (elements) {
-
-    }
-  }
-
   return (
     <table className="gameboard">
       <tbody>

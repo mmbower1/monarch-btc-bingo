@@ -28,9 +28,8 @@ class RealTimeNewsModal extends Component  {
       .then(json => {
         this.setState({ loading: false, items: json })
       })
-      
-  }
-  
+    }
+
   render() {
     var { loading, items } = this.state;
 

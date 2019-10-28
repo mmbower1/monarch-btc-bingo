@@ -21,10 +21,21 @@ class AccountModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
+  componentDidMount() {
+    fetch('/api/users')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({ loading: false, items: json })
+        console.log('subscribe: ', json);
+      })
+    }
+
+
   render() {
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
+    var { loading, items } = this.state;
 
     return (
       <Modal
@@ -41,7 +52,12 @@ class AccountModal extends Component {
           Account
           <br />
           <br />
-          <li>{this.getProfileData}</li>
+          {this.state.items}
+            {/* {items.map(item => (
+              <li key={item.id}>
+                NAME: {item}
+              </li>
+            ))} */}
         </div>
       </Modal>
     );

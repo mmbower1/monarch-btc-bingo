@@ -7,6 +7,7 @@ import { logout } from '../../actions/auth';
 import AccountModal from '../../modals/navbar/AccountModal';
 import ProfileModal from '../../modals/navbar/ProfileModal';
 import WalletModal from '../../modals/navbar/WalletModal';
+import SubscribeModal from '../../modals/navbar/SubscribeModal';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const logo = require('../../img/bingo.png');
@@ -15,9 +16,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+  const [isSubscribeModalOpen, setIsSubscribeModalOpen] = useState(false);
   const openAccountModal = () => { setIsAccountModalOpen(true) };
   const openProfileModal = () => { setIsProfileModalOpen(true) };
   const openWalletModal = () => { setIsWalletModalOpen(true) };
+  const openSubscribeModal = () => { setIsSubscribeModalOpen(true) };
 
   const authLinks = (
     <Fragment>
@@ -34,6 +37,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               <span id="settings-modal" className="hide-sm">Settings</span>
               <span id="wallet-modal" className="hide-sm" onClick={openWalletModal}>Wallet</span>
               <span id="nextGamecard-modal" className="hide-sm">Next Gamecard</span>
+              <span id="subscribe-modal" className="hide-sm" onClick={openSubscribeModal}>Subscribe</span>
             </div>
           </div>
         </ul>
@@ -57,6 +61,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <AccountModal open={isAccountModalOpen} onClose={() => setIsAccountModalOpen(false)}/>
       <ProfileModal open={isProfileModalOpen} onClose={() => setIsProfileModalOpen(false)}/>
       <WalletModal open={isWalletModalOpen} onClose={() => setIsWalletModalOpen(false)}/>
+      <SubscribeModal open={isSubscribeModalOpen} onClose={() => setIsSubscribeModalOpen(false)}/>
 
       <nav className="navbar bg-dark">
           <img src={logo} className="bingo-logo-right" width="260px" alt=""/>

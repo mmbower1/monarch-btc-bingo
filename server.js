@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const connectDB = require('./config/db');
 const cronjob = require('./cronjob');
+const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5000;
 
@@ -9,6 +10,9 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 cronjob();
+
+// bodyparser middleware, handles http requests
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // init middleware
 app.use(express.json({ extended: false }));

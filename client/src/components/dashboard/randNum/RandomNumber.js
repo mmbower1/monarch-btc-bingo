@@ -28,7 +28,7 @@ const RandomNumber = () => {
             drawnNumbers.push(i);
           }
         }
-        setavailableNumbers(drawnNumbers);
+      setavailableNumbers(drawnNumbers);
       }
       return drawnNumbers;
     }

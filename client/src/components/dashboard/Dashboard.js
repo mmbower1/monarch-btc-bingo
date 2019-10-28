@@ -43,8 +43,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
   const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
   const openEducationModal = () => { setIsEducationModalOpen(true) }
   const openRealTimeNewsModal = () => { setIsRealTimeNewsModalOpen(true) }
-
-  const [randomNumber, setRandomNumber] = useState(0);
+  // const [randomNumber, setRandomNumber] = useState(0);
 
   // empty array at end allows it only run once
   useEffect(() => {
@@ -72,7 +71,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         ) : (
           <Fragment>
             <p className="welcome-title">
-              <i class="fa fa-angle-double-right"></i> Welcome { user && user.name } <i class="fa fa-angle-double-left"></i></p>
+              <i className="fa fa-angle-double-right"></i> Welcome { user && user.name } <i class="fa fa-angle-double-left"></i></p>
             {/* {profile !== null ? (
               <Fragment>has</Fragment>
             ) : (

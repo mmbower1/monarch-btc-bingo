@@ -31,6 +31,7 @@ body {
 #bingoExplained-modal,
 #profile-modal,
 #account-modal,
+#subscribe-modal,
 #wallet-modal {
 	cursor: pointer;
 }
@@ -202,6 +203,13 @@ input[type='erc20'] {
 	width: 250px;
 }
 
+#first-name,
+#last-name,
+#email {
+	padding: 8px;
+	font-size: 15px;
+}
+
 .form-group {
 	margin: 10px;
 }
@@ -341,6 +349,10 @@ h1 {
 	margin-right: 60px;
 }
 
+#subscription-form-group {
+	display: grid;
+}
+
 .top-tr {
 	display: grid;
 }
@@ -369,8 +381,22 @@ th {
 		padding: auto;
 	}
 
+	#account-modal,
+	#profile-modal,
+	#security-modal,
+	#settings-modal,
+	#wallet-modal,
+	#nextGamecard-modal,
+	#subscribe-modal {
+		padding-left: 10px;
+	}
+
 	.bg-modal {
 		font-size: 11px;
+	}
+
+	.container {
+		/* width: 800px; */
 	}
 
 	.dashboard-title {
@@ -388,7 +414,10 @@ th {
 	}
 
 	.hide-sms {
-		display: none;
+		/* display: none; */
+		display: flex;
+		margin-right: 400px;
+		padding-left: 10px;
 	}
 
 	.modal-content {
@@ -410,15 +439,12 @@ th {
 	.navbar {
 		display: grid;
 		position: absolute;
+		/* width: 800px; */
 	}
 
 	.navbar h1 {
 		font-size: 20px;
-		margin-left: 175px;
-	}
-
-	.navbar h1 {
-		font-size: 20px;
+		margin-right: 355px;
 	}
 
 	.navbar .bingo-logo-right {
@@ -429,8 +455,8 @@ th {
 	.nav-table-children {
 		font-size: 10px;
 		display: flex;
-		margin-right: 100px;
-		/* display: none; */
+		padding-left: 30px;
+		/* margin-right: 100px; */
 	}
 
 	.row-2,

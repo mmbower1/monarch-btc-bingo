@@ -134,20 +134,22 @@ body {
 	width: 285px;
 }
 
-.btn {
-	display: inline-block;
+.btn-login, .btn-register {
+
+}
+
+.btn-landing {
 	background: var(--light-color);
 	color: #333;
-	padding: 0.4rem 1.3rem;
+	display: inline-block;
 	font-size: 1rem;
 	border: none;
 	cursor: pointer;
-	margin-right: 0.5rem;
 	transition: opacity 0.2s ease-in;
 	outline: none;
 }
 
-.btn:hover {
+.btn-landing:hover, .btn-login:hover, .btn-register:hover {
 	opacity: 0.8;
 }
 
@@ -179,6 +181,7 @@ body {
 }
 
 .dashboard-container {
+	color: black;
 	text-align: center;
 	margin-top: 170px;
 }
@@ -214,12 +217,13 @@ input[type='erc20'] {
 }
 
 .footer-login {
-	margin-top: 300px;
+	bottom: 0;
+	margin-top: 120px;
 	text-align: center;
 }
 
 .footer-register {
-	margin-top: 100px;
+	bottom: 0;
 	text-align: center;
 }
 
@@ -250,8 +254,11 @@ h1 {
 }
 
 .landing {
+	background: url('./img/bg_money-falling.jpg') no-repeat center center/cover;
+	color: white;
 	display: grid;
-	margin-top: 200px;
+	margin-top: 50px;
+	height: 100vh;
 }
 
 .landing-inner {
@@ -269,9 +276,6 @@ h1 {
 .login-header, .register-header {
 	display: grid;
 	text-align: center;
-}
-
-.login-page-logo, .register-page-logo {
 }
 
 .logout-button {
@@ -321,7 +325,6 @@ h1 {
 	align-items: center;
 	background-color: #26436fbb;
 	border-bottom: solid 1px var(--primary-color);
-	display: flex;
 	height: 250px;
 	font-size: 15px;
 	/* justify-content: space-between; */
@@ -335,10 +338,6 @@ h1 {
 
 .navbar a {
 	color: #fff;
-}
-
-.nav-table-children .hide-sm {
-	display: flex;
 }
 
 .navbar h1 {
@@ -397,9 +396,14 @@ th {
 /* Mobile Styles */
 
 @media (max-width: 780px) {
-	* {
-		margin: auto;
-		padding: auto;
+
+	.auth-login-container {
+		background: url('./img/bg_money-falling.jpg') no-repeat center center/cover;
+		height: 120vh;
+	}
+	.auth-register-container {
+		background: url('./img/bg_money-falling.jpg') no-repeat center center/cover;
+		height: 135vh;
 	}
 
 	#account-modal,
@@ -412,12 +416,12 @@ th {
 		padding-left: 10px;
 	}
 
-	.bg-modal {
-		font-size: 11px;
+	body {
+		font-size: 12px;
 	}
 
-	.container {
-		/* width: 800px; */
+	.bg-modal {
+		font-size: 11px;
 	}
 
 	.dashboard-title {
@@ -427,6 +431,17 @@ th {
 	/* .gameboard {
 		margin-right: 70px;
 	} */
+
+	.footer-login {
+		bottom: 0;
+		margin-top: 50px;
+		text-align: center;
+	}
+
+	.footer-register {
+		bottom: 0;
+		text-align: center;
+	}
 
 	.gameboard th {
 		font-size: 20px;
@@ -457,27 +472,17 @@ th {
 		padding: 4px;
 	}
 
-	.navbar {
-		display: grid;
-		position: absolute;
-		/* width: 800px; */
-	}
-
 	.navbar h1 {
 		font-size: 20px;
-		margin-right: 355px;
 	}
 
 	.navbar .bingo-logo-right {
 		height: 150px;
-		width: 150px;
+		width: 200px;
 	}
 
 	.nav-table-children {
 		font-size: 10px;
-		display: flex;
-		padding-left: 30px;
-		/* margin-right: 100px; */
 	}
 
 	.row-2,

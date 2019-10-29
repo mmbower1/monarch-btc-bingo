@@ -10,7 +10,7 @@ import WalletModal from '../../modals/navbar/WalletModal';
 import SubscribeModal from '../../modals/navbar/SubscribeModal';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
-  const logo = require('../../img/bingo.png');
+  const logo = require('../../img/logo-concept_rev_w-cards_400.png');
 
   // navbar modals
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);

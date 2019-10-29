@@ -9,10 +9,13 @@
 
 * {
 	box-sizing: border-box;
-	justify-content: center;
-	margin: 0;
-	padding: 0;
+	margin: auto;
 	font-family: 'Montserrat';
+}
+
+.auth-register-container, .auth-login-container {
+	background: url('./img/bg_money-falling.jpg') no-repeat center center/cover;
+	height: 100vh;
 }
 
 body {
@@ -20,7 +23,7 @@ body {
 	justify-content: center;
 	line-height: 1.6;
 	background-color: #fff;
-	color: #333;
+	color: #fff;
 }
 
 #aboutUs-modal,
@@ -210,6 +213,16 @@ input[type='erc20'] {
 	font-size: 15px;
 }
 
+.footer-login {
+	margin-top: 300px;
+	text-align: center;
+}
+
+.footer-register {
+	margin-top: 100px;
+	text-align: center;
+}
+
 .form-group {
 	margin: 10px;
 }
@@ -251,6 +264,14 @@ h1 {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+}
+
+.login-header, .register-header {
+	display: grid;
+	text-align: center;
+}
+
+.login-page-logo, .register-page-logo {
 }
 
 .logout-button {

@@ -21,14 +21,14 @@ class AccountModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  componentDidMount() {
-    fetch('/api/users')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({ loading: false, items: json })
-        console.log('subscribe: ', json);
-      })
-    }
+  // componentDidMount() {
+  //   fetch('/api/users')
+  //     .then(res => res.json())
+  //     .then(json => {
+  //       this.setState({ loading: false, items: json })
+  //       console.log('subscribe: ', json);
+  //     })
+  //   }
 
 
   render() {

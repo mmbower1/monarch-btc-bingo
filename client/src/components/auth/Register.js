@@ -5,6 +5,7 @@ import Navbar from '../layout/Navbar';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import registerPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     password: '',
     password2: ''
   });
-  
+
   const { name, email, erc20, phoneNumber, password, password2 } = formData;
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = e => {
@@ -33,81 +34,93 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
+    <div className="auth-register-container">
+      <Fragment>
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Navbar />
-      <form className="form" onSubmit={e => onSubmit(e)}>
-        <h1 className="large text-primary">Sign Up</h1>
-        <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
-        <div className="form-group">
-          <input 
-            type="text" 
-            placeholder="Name" 
-            name="name" 
-            value={name} 
-            onChange={e => onChange(e)}
-          />
+        <div className="register-header">
+          <img src={registerPageLlogo} alt="register-page-logo" className="register-page-logo" />
+          <br />
+          <h4>A fun and easy way to earn crypto by playing Bingo!</h4>
+          <h4>Coming soon in 2020.</h4>
+          <br />
+          <h4>Don't miss out on exciting news from Blockchain Bingo. Subscribe to our newsletter for your chance at free Bingo cards and BIG rewards!</h4>
         </div>
-        <div className="form-group">
-          <input 
-            type="email" 
-            placeholder="Email Address" 
-            name="email"
-            value={email} 
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className="form-group">
-          <input 
-            type="erc20" 
-            placeholder="ERC20 (ETH) Address" 
-            name="erc20"
-            value={erc20} 
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className="form-group">
-          <input 
-            type="phoneNumber" 
-            placeholder="Phone Number" 
-            name="phoneNumber"
-            value={phoneNumber} 
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            minLength="6"
-            value={password} 
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            name="password2"
-            minLength="6"
-            value={password2} 
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <h4>Please keep password stored somewhere safe!</h4>
         <br />
-        <input type="submit" className="btn btn-primary" value="Register" />
-        <p className="my-1">
-          Already have an account? <Link to="/login">Sign In</Link>
-        </p>
-      </form>
-    </Fragment>
+        {/* <Navbar /> */}
+        <form className="form" onSubmit={e => onSubmit(e)}>
+          <h1 className="large text-primary">Sign Up</h1>
+          <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+          <div className="form-group">
+            <input 
+              type="text" 
+              placeholder="Name" 
+              name="name" 
+              value={name} 
+              onChange={e => onChange(e)}
+            />
+          </div>
+          <div className="form-group">
+            <input 
+              type="email" 
+              placeholder="Email Address" 
+              name="email"
+              value={email} 
+              onChange={e => onChange(e)}
+            />
+          </div>
+          {/* <div className="form-group">
+            <input 
+              type="erc20" 
+              placeholder="ERC20 (ETH) Address" 
+              name="erc20"
+              value={erc20} 
+              onChange={e => onChange(e)}
+            />
+          </div> */}
+          <div className="form-group">
+            <input 
+              type="phoneNumber" 
+              placeholder="Phone Number" 
+              name="phoneNumber"
+              value={phoneNumber} 
+              onChange={e => onChange(e)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              minLength="6"
+              value={password} 
+              onChange={e => onChange(e)}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="password2"
+              minLength="6"
+              value={password2} 
+              onChange={e => onChange(e)}
+            />
+          </div>
+          <h4>Please keep password stored somewhere safe!</h4>
+          <br />
+          <input type="submit" className="btn btn-primary" value="Register" />
+          <p className="my-1">
+            Already have an account? <Link to="/login">Sign In</Link>
+          </p>
+        </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h5 className="footer-register">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
+      </Fragment>
+    </div>
   )
 }
 

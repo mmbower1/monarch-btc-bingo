@@ -66,7 +66,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <nav className="navbar bg-dark">
           <img src={logo} className="bingo-logo-right" width="260px" alt=""/>
           <h1>
-            Bitcoin Bingo
+            Blockchain Bingo
           </h1>
         { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>) }
       </nav>

@@ -249,8 +249,8 @@ h1 {
 	font-size: 40px;
 }
 
-.hide-sm {
-	display: inline-block;
+.hide-sms {
+	display: grid;
 }
 
 .landing {
@@ -278,15 +278,12 @@ h1 {
 	text-align: center;
 }
 
-.logout-button {
-	margin-left: 350px;
-}
-
 .modal-content {
+	color: black;
 	background-color: white;
 	border-radius: 5px;
 	height: 450px;
-	margin-top: 180px;
+	margin-top: 270px;
 	position: relative;
 	text-align: center;
 	width: 1200px;
@@ -322,14 +319,11 @@ h1 {
 
 /* Navbar */
 .navbar {
-	align-items: center;
 	background-color: #26436fbb;
 	border-bottom: solid 1px var(--primary-color);
 	height: 250px;
 	font-size: 15px;
-	/* justify-content: space-between; */
 	opacity: 0.9;
-	padding: 0.7rem 2rem;
 	position: absolute;
 	top: 0;
 	z-index: 1;
@@ -342,7 +336,11 @@ h1 {
 
 .navbar h1 {
 	font-size: 50px;
-	padding-right: 180px;
+}
+
+.nav-table-children {
+	float: right;
+	margin-top: -225px;
 }
 
 .random-number {
@@ -355,7 +353,7 @@ h1 {
 }
 
 .row-2 {
-	display: grid;
+	display: flex;
 	grid-gap: 600px;
 	grid-template-columns: 100px 100px;
 	margin-bottom: 25px;
@@ -363,7 +361,7 @@ h1 {
 }
 
 .row-3 {
-	display: grid;
+	display: flex;
 	grid-gap: 600px;
 	grid-template-columns: 100px 100px;
 	margin-right: 60px;

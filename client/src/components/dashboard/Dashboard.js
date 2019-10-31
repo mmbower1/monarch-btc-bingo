@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
-import Navbar from '../layout/Navbar';
+// import Navbar from '../layout/Navbar';
 import Spinner from '../layout/Spinner';
 // import RedDot from '../layout/RedDot';
 import RandomNumber from './randNum/RandomNumber';
@@ -52,7 +52,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
 
   return (
     <div className="dashboard-container">
-      <Navbar />
+      {/* <Navbar /> */}
       {/* titlebar modals*/}
       <AboutUsModal open={isAboutUsModalOpen} onClose={() => setIsAboutUsModalOpen(false)}/>
       <OurMissionModal open={isOurMissionModalOpen} onClose={() => setIsOurMissionModalOpen(false)}/>
@@ -71,7 +71,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         ) : (
           <Fragment>
             <p className="welcome-title">
-              <i className="fa fa-angle-double-right"></i> Welcome { user && user.name } <i class="fa fa-angle-double-left"></i></p>
+              <i className="fa fa-angle-double-right"></i> Welcome { user && user.name } <i className="fa fa-angle-double-left"></i></p>
             {/* {profile !== null ? (
               <Fragment>has</Fragment>
             ) : (
@@ -117,6 +117,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         <br />
         <br />
       </div>
+      <h5 className="footer-dashboard">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
     </div>
   )
 }

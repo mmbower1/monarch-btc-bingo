@@ -7,7 +7,6 @@ const { check, validationResult } = require('express-validator');
 const User = require('../../models/User');
 const generateCardNumbers = require('../../helpers/generateCardNumbers');
 const request = require('request');
-const Swal = require('sweetalert2');
 
 
 // @route    POST api/users
@@ -74,52 +73,5 @@ router.post(
       res.status(500).send('Server Error users')
     }
 });
-
-// subscription post
-router.post('/subscribe', async (req, res) => {
-  const { firstName, lastName, email } = req.body;
-
-  if (!firstName || !lastName || !email) {
-    Swal('Please re-enter')
-  }
-
-  // construct req data
-  const data = {
-    members: [
-      {
-        email_address: email,
-        status: 'subscribed',
-        merge_fields: {
-          FNAME: firstName,
-          LNAME: lastName
-        }
-      }
-    ]
-  }
-  const postData = JSON.stringify(data);
-  const options = {
-    url: 'https://us5.api.mailchimp.com/3.0/lists/4e899079d7',
-    method: 'POST',
-    headers: {
-      Authorization: 'auth e4e7f243217616ca77c740d4982c2f7c-us5'
-    },
-    body: postData
-  }
-
-  request(options, (err, response, body) => {
-    if (err) {
-      Swal('Please re-enter');
-    } else {
-      if(response.statusCode === 200) {
-        res.redirect('/dashboard');
-      } else {
-        Swal('Please re-enter');
-      }
-    }
-  })
-  console.log(req.body);
-  Swal('Subscribed!');
-  res.redirect('/dashboard')
-})
 
 module.exports = router;

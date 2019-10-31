@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types'
 import { login } from '../../actions/auth';
-import loginPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
+// import loginPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -30,12 +30,8 @@ const Login = ({ login, isAuthenticated }) => {
         <br />
         {/* <Navbar /> */}
         <div className="login-header">
-          <img src={loginPageLlogo} alt="login-page-logo" className="login-page-logo" />
+          {/* <img src={loginPageLlogo} alt="login-page-logo" className="login-page-logo" /> */}
           <br />
-          <h4>A fun and easy way to earn crypto by playing Bingo!</h4>
-          <h4>Coming soon in 2020.</h4>
-          <br />
-          <h4>Don't miss out on exciting news from Blockchain Bingo. Subscribe to our newsletter for your chance at free Bingo cards and BIG rewards!</h4>
         </div>
         <br />
         <form className="form" onSubmit={e => onSubmit(e)}>

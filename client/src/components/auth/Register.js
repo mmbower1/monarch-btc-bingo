@@ -5,7 +5,7 @@ import Navbar from '../layout/Navbar';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
-import registerPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
+// import registerPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -38,12 +38,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <Fragment>
       <br />
         <div className="register-header">
-          <img src={registerPageLlogo} alt="register-page-logo" className="register-page-logo" />
+          {/* <img src={registerPageLlogo} alt="register-page-logo" className="register-page-logo" /> */}
           <br />
-          <h4>A fun and easy way to earn crypto by playing Bingo!</h4>
-          <h4>Coming soon in 2020.</h4>
-          <br />
-          <h4>Don't miss out on exciting news from Blockchain Bingo. Subscribe to our newsletter for your chance at free Bingo cards and BIG rewards!</h4>
         </div>
         <br />
         {/* <Navbar /> */}

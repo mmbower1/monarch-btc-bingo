@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import PropTypes from 'prop-types';
-import loginPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
+// import loginPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
 
 
 const Landing = ({ isAuthenticated, setAlert }) => {
@@ -17,10 +17,10 @@ const Landing = ({ isAuthenticated, setAlert }) => {
 
   return (
       <div className="landing">
-        <img src={loginPageLlogo} />
         <h2>Are you over 18?</h2>
         <Link to='/login' className="btn-landing btn-primary"><button className="yes-button">Yes</button></Link>&nbsp;
         <Link to='#!' className="btn-landing btn-primary"><button onClick={onClick} className="no-button">No</button></Link>
+        <h5 className="footer-register">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
       </div>
   )
 }

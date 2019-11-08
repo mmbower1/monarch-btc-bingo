@@ -23,6 +23,8 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/randomNumber', require('./routes/api/randomNumber'));
 app.use('/api/drawnNumbers', require('./routes/api/drawnNumbers'));
+app.use('/api/forgotPassword', require('./routes/api/forgot'));
+app.use('/api/resetPassword', require('./routes/api/reset'));
 
 
 app.get('/', (req, res) => res.send('API Running'));

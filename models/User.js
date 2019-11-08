@@ -25,6 +25,12 @@ const UserSchema = new mongoose.Schema({
   },
   cardNumbers: {
     type: Array
+  },
+  resetPasswordToken: {
+    type: String
+  },
+  resetPasswordExpires: {
+    type: Date
   }
 });
 

@@ -13,8 +13,9 @@ import setAuthToken from './utils/setAuthToken';
 // redux
 import { Provider } from 'react-redux';
 import store from './store';
-
 import './App.css';
+import ForgotPassword from './components/forgot/ForgotPassword';
+import ResetPassword from './components/forgot/ResetPassword';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -30,13 +31,15 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
+        <Navbar />
           <Route exact path="/" component={Landing} />
-          <Navbar />
           <section className="container">
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/forgotPassword' component={ForgotPassword} />
+              <Route exact path='/resetPassword' component={ResetPassword} />
             </Switch>
             <br />
             <Alert />

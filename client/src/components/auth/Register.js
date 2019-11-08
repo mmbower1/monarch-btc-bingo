@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import Navbar from '../layout/Navbar';
+// import Navbar from '../layout/Navbar';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
@@ -36,12 +36,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   return (
     <div className="auth-register-container">
       <Fragment>
-      <br />
-        <div className="register-header">
-          {/* <img src={registerPageLlogo} alt="register-page-logo" className="register-page-logo" /> */}
-          <br />
-        </div>
-        <br />
         {/* <Navbar /> */}
         <form className="form" onSubmit={e => onSubmit(e)}>
           <h1 className="large text-primary">Sign Up</h1>
@@ -64,7 +58,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               onChange={e => onChange(e)}
             />
           </div>
-          {/* <div className="form-group">
+          <div className="form-group">
             <input 
               type="erc20" 
               placeholder="ERC20 (ETH) Address" 
@@ -72,7 +66,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               value={erc20} 
               onChange={e => onChange(e)}
             />
-          </div> */}
+          </div>
           <div className="form-group">
             <input 
               type="phoneNumber" 
@@ -109,11 +103,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             Already have an account? <Link to="/login">Sign In</Link>
           </p>
         </form>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <h5 className="footer-register">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
       </Fragment>
     </div>

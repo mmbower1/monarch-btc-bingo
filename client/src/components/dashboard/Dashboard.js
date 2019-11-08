@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 // import Navbar from '../layout/Navbar';
 import Spinner from '../layout/Spinner';
-// import RedDot from '../layout/RedDot';
 import RandomNumber from './randNum/RandomNumber';
 import Gameboard from './gameboard/Gameboard';
 import Winner from './winner/Winner';
@@ -97,8 +96,6 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
       <Winner />
       <div className="dashboard-body">
         <div className="row-1">
-          <br />
-          <br />
           <br />
           <th className="gameStream-modal">Game Stream</th>
         </div>

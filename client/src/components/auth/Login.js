@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Navbar from '../layout/Navbar';
+// import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types'
 import { login } from '../../actions/auth';
 // import loginPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
@@ -27,13 +27,10 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <div className="auth-login-container">
       <Fragment>
-        <br />
         {/* <Navbar /> */}
         <div className="login-header">
           {/* <img src={loginPageLlogo} alt="login-page-logo" className="login-page-logo" /> */}
-          <br />
         </div>
-        <br />
         <form className="form" onSubmit={e => onSubmit(e)}>
           <h1 className="large text-primary">Sign In</h1>
           <p className="lead"><i className="fas fa-user"></i> Sign Into Your Account</p>
@@ -61,12 +58,8 @@ const Login = ({ login, isAuthenticated }) => {
           <p className="my-1">
             Don't have an account? <Link to="/register">Sign Up</Link>
           </p>
+          <Link to='/forgotPassword'>Forgot Password?</Link>
         </form>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <h5 className="footer-login">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
       </Fragment>
     </div>

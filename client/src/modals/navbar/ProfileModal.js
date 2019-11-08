@@ -6,9 +6,9 @@ class ProfileModal extends Component {
   constructor() {
     super();
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      items: []
     };
-
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -21,16 +21,18 @@ class ProfileModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-//   async getProfileData() {
-//       const res = await axios('/api/users');
-//       console.log(res.json());
-//       return await res.json();
-//   }
+  componentDidMount() {
+    axios.get('http://localhost:5000/api/users', { headers: { 'crossDomain': true, 'Content-Type': 'application/json' } })
+      .then(res => res.json())
+      .then(data => this.setState({ items: data }))
+  }
 
   render() {
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
+    var { items } = this.state;
+    // console.log(items);
 
     return (
       <Modal
@@ -47,7 +49,11 @@ class ProfileModal extends Component {
           Profile
           <br />
           <br />
-          <li>{this.getProfileData}</li>
+          {items.map(item => (
+              <li key={item.id}>
+                {item}
+              </li>
+            ))};
         </div>
       </Modal>
     );

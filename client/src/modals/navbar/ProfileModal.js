@@ -21,10 +21,10 @@ class ProfileModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  componentDidMount() {
-    axios.get('http://localhost:5000/api/users', { headers: { 'crossDomain': true, 'Content-Type': 'application/json' } })
+  async componentDidMount() {
+    await axios.get('http://localhost:5000/api/users', { headers: { 'crossDomain': true, 'Content-Type': 'application/json' } })
       .then(res => res.json())
-      .then(data => this.setState({ items: data }))
+      .then(json => this.setState({ items: json }))
   }
 
   render() {
@@ -32,7 +32,7 @@ class ProfileModal extends Component {
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
     var { items } = this.state;
-    // console.log(items);
+    console.log(items);
 
     return (
       <Modal
@@ -49,7 +49,7 @@ class ProfileModal extends Component {
           Profile
           <br />
           <br />
-          {items.map(item => (
+          {this.state.items.map(item => (
               <li key={item.id}>
                 {item}
               </li>

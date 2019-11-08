@@ -21,7 +21,7 @@ const Landing = ({ isAuthenticated, setAlert }) => {
         <h2>Are you over 18?</h2>
         <Link to='/login' className="btn-landing btn-primary"><button className="yes-button">Yes</button></Link>&nbsp;
         <Link to='#!' className="btn-landing btn-primary"><button onClick={onClick} className="no-button">No</button></Link>
-        <h5 className="footer-register">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
+        <h5 className="footer-landing">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
       </div>
   )
 }

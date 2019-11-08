@@ -53,8 +53,8 @@ const Login = ({ login, isAuthenticated }) => {
               onChange={e => onChange(e)}
             />
           </div>
-          <br />
           <input type="submit" className="btn-login btn-primary" value="Login" />
+          <br />
           <p className="my-1">
             Don't have an account? <Link to="/register">Sign Up</Link>
           </p>

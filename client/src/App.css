@@ -30,7 +30,6 @@ body {
 #bingoExplained-modal,
 #profile-modal,
 #account-modal,
-#subscribe-modal,
 #wallet-modal,
 #realTimeNews-modal,
 #education-modal {
@@ -138,13 +137,17 @@ body {
 }
 
 .btn-primary {
-	border-radius: 6px;
-	padding: 7px;
-	width: 110px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 7px;
+  width: 110px;
 }
 
-.btn-landing:hover, .btn-login:hover, .btn-register:hover {
-	opacity: 0.8;
+.btn-landing:hover,
+.btn-login:hover,
+.btn-register:hover {
+  opacity: 0.8;
 }
 
 .close-modal {
@@ -161,7 +164,7 @@ body {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-top: 6rem;
+  margin-top: 2rem;
   margin-bottom: 3rem;
 }
 
@@ -176,7 +179,6 @@ body {
 }
 
 .dashboard-body {
-	
 }
 
 .footer-dashboard {
@@ -187,6 +189,19 @@ body {
   height: 35px;
   left: 0;
   overflow: hidden;
+  padding-top: 5px;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-landing {
+  background-color: #26436fbb;
+  bottom: 0;
+  color: white;
+  font-size: 15px;
+  height: 35px;
+  left: 0;
   padding-top: 5px;
   position: fixed;
   width: 100%;
@@ -253,6 +268,7 @@ button {
 
 .gameboard {
   margin-bottom: 25px;
+  margin-top: 25px;
 }
 
 .gameboard-top-row {
@@ -339,7 +355,26 @@ th {
 
 /* Mobile Styles */
 @media (max-width: 700px) {
+  #aboutUs-modal,
+  #account-modal,
+  #bingoExplained-modal,
+  #gameArchives-modal,
+  #meetOurTeam-modal,
+  #ourMission-modal,
+  #testimonials-modal,
+  #profile-modal,
+  #wallet-modal {
+    font-size: 10px;
+    padding: 4px;
+  }
 
+  #ads-relative-to-blockchain,
+  #education-modal,
+  #gameStream-modal,
+  #live-community-blog,
+  #realTimeNews-modal {
+	font-size: 12px;
+  }
 
   .dash-buttons a {
     display: block;
@@ -347,8 +382,24 @@ th {
     margin-bottom: 0.2rem;
   }
 
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"],
+  .form input[type="date"],
+  .form input[type="phoneNumber"],
+  .form input[type="ERC20"],
+  .form select,
+  .form textarea {
+    display: block;
+    margin: auto;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    width: 90%;
+  }
+
   .hide-sm {
-    display: none;
+    font-size: 11px;
   }
 
   .large {
@@ -378,8 +429,8 @@ th {
   }
 
   th {
-	  font-size: 13px;
-	  padding: 14px;
+    font-size: 13px;
+    padding: 14px;
   }
 
   /* Text Styles */

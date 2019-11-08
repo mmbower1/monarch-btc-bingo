@@ -96,8 +96,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               onChange={e => onChange(e)}
             />
           </div>
-          <h4>Please keep password stored somewhere safe!</h4>
-          <br />
+          <h5>Please keep password stored somewhere safe!</h5>
           <input type="submit" className="btn-register btn-primary" value="Register" />
           <p className="my-1">
             Already have an account? <Link to="/login">Sign In</Link>

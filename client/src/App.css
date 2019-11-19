@@ -181,6 +181,10 @@ body {
 .dashboard-body {
 }
 
+.error-modal-writing, .success-modal-writing {
+	font-size: 10px;
+}
+
 .footer-dashboard {
   background-color: #26436fbb;
   bottom: 0;
@@ -291,15 +295,19 @@ button {
   margin-bottom: 1rem;
 }
 
+.logout-button:visited {
+  color: white;
+}
+
 .modal-content {
   color: black;
   background-color: white;
   border-radius: 5px;
-  height: 450px;
+  height: 600px;
   margin-top: 270px;
   position: relative;
   text-align: center;
-  width: 1200px;
+  width: 1500px;
 }
 
 #n3 {
@@ -381,6 +389,10 @@ th {
     width: 100%;
     margin-bottom: 0.2rem;
   }
+
+  .error-modal-writing, .success-modal-writing {
+	font-size: 10px;
+}
 
   .form input[type="text"],
   .form input[type="email"],

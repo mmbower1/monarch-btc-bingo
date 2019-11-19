@@ -62,7 +62,7 @@ router.post(
           if (err) throw err;
           res.json({ token });
         })
-      console.log(req.body); // object of data sent to the route
+      console.log('LOGIN:', req.body); // object of data sent to the route
 
     } catch (err) {
       console.error(err.message);

@@ -4,11 +4,12 @@ const User = require('../../models/User');
 // const auth = require('../../middleware/auth');
 const async = require('async');
 const nodemailer = require('nodemailer');
+const ErrorResponse = require('../../utils/errorResponse');
 const crypto = require('crypto');
 
 
 // get route
-router.get('/:forgotToken', async (req, res) => {
+router.get('/:resetToken', async (req, res) => {
     User.findOne({ resetPasswordToken: req.paramas.token, resetPasswordExpires: { $gt: Date.now()} }, () => {
         if (!user) {
             res.json({ msg: 'Password reset token is invalid or expired' });
@@ -19,54 +20,37 @@ router.get('/:forgotToken', async (req, res) => {
 });
 
 // enter new password and confirm new password
-router.post('/:forgotToken', async (req, res) => {
-    async.waterfall([
-        function(done) {
-            User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now()}}, function(err, user) {
-                if (!user) {
-                    res.json({ msg: 'Password reset token is invalid or expired' });
-                    // return res.redirect('back')
-                }
-                if (req.body.password === req.body.confirm) {
-                    User.setPassword(req.body.password, function(err) {
-                        User.resetPasswordToken = undefined;
-                        User.resetPasswordExpires = undefined;
-                        User.save(function(err) {
-                            req.logIn(user, function(err) {
-                                done(err, user);
-                            })
-                        })
-                    })
-                } else {
-                    res.json({ msg: 'Passwords dont match!' });
-                    // return res.redirect('back');
-                }
-            })
-        },
-        function(user, done) {
-            let { email } = req.body;
-
-            const smtpTransport = nodemailer.createTransport({
-                service: 'Gmail',
-                auth: {
-                    user: 'mttbwr91@gmail.com',
-                    pass: process.env.GMAILPW
-                }
-            });
-            const mailOptions = {
-                to: email,
-                from: 'mttbwr91@gmail.com',
-                subject: 'Your password has been changed',
-                text: 'Hello \n\n' + 'This is a confirmation that the password for your account ' + email + ''
-            }
-            smtpTransport.sendMail(mailOptions, function(err) {
-                res.json({ msg: 'Success! Your password has been changed.' });
-                // done(err);
-            })
-        }
-    ], function(err) {
-        res.redirect('/login')
-    })
+router.post('/:resetToken', async (req, res, next) => {
+     // get hashed token
+     const resetPasswordToken = crypto.createHash('sha256').update(req.params.resettoken).digest('hex');
+     const user = await User.findOne({ resetPasswordToken, resetPasswordExpire: { $gt: Date.now()} })
+     if (!user) {
+         return next(new ErrorResponse('Invalid token', 400))
+     }
+     // set new password
+     user.password = req.body.password
+     user.resetPasswordToken = undefined;
+     user.resetPasswordExpire = undefined;
+     await user.save()
+ 
+     sendTokenResponse(user, 200, res);
 });
+
+// helper
+// get token from model, create cookie and send response
+const sendTokenResponse = (user, statusCode, res) => {
+    // create token
+    const token = user.getSignedJwtToken();
+    const options = {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
+        httpOnly: true
+    }
+    if (process.env.NODE_ENV === 'production') {
+        options.secure = true;
+    }
+    res.status(statusCode)
+        .cookie('token', token, options)
+        .json({ success: true, token });
+}
 
 module.exports = router;

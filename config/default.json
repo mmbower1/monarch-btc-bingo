@@ -1,4 +1,10 @@
 {
   "mongoURI": "mongodb://localhost:27017/monarch-btc-bingo",
-  "jwtSecret": "mysecrettoken"
+  "jwtSecret": "mysecrettoken",
+  "SMTP_HOST": "smtp.mailtrap.io",
+  "SMTP_PORT": 587,
+  "SMTP_EMAIL": "a6f60fbc042cab",
+  "SMTP_PASSWORD": "ecd99e6946b239",
+  "FROM_EMAIL": "mttbwr91@gmail.com",
+  "FROM_NAME": "Bitcoin Bingo"
 }

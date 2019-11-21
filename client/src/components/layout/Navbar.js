@@ -9,7 +9,7 @@ import ProfileModal from '../../modals/navbar/ProfileModal';
 import WalletModal from '../../modals/navbar/WalletModal';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
-  const logo = require('../../img/logo-concept_rev_w-cards_400.png');
+  const logo = require('../../img/bitcoinbingologo.png');
 
   // navbar modals
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
@@ -24,6 +24,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <div>
         <ul className="nav-table">
           <div className="nav-table-children">
+            <h2>Bitcoin Bingo Playcard</h2>
             <a href="#!" onClick={logout} className="logout-button">
               <span className="hide-sm"><i className="fas fa-sign-out-alt"></i>&nbsp;Logout</span>
             </a>
@@ -43,7 +44,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul>
-      <div></div>
+      <div>
+        <h2>
+            Welcome to Bitcoin Bingo
+          </h2>
+      </div>
       {/* <ul><Link to="/register">Register&nbsp;</Link></ul>
       <ul><Link to="/login">&nbsp;Login</Link></ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
       {/* <img src={logo} className="bingo-logo-left" width="250px" alt=""/> */}
@@ -60,9 +65,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
       <nav className="navbar bg-dark">
           <img src={logo} className="bingo-logo-right" alt=""/>
-          <h1>
-            Bitcoin Bingo playcard
-          </h1>
+        
         { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>) }
       </nav>
     </div>

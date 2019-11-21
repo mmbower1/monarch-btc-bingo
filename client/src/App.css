@@ -179,7 +179,10 @@ body {
 }
 
 .dashboard-body {
+  display: block;
 }
+
+
 
 .error-modal-writing, .success-modal-writing {
 	font-size: 10px;
@@ -257,6 +260,7 @@ body {
 .form input[type="ERC20"],
 .form select,
 .form textarea {
+  border-radius: 8px;
   display: block;
   margin: auto;
   padding: 0.4rem;
@@ -272,7 +276,9 @@ button {
 
 .gameboard {
   margin-bottom: 25px;
+  margin-left: 350px;
   margin-top: 25px;
+  display: grid;
 }
 
 .gameboard-top-row {
@@ -331,6 +337,17 @@ button {
 
 .round-img {
   border-radius: 50%;
+}
+
+.row-1 {
+  display: grid;
+  grid-template-columns: 37% 20%;
+  margin-top: 10px;
+}
+
+.row-2, .row-3 {
+  display: inline-block;
+  grid-template-columns: 50%;
 }
 
 /* .table th,

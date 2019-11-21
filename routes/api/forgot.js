@@ -24,7 +24,7 @@ router.post('/', async (req, res, next) => {
 
     // create reset url msg
     const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/resetpassword/${resetToken}`;
-    const message = `You are receiving this email bc you requested the reset password for Bingo BlockcahiN! 
+    const message = `You are receiving this email because you requested the reset password for Bitcoin Bingo! 
         Please make a PUT request to: \n\n ${resetUrl}`;
 
     try {

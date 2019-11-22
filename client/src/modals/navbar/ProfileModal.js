@@ -1,4 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getCurrentProfile } from '../../actions/profile';
 import Modal from "react-modal";
 import axios from "axios";
 
@@ -27,6 +30,14 @@ class ProfileModal extends Component {
       .then(json => this.setState({ items: json }))
   }
 
+  mapItems() {
+    return this.props.items.map((item) => {
+      return (
+        <li key={item.id}>{item}</li>
+      )
+    })
+  }
+
   render() {
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
@@ -49,15 +60,21 @@ class ProfileModal extends Component {
           Profile
           <br />
           <br />
-          {this.state.items.map(item => (
-              <li key={item.id}>
-                {item}
-              </li>
-            ))};
+          {this.mapItems()}
         </div>
       </Modal>
     );
   }
 }
 
-export default ProfileModal;
+// ProfileModal.PropTypes = {
+//   getCurrentProfile: PropTypes.array.isRequired
+// }
+
+function mapStateToProps(state) {
+  return {
+    items: state.items,
+  };
+}
+
+export default connect(mapStateToProps, { getCurrentProfile })(ProfileModal);

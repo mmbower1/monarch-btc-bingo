@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../../models/User');
 // const auth = require('../../middleware/auth');
-const async = require('async');
-const nodemailer = require('nodemailer');
 const sendEmail = require('../../helpers/sendMail');
 const ErrorResponse = require('../../utils/errorResponse');
 const crypto = require('crypto');
@@ -23,7 +21,7 @@ router.post('/', async (req, res, next) => {
     await user.save({ validateBeforeSave: false })
 
     // create reset url msg
-    const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/resetpassword/${resetToken}`;
+    const resetUrl = `${req.protocol}://${req.get('host')}/api/resetPassword/${resetToken}`;
     const message = `You are receiving this email because you requested the reset password for Bitcoin Bingo! 
         Please make a PUT request to: \n\n ${resetUrl}`;
 
@@ -42,7 +40,5 @@ router.post('/', async (req, res, next) => {
         return next(new ErrorResponse('Email could not be sent', 500))
     }
 })
-
-
 
 module.exports = router;

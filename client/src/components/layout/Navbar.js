@@ -24,7 +24,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <div>
         <ul className="nav-table">
           <div className="nav-table-children">
-            <h2>Bitcoin Bingo Playcard</h2>
+            <h2>Bitcoin Bingo playcard</h2>
             <a href="#!" onClick={logout} className="logout-button">
               <span className="hide-sm"><i className="fas fa-sign-out-alt"></i>&nbsp;Logout</span>
             </a>

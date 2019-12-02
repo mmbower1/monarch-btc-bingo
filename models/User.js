@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto')
+const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -21,8 +22,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   password: {
-    type: String,
-    required: true,
+    type: String
   },
   cardNumbers: {
     type: Array
@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema({
   resetPasswordToken: {
     type: String
   },
-  resetPasswordExpires: {
+  resetPasswordExpire: {
     type: Date
   }
 });

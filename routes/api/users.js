@@ -31,7 +31,7 @@ router.post(
       // see if user exists
       let user = await User.findOne({ email });
       if (user) {
-        return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+        return res.status(400).json({ errors: [{ msg: 'Email already taken!' }] });
       }
 
       user = new User({
@@ -49,6 +49,7 @@ router.post(
       // Generate random card numbers before saving
       let cardNumbers = generateCardNumbers();
       user.cardNumbers = cardNumbers;
+      // save to mongo
       await user.save();
 
       // return json webtoken

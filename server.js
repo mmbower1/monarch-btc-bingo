@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const cronjob = require('./cronjob');
 const bodyParser = require('body-parser');
-
 const PORT = process.env.PORT || 5000;
+// load env vars. this goes before route files so api works
+dotenv.config({ path: './config/config.env' });
 
 // connect db
 connectDB();

@@ -11,7 +11,9 @@ const connectDB = async () => {
       useFindAndModify: false,
     });
     console.log('MongoDB connected..');
-    
+    console.log("================================================================");
+    console.log(' ');
+    console.log(' ');
   } catch(err) {
     console.error(err.message);
     process.exit(1);

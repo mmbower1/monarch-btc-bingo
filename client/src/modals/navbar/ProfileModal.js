@@ -30,13 +30,13 @@ class ProfileModal extends Component {
       .then(json => this.setState({ items: json }))
   }
 
-  mapItems() {
-    return this.props.items.map((item) => {
-      return (
-        <li key={item.id}>{item}</li>
-      )
-    })
-  }
+  // mapItems() {
+  //   this.props.items.map((item) => {
+  //     return (
+  //       <li key={item.id}>{item}</li>
+  //     )
+  //   })
+  // }
 
   render() {
     this.state.modalIsOpen = this.props.open;
@@ -60,7 +60,7 @@ class ProfileModal extends Component {
           Profile
           <br />
           <br />
-          {this.mapItems()}
+          {/* {this.mapItems()} */}
         </div>
       </Modal>
     );

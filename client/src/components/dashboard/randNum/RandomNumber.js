@@ -43,7 +43,7 @@ const RandomNumber = () => {
       <div className="random-number">
         {randomNumber}
       </div>
-      <h2>Drawn numbers - </h2>
+      <h3>Drawn numbers - </h3>
       <div className="already-drawn">
         {availableNumbers.toString('').replace(/,/g, ', ')}
       </div>

@@ -20,19 +20,18 @@ router.get('/:resetToken', async (req, res) => {
 });
 
 // enter new password and confirm new password
-router.post('/:resetToken', async (req, res, next) => {
+router.put('/:resetToken', async (req, res, next) => {
      // get hashed token
-     const resetPasswordToken = crypto.createHash('sha256').update(req.params.resettoken).digest('hex');
+     const resetPasswordToken = crypto.createHash('sha256').update(req.params.resetToken).digest('hex');
      const user = await User.findOne({ resetPasswordToken, resetPasswordExpire: { $gt: Date.now()} })
      if (!user) {
          return next(new ErrorResponse('Invalid token', 400))
      }
      // set new password
-     user.password = req.body.password
+     user.password = req.body.password;
      user.resetPasswordToken = undefined;
      user.resetPasswordExpire = undefined;
      await user.save()
- 
      sendTokenResponse(user, 200, res);
 });
 

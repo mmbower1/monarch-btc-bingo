@@ -32,7 +32,6 @@ const RandomNumber = () => {
       }
       return drawnNumbers;
     }
-
     grabRandomNumber();
     grabAvailableNumbers();
     console.log("Random number is set to the following: " + randomNumber);
@@ -41,7 +40,7 @@ const RandomNumber = () => {
   return (
     <div className="random-number-container">
       <div className="random-number">
-        {randomNumber}
+      <i className="fas fa-hashtag fa-sm"></i>{' '}{randomNumber}
       </div>
       <h3>Drawn numbers - </h3>
       <div className="already-drawn">

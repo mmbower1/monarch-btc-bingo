@@ -82,11 +82,11 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         <table className="top-tr">
           <thead>
               <th id="aboutUs-modal" onClick={openAboutUsModal}>About Us</th>
-              <th id="ourMission-modal" onClick={openOurMissionModal}>Our Mission & Vision</th>
+              <th id="ourMission-modal" onClick={openOurMissionModal}>Mission & Vision</th>
               <th id="meetOurTeam-modal" onClick={openMeetOurTeamModal}>Meet Our Team</th>
               <th id="testimonials-modal" onClick={openTestimonialsModal}>Testimonials</th>
               <th id="gameArchives-modal" onClick={openGameArchivesModal}>Game Archives</th>
-              <th id="bingoExplained-modal" onClick={openBingoExplainedModal}>Bitcoin Bingo Explained</th>
+              <th id="bingoExplained-modal" onClick={openBingoExplainedModal}>BTC Bingo Explained</th>
           </thead>
         </table>
       </nav>

@@ -16,6 +16,7 @@ import store from './store';
 import './App.css';
 import ForgotPassword from './components/forgot/ForgotPassword';
 import ResetPassword from './components/forgot/ResetPassword';
+import { Stripe } from './components/stripe/Stripe';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -40,6 +41,7 @@ const App = () => {
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <Route exact path='/forgotPassword' component={ForgotPassword} />
               <Route exact path='/resetPassword' component={ResetPassword} />
+              <Route exact path='/stripe' component={Stripe} />
             </Switch>
             <br />
             <Alert />

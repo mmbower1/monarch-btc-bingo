@@ -4,7 +4,7 @@ const User = require('../../models/User');
 // const auth = require('../../middleware/auth');
 const sendEmail = require('../../helpers/sendMail');
 const ErrorResponse = require('../../utils/errorResponse');
-const crypto = require('crypto');
+// const crypto = require('crypto');
 
 router.get('/', (req, res, next, err) => {
     res.render('/forgotPassword')

@@ -13,7 +13,7 @@ const Landing = ({ isAuthenticated, setAlert }) => {
   }
 
   const onClick = () => {
-    setAlert('Sorry, you are not of age to play :(', 'danger');
+    setAlert('Sorry, you are not of age to play', 'danger');
   }
 
   return (

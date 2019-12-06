@@ -13,6 +13,12 @@
   padding: 0;
 }
 
+a {
+  color: rgba(0, 0, 0);
+  text-decoration: none;
+  text-decoration: underline;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
@@ -184,6 +190,10 @@ body {
 
 .error-modal-writing, .success-modal-writing {
 	font-size: 10px;
+}
+
+.fa-hashtag {
+  height: 5px;
 }
 
 .footer-dashboard {
@@ -396,13 +406,19 @@ th {
   #gameStream-modal,
   #live-community-blog,
   #realTimeNews-modal {
-	font-size: 12px;
+	  font-size: 12px;
   }
 
   .dash-buttons a {
     display: block;
     width: 100%;
     margin-bottom: 0.2rem;
+  }
+
+  .dashboard-title {
+    font-size: 23px;
+    font-weight: 900;
+    margin-bottom: 20px;
   }
 
   .error-modal-writing, .success-modal-writing {

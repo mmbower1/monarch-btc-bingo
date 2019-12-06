@@ -1,17 +1,17 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../../actions/profile';
 import Modal from "react-modal";
-import axios from "axios";
 
 class ProfileModal extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modalIsOpen: false,
-      items: []
+      items: [],
     };
+    this.props = props
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -24,26 +24,21 @@ class ProfileModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  async componentDidMount() {
-    await axios.get('http://localhost:5000/api/users', { headers: { 'crossDomain': true, 'Content-Type': 'application/json' } })
-      .then(res => res.json())
-      .then(json => this.setState({ items: json }))
+  componentWillMount() {
+    this.props.getCurrentProfile()
   }
-
-  // mapItems() {
-  //   this.props.items.map((item) => {
-  //     return (
-  //       <li key={item.id}>{item}</li>
-  //     )
-  //   })
-  // }
 
   render() {
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
     var { items } = this.state;
-    console.log(items);
+    console.log('items', items);
+    // const profileItems = this.props.items.map(item =>
+    //   <div key={item.id}>
+    //       <h3>{item.name}</h3>
+    //   </div>
+    // );
 
     return (
       <Modal
@@ -60,21 +55,27 @@ class ProfileModal extends Component {
           Profile
           <br />
           <br />
-          {/* {this.mapItems()} */}
+          <ul>
+            <li>Name: {'Matt Bower'}<button type="button" className="btn"> Edit</button></li>
+            <li>Email: {'mttbwr91@gmail'}<button type="button" className="btn"> Edit</button></li>
+            <li>Erc20: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</li>
+            <li>Phone: {'(530)219-1250'}<button type="button" className="btn"> Edit</button></li>
+            <li>Password: {'******'}<button type="button" className="btn"> Edit</button></li>
+          </ul>
+          {items}
         </div>
       </Modal>
     );
   }
 }
 
-// ProfileModal.PropTypes = {
-//   getCurrentProfile: PropTypes.array.isRequired
-// }
-
-function mapStateToProps(state) {
-  return {
-    items: state.items,
-  };
+ProfileModal.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  items: PropTypes.array.isRequired
 }
+
+const mapStateToProps = (state) => ({
+    items: state.getCurrentProfile
+})
 
 export default connect(mapStateToProps, { getCurrentProfile })(ProfileModal);

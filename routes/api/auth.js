@@ -65,7 +65,7 @@ router.post(
       console.log('LOGIN:', req.body); // object of data sent to the route
 
     } catch (err) {
-      console.error(err.message);
+      console.error('err.message' + err.message);
       res.status(500).send('Server Error users')
     }
 });

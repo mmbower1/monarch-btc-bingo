@@ -30,7 +30,7 @@ const Gameboard = ({ auth: { user } }) => {
       }
     }
     setMarker();
-  }, [])
+  }, [redMarker])
 
   return (
     <table className="gameboard">

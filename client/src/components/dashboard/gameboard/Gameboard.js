@@ -7,27 +7,63 @@ import axios from 'axios';
 import Winner from '../winner/Winner';
 
 const Gameboard = ({ auth: { user } }) => {
-  const elements = document.getElementsByClassName("bingo-square");
+  let elements = document.getElementsByClassName("bingo-square");
   var currentNumber = 0;
   const [redMarker, setRedMarker] = useState(false);
+
+  const didPlayerWin = (markers) => {
+    for (var i = 0; i < markers.length; i++) {
+      // 0 1 2 3 4
+      // 5 6..
+      // 10 ...
+      // 15 ... 
+      // 20
+      //
+      // Checking horizontally
+      if((i % 5 == 0) && markers[i] && markers[i+1] && markers[i+2] && markers[i+3] && markers[i+4]){
+        alert("Winning! horizontal " + i);
+      }
+      // Check Vertically
+      if((i < 5) && markers[i] && markers[i+5] && markers[i+10] && markers[i+15] && markers[i+20]){
+        alert("Winning! vertical " + i);
+      }
+      
+    }
+  }
+
 
   // fills gameboard
   useEffect(() => {
     const setMarker = async () => {
       let availableNumbers = await axios.get('/api/drawnNumbers');
       let currentElement;
+      let markers = [];
+      elements = document.getElementsByClassName("bingo-square");
+      elements.className = "bingo-square";
+      for (var i = 0; i < elements.length; i++){
+        elements[i].className = "bingo-square";
+      }
       availableNumbers = availableNumbers.data.numbers;
-      // const randomObj = await axios.get('/api/randomNumber');
-      console.log("-----> setMarker")
-      console.log("-----> availableNumbers: " + availableNumbers);
+      const randomObj = await axios.get('/api/randomNumber');
+      // console.log("-----> setMarker")
+      // console.log("-----> availableNumbers: " + availableNumbers);
+      // console.log("-----> elements: " + elements);
+      // console.log("-----> elements.length: " + elements.length);
       for (var i = 0; i < elements.length; i++) {
         currentElement = elements[i];
         currentNumber = Number(currentElement.innerHTML);
+        // console.log("currentNumber: " + currentNumber);
+        // console.log("availableNumbers.include: " + availableNumbers.includes(currentNumber));
         if (!availableNumbers.includes(currentNumber)) {
-          elements[i].className = "redCell";
+         // elements[i].className = "redCell";
+          elements[i].classList.add("redCell");
+          //elements[i].className += " redCell";
           setRedMarker(true);
+          markers[i] = true;
         }
       }
+      // check winning condition
+      didPlayerWin(markers);
     }
     setMarker();
   }, [redMarker])

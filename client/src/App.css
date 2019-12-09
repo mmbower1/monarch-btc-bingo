@@ -29,17 +29,54 @@ body {
 }
 
 #aboutUs-modal,
-#ourMission-modal,
-#meetOurTeam-modal,
-#testimonials-modal,
-#gameArchives-modal,
-#bingoExplained-modal,
-#profile-modal,
 #account-modal,
-#wallet-modal,
+#ads-relative-to-blockchain,
+#bingoExplained-modal,
+#education-modal,
+#gameArchives-modal,
+#gameStream-modal,
+#live-community-blog,
+#meetOurTeam-modal,
+#profile-modal,
+#nextGamecard-modal,
+#ourMission-modal,
 #realTimeNews-modal,
-#education-modal {
+#security-modal,
+#settings-modal,
+#testimonials-modal,
+#wallet-modal {
+  background-color: orange;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  margin-left: 5px;
+  padding: 7px;
+  -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
+  -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
+  box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
+
+}
+
+#aboutUs-modal:hover,
+#account-modal:hover,
+#ads-relative-to-blockchain:hover,
+#bingoExplained-modal:hover,
+#education-modal:hover,
+#gameArchives-modal:hover,
+#gameStream-modal:hover,
+#live-community-blog:hover,
+#ourMission-modal:hover,
+#meetOurTeam-modal:hover,
+#profile-modal:hover,
+#nextGamecard-modal:hover,
+#realTimeNews-modal:hover,
+#security-modal:hover,
+#settings-modal:hover,
+#testimonials-modal:hover,
+#wallet-modal:hover {
+  background-color: black;
+  border: 1px solid black;
+  color: white;
 }
 
 .alert {
@@ -109,6 +146,9 @@ body {
 
 .bingo-square {
   font-size: 18px;
+  -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
+  -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
+  box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
 }
 
 .bingo-winner {
@@ -291,10 +331,18 @@ button {
 
 .gameboard-top-row {
   color: blue;
+  -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
+  -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
+  box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
 }
 
 .hide-sm {
   padding: 10px;
+}
+
+.hide-sms {
+  margin-top: 20px;
+  color: #333;
 }
 
 /* Text Styles*/
@@ -348,14 +396,13 @@ button {
 }
 
 .row-1 {
-  display: grid;
-  grid-template-columns: 37% 20%;
+  display: inline-block;
+  margin-bottom: 20px;
   margin-top: 10px;
 }
 
 .row-2, .row-3 {
   display: inline-block;
-  grid-template-columns: 50%;
 }
 
 /* .table th,
@@ -381,6 +428,10 @@ th {
   padding: 20px;
 }
 
+.top-tr * {
+  display: inline-block;
+}
+
 .yes-button,
 .no-button {
   border-radius: 6px;
@@ -394,6 +445,9 @@ th {
   #gameArchives-modal,
   #meetOurTeam-modal,
   #ourMission-modal,
+  #nextGamecard-modal,
+  #security-modal,
+  #settings-modal,
   #testimonials-modal,
   #profile-modal,
   #wallet-modal {
@@ -461,6 +515,17 @@ th {
     font-size: 1rem;
   }
 
+  .modal-content {
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    height: 400px;
+    margin-top: 70px;
+    /* position: relative; */
+    text-align: center;
+    /* width: 500px; */
+  }
+
   /* Navbar */
   .navbar {
     text-align: center;
@@ -477,10 +542,6 @@ th {
 
   .navbar .welcome {
     display: none;
-  }
-
-  .row-1 {
-	  margin-left: 90px;
   }
 
   th {

@@ -6,6 +6,9 @@ import { logout } from '../../actions/auth';
 // navbar modals
 import AccountModal from '../../modals/navbar/AccountModal';
 import ProfileModal from '../../modals/navbar/ProfileModal';
+import NextGamecardModal from '../../modals/navbar/NextGamecardModal'
+import SecurityModal from '../../modals/navbar/SecurityModal';
+import SettingsModal from '../../modals/navbar/SettingsModal';
 import WalletModal from '../../modals/navbar/WalletModal';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
@@ -14,9 +17,15 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   // navbar modals
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isNextGamecardModalOpen, setIsNextGamecardModalOpen] = useState(false);
+  const [isSecurityModalOpen, setIsSecurityModalOpen] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const openAccountModal = () => { setIsAccountModalOpen(true) };
+  const openNextGamecardModal = () => { setIsNextGamecardModalOpen(true) };
   const openProfileModal = () => { setIsProfileModalOpen(true) };
+  const openSecurityModal = () => { setIsSecurityModalOpen(true) };
+  const openSettingsModal = () => { setIsSettingsModalOpen(true) };
   const openWalletModal = () => { setIsWalletModalOpen(true) };
 
   const authLinks = (
@@ -31,10 +40,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             <div className="hide-sms">
               <span id="profile-modal" className="hide-sm" onClick={openProfileModal}>Profile</span>
               <span id="account-modal" className="hide-sm" onClick={openAccountModal}>Account</span>
-              <span id="security-modal" className="hide-sm">Security</span>
-              <span id="settings-modal" className="hide-sm">Settings</span>
+              <span id="security-modal" className="hide-sm" onClick={openSecurityModal}>Security</span>
+              <span id="settings-modal" className="hide-sm" onClick={openSettingsModal}>Settings</span>
               <span id="wallet-modal" className="hide-sm" onClick={openWalletModal}>Wallet</span>
-              <span id="nextGamecard-modal" className="hide-sm">Next Gamecard</span>
+              <span id="nextGamecard-modal" className="hide-sm" onClick={openNextGamecardModal}>Next Card</span>
             </div>
           </div>
         </ul>
@@ -61,6 +70,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       {/* navbar modals */}
       <AccountModal open={isAccountModalOpen} onClose={() => setIsAccountModalOpen(false)}/>
       <ProfileModal open={isProfileModalOpen} onClose={() => setIsProfileModalOpen(false)}/>
+      <NextGamecardModal open={isNextGamecardModalOpen} onClose={() => setIsNextGamecardModalOpen(false)}/>
+      <SecurityModal open={isSecurityModalOpen} onClose={() => setIsSecurityModalOpen(false)}/>
+      <SettingsModal open={isSettingsModalOpen} onClose={() => setIsSettingsModalOpen(false)}/>
       <WalletModal open={isWalletModalOpen} onClose={() => setIsWalletModalOpen(false)}/>
 
       <nav className="navbar bg-dark">

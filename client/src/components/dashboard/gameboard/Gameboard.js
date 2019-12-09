@@ -16,18 +16,23 @@ const Gameboard = ({ auth: { user } }) => {
       // 0 1 2 3 4
       // 5 6..
       // 10 ...
-      // 15 ... 
+      // 15 ...
       // 20
       //
       // Checking horizontally
-      if((i % 5 == 0) && markers[i] && markers[i+1] && markers[i+2] && markers[i+3] && markers[i+4]){
-        alert("Winning! horizontal " + i);
+      if ((i % 5 == 0) && markers[i] && markers[i+1] && markers[i+2] && markers[i+3] && markers[i+4]){
+        console.log("Winner! horizontal " + i);
+        // return <Winner />
       }
       // Check Vertically
-      if((i < 5) && markers[i] && markers[i+5] && markers[i+10] && markers[i+15] && markers[i+20]){
-        alert("Winning! vertical " + i);
+      if ((i < 5) && markers[i] && markers[i+5] && markers[i+10] && markers[i+15] && markers[i+20]){
+        console.log("Winner! vertical " + i);
+        // return <Winner />
       }
-      
+      // Check Diagonally
+      if ((i === 0 || i === 4 || i === 20 || i === 24) && markers[i] && markers[i+6] && markers[i+12] && markers[i+18] && markers[i+24]){
+        console.log("Winner! diagonal " + i);
+      }
     }
   }
 
@@ -45,8 +50,7 @@ const Gameboard = ({ auth: { user } }) => {
       }
       availableNumbers = availableNumbers.data.numbers;
       const randomObj = await axios.get('/api/randomNumber');
-      // console.log("-----> setMarker")
-      // console.log("-----> availableNumbers: " + availableNumbers);
+      console.log("-----> availableNumbers: " + availableNumbers);
       // console.log("-----> elements: " + elements);
       // console.log("-----> elements.length: " + elements.length);
       for (var i = 0; i < elements.length; i++) {
@@ -72,7 +76,7 @@ const Gameboard = ({ auth: { user } }) => {
     <table className="gameboard">
       <tbody>
         <tr>
-          <th className="gameboard-top-row" open={redMarker} onClose={() => setRedMarker(false)}><h2>B</h2></th>
+          <th className="gameboard-top-row"><h2>B</h2></th>
           <th className="gameboard-top-row"><h2>I</h2></th>
           <th className="gameboard-top-row"><h2>N</h2></th>
           <th className="gameboard-top-row"><h2>G</h2></th>

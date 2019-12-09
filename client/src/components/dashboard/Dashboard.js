@@ -20,17 +20,19 @@ import GameArchivesModal from '../../modals/titlebar/GameArchivesModal';
 // gameboard modals
 import RealTimeNewsModal from '../../modals/gameboard/RealTimeNewsModal';
 import EducationModal from '../../modals/gameboard/EduResourcesModal';
+import LiveCommBlogModal from '../../modals/gameboard/LiveCommBlogModal';
+import AdsRelativeToBlockchain from '../../modals/gameboard/AdsBlockchainModal';
 
 // import cronjob from '../../cronjob.js';
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
   // titlebar modals
   const [isAboutUsModalOpen, setIsAboutUsModalOpen] = useState(false);
+  const [isBingoExplainedModalOpen, setIsBingoExplainedModalOpen] = useState(false);
   const [isOurMissionModalOpen, setIsOurMissionModalOpen] = useState(false);
   const [isMeetOurTeamModalOpen, setIsMeetOurTeamModalOpen] = useState(false);
   const [isTestimonialsModalOpen, setIsTestimonialsModalOpen] = useState(false);
   const [isGameArchivesModalOpen, setIsGameArchivesModalOpen] = useState(false);
-  const [isBingoExplainedModalOpen, setIsBingoExplainedModalOpen] = useState(false);
   const openAboutUsModal = () => { setIsAboutUsModalOpen(true) }
   const openOurMissionModal = () => { setIsOurMissionModalOpen(true) }
   const openMeetOurTeamModal = () => { setIsMeetOurTeamModalOpen(true) }
@@ -38,10 +40,15 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
   const openGameArchivesModal = () => { setIsGameArchivesModalOpen(true) }
   const openBingoExplainedModal = () => { setIsBingoExplainedModalOpen(true) }
   // gameboard modals
-  const [isRealTimeNewsModalOpen, setIsRealTimeNewsModalOpen] = useState(false);
+  const [isAdsModalOpen, setIsAdsModalOpen] = useState(false);
   const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
+  const [isRealTimeNewsModalOpen, setIsRealTimeNewsModalOpen] = useState(false);
+  const [isLiveCommBlogModalOpen, setIsLiveCommBlogModalOpen] = useState(false);
+  const openAdsModal = () => { setIsAdsModalOpen(true) }
   const openEducationModal = () => { setIsEducationModalOpen(true) }
   const openRealTimeNewsModal = () => { setIsRealTimeNewsModalOpen(true) }
+  const openLiveCommBlogModal = () => { setIsLiveCommBlogModalOpen(true) }
+
   // const [randomNumber, setRandomNumber] = useState(0);
 
   // empty array at end allows it only run once
@@ -60,6 +67,8 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
       <GameArchivesModal open={isGameArchivesModalOpen} onClose={() => setIsGameArchivesModalOpen(false)}/>
       <BingoExplainedModal open={isBingoExplainedModalOpen} onClose={() => setIsBingoExplainedModalOpen(false)}/>
       {/* gameboard modals */}
+      <AdsRelativeToBlockchain open={isAdsModalOpen} onClose={() => setIsAdsModalOpen(false)}/>
+      <LiveCommBlogModal open={isLiveCommBlogModalOpen} onClose={() => setIsLiveCommBlogModalOpen(false)}/>
       <RealTimeNewsModal open={isRealTimeNewsModalOpen} onClose={() => setIsRealTimeNewsModalOpen(false)}/>
       <EducationModal open={isEducationModalOpen} onClose={() => setIsEducationModalOpen(false)}/>
 
@@ -86,30 +95,30 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
               <th id="meetOurTeam-modal" onClick={openMeetOurTeamModal}>Meet Our Team</th>
               <th id="testimonials-modal" onClick={openTestimonialsModal}>Testimonials</th>
               <th id="gameArchives-modal" onClick={openGameArchivesModal}>Game Archives</th>
-              <th id="bingoExplained-modal" onClick={openBingoExplainedModal}>BTC Bingo Explained</th>
+              <th id="bingoExplained-modal" onClick={openBingoExplainedModal}>Btc Bingo Info</th>
           </thead>
         </table>
       </nav>
       <br />
       <RandomNumber />
       <br />
-      <Winner />
+      {/* <Winner /> */}
       <div className="dashboard-body">
         <div className="row-1">
           <br />
-          <th className="gameStream-modal">Game Stream</th>
+          <th id="gameStream-modal" className="gameStream-modal">Game Stream</th>
         </div>
         <br />
         <div className="row-2">
-          <th id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News Feed</th>
+          <th id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News</th>
             {/* <div className="winner-div">
             </div> */}
-          <th id="live-community-blog">Live Community Blog</th>
+          <th id="live-community-blog" onClick={openLiveCommBlogModal}>Live Community Blog</th>
         </div>
         <Gameboard />
         <div className="row-3">
           <th id="education-modal" onClick={openEducationModal}>Educational Resources</th>
-          <th id="ads-relative-to-blockchain">Ads Relative Only to Blockchains</th>
+          <th id="ads-relative-to-blockchain" onClick={openAdsModal}>Ads Relative to Blockchain</th>
         </div>
         <br />
         <br />

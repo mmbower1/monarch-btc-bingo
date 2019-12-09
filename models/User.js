@@ -32,6 +32,9 @@ const UserSchema = new mongoose.Schema({
   },
   resetPasswordExpire: {
     type: Date
+  },
+  winner: {
+    type: Date
   }
 });
 

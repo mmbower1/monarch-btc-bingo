@@ -6,6 +6,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const User = require('../../models/User');
 const generateCardNumbers = require('../../helpers/generateCardNumbers');
+const ErrorResponse = require('../../middleware/error');
 const request = require('request');
 
 
@@ -74,6 +75,25 @@ router.post(
       console.error(err.message);
       res.status(500).send('Server Error users')
     }
+});
+
+// @route    PUT api/users
+// @desc     Edit User
+// @access   Private
+router.put('/:id', async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() })
+  }
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+  if (!user) {
+    // using errorResponse instead of: return res.status(400).json({ success: false });
+    return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
+  }
+  res.status(200).json({ success: true, data: user });
 });
 
 module.exports = router;

@@ -428,8 +428,9 @@ th {
   padding: 20px;
 }
 
-.top-tr * {
+.top-tr {
   display: inline-block;
+  /* justify-content: space-between; */
 }
 
 .yes-button,

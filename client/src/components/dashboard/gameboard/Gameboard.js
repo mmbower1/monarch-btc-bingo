@@ -30,8 +30,10 @@ const Gameboard = ({ auth: { user } }) => {
         // return <Winner />
       }
       // Check Diagonally
-      if ((i === 0 || i === 4 || i === 20 || i === 24) && markers[i] && markers[i+6] && markers[i+12] && markers[i+18] && markers[i+24]){
+      if ((i === 0) && markers[i] && markers[i+6] && markers[i+12] && markers[i+18] && markers[i+24]){
         console.log("Winner! diagonal " + i);
+      } else if ((i === 4) && markers[i] && markers[i+8] && markers[i+12] && markers[i+16] && markers[i+20] ) {
+        console.log('Winner! Diagonal ' + i)
       }
     }
   }

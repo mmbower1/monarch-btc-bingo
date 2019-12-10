@@ -5,10 +5,10 @@ function generateCardNumbers(){
   let cardNumbers = [];
   for (var i = 0; i < 5; i++) {
     upperRange += 15;
-    console.log("================= Lower Range " + lowerRange);
-    console.log("================= Upper Range " + upperRange);
+    // console.log("================= Lower Range " + lowerRange);
+    // console.log("================= Upper Range " + upperRange);
     for (var j = 0; j < 5; j++) {
-      console.log("================= Inner loop ");
+      // console.log("================= Inner loop ");
       let random = Math.floor(Math.random() * (upperRange - lowerRange + 1)) + lowerRange;
       while(cardNumbers.indexOf(random) != -1){
         random = Math.floor(Math.random() * (upperRange - lowerRange + 1)) + lowerRange;

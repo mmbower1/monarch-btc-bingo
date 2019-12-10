@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  erc20: {
+  btcAddress: {
     type: String,
     required: true,
     unique: true

@@ -305,7 +305,7 @@ body {
 .form input[type="password"],
 .form input[type="date"],
 .form input[type="phoneNumber"],
-.form input[type="ERC20"],
+.form input[type="btcAddress"],
 .form select,
 .form textarea {
   border-radius: 8px;
@@ -485,7 +485,7 @@ th {
   .form input[type="password"],
   .form input[type="date"],
   .form input[type="phoneNumber"],
-  .form input[type="ERC20"],
+  .form input[type="btcAddress"],
   .form select,
   .form textarea {
     display: block;

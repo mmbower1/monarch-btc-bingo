@@ -61,9 +61,7 @@ const Gameboard = ({ auth: { user } }) => {
         // console.log("currentNumber: " + currentNumber);
         // console.log("availableNumbers.include: " + availableNumbers.includes(currentNumber));
         if (!availableNumbers.includes(currentNumber)) {
-         // elements[i].className = "redCell";
           elements[i].classList.add("redCell");
-          //elements[i].className += " redCell";
           setRedMarker(true);
           markers[i] = true;
         }

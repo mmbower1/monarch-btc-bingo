@@ -11,20 +11,20 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    erc20: '',
+    btcAddress: '',
     phoneNumber: '',
     password: '',
     password2: ''
   });
 
-  const { name, email, erc20, phoneNumber, password, password2 } = formData;
+  const { name, email, btcAddress, phoneNumber, password, password2 } = formData;
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = e => {
     e.preventDefault();
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      register({ name, email, erc20, phoneNumber, password })
+      register({ name, email, btcAddress, phoneNumber, password })
     }
   }
 
@@ -60,10 +60,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           </div>
           <div className="form-group">
             <input 
-              type="erc20" 
-              placeholder="ERC20 (ETH) Address" 
-              name="erc20"
-              value={erc20} 
+              type="text" 
+              placeholder="BTC Address" 
+              name="btcAddress"
+              value={btcAddress} 
               onChange={e => onChange(e)}
             />
           </div>

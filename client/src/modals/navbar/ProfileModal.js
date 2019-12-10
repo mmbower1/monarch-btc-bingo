@@ -58,7 +58,7 @@ class ProfileModal extends Component {
           <ul>
             <li>Name: {'Matt Bower'}<button type="button" className="btn"> Edit</button></li>
             <li>Email: {'mttbwr91@gmail'}<button type="button" className="btn"> Edit</button></li>
-            <li>Erc20: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</li>
+            <li>Btc Address: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</li>
             <li>Phone: {'(530)219-1250'}<button type="button" className="btn"> Edit</button></li>
             <li>Password: {'******'}<button type="button" className="btn"> Edit</button></li>
           </ul>

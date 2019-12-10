@@ -18,7 +18,7 @@ router.post(
   [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
-    check('erc20', 'ERC20 Address required').isLength({ min: 40 }),
+    check('btcAddress', 'BTC Address needs atleast 40 characters').isLength({ min: 40 }),
     check('phoneNumber', 'Phone number is required').isLength({ min: 10 }),
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 }),
   ],
@@ -27,7 +27,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() })
     }
-    const { name, email, erc20, phoneNumber, password } = req.body;
+    const { name, email, btcAddress, phoneNumber, password } = req.body;
     try {
       // see if user exists
       let user = await User.findOne({ email });
@@ -38,7 +38,7 @@ router.post(
       user = new User({
         name,
         email,
-        erc20,
+        btcAddress,
         phoneNumber,
         password
       });
@@ -61,13 +61,13 @@ router.post(
       }
       // set to 3600 (1 hr) in production
       jwt.sign(
-        payload, 
-        config.get('jwtSecret'), 
-        { expiresIn: 360000 }, 
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
-        })
+        });
         console.log(' ');
         console.log('REGISTER: ', req.body); // object of data sent to the route
 

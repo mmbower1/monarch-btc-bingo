@@ -25,7 +25,7 @@ import AdsRelativeToBlockchain from '../../modals/gameboard/AdsBlockchainModal';
 
 // import cronjob from '../../cronjob.js';
 
-const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
+const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loading } } ) => {
   // titlebar modals
   const [isAboutUsModalOpen, setIsAboutUsModalOpen] = useState(false);
   const [isBingoExplainedModalOpen, setIsBingoExplainedModalOpen] = useState(false);

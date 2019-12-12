@@ -93,7 +93,7 @@ router.put('/:id', async (req, res, next) => {
     // using errorResponse instead of: return res.status(400).json({ success: false });
     return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
   }
-  res.status(200).json({ success: true, data: user });
+  res.status(200).send('UPDATED USER');
 });
 
 module.exports = router;

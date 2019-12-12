@@ -29,7 +29,7 @@ class ProfileModal extends Component {
 
   render() {
     const { auth } = this.props;
-    console.log('auth.user profile: ', auth.user);
+    // console.log('auth.user profile: ', auth.user);
 
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
@@ -51,7 +51,7 @@ class ProfileModal extends Component {
           <br />
           <br />
           <ul>
-            <li>Name: {this.auth}</li>
+            <li>Name: {}</li>
             <li>Email: {'mttbwr91@gmail'}</li>
             <li>Btc Address: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</li>
             <li>Phone: {'(530)219-1250'}</li>

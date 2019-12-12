@@ -79,6 +79,14 @@ body {
   color: white;
 }
 
+#accountModal-edit {
+  border: 2px solid grey;
+  border-radius: 5px;
+  margin : 0 auto;
+  margin-top: 5px;
+  width: 50%;
+}
+
 .alert {
   padding: 0.8rem;
   margin: 1rem 0;

@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 import Modal from "react-modal";
 import axios from "axios";
-import * as auth from '../../actions/auth';
+import { setAlert } from "../../actions/alert";
+import { updateUser } from '../../actions/auth';
 
 class AccountModal extends Component {
   constructor() {
     super();
     this.state = {
-      name : "",
+      name: "",
       btcAddress : "",
       phone : "",
       password : "",
@@ -29,7 +31,6 @@ class AccountModal extends Component {
   }
 
   handleChange = e => {
-    console.log("handleChange: " + e.target.value)
     this.setState({
       [e.target.name]: e.target.value
     }, this.checkFields);
@@ -40,14 +41,21 @@ class AccountModal extends Component {
     const { auth } = this.props;
     // let updateUser;
     // console.log("updateUser: " + updateUser);
-    axios.put(`/api/users/${auth.user}`, {
+    axios.put(`/api/users/${auth.user._id}`, {
       name: this.state.name,
-      btcAddress: this.state.btcAddress,
       phone: this.state.phone,
       password: this.state.password
     })
     .then(res => {
       console.log('res: ' + JSON.stringify(res));
+      this.setState({
+        name: "",
+        btcAddress : "",
+        phone : "",
+        password : "",
+      });
+      this.state.modalIsOpen = this.props.close;
+      this.props.setAlert();
     })
     .catch(err => {
       console.log(err);
@@ -55,12 +63,11 @@ class AccountModal extends Component {
   }
 
   render() {
-    const { auth } = this.props;
-    console.log('auth.user account: ', auth.user);
-
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
+    const { auth } = this.props;
+    console.log('auth.user: ', auth.user);
 
     return (
       <Modal
@@ -74,16 +81,16 @@ class AccountModal extends Component {
           <div className="close-modal" onClick={() => this.props.onClose()}>
             +
           </div>
-          Account
           <br />
+          <h3>Edit Account Info</h3>
           <br />
-          <form className="edit-form" onSubmit={this.onSubmit}>
+          <form id="edit-form" className="form" onSubmit={this.onSubmit}>
             <div className="edit-div">
-              <div className="form-group">
+              <div id="" className="form-group">
                 <input
                   name='name'
                   type='text'
-                  placeholder='Name'
+                  placeholder='Edit Name'
                   onChange={e => {
                     this.handleChange(e);
                   }}
@@ -99,38 +106,39 @@ class AccountModal extends Component {
                   }}
                 />
               </div> */}
-              <div className="edit-btcAddress">
+              <div id="" className="form-group">
                 <input
                   name='btcAddress'
                   type='text'
-                  placeholder='Btc address'
+                  placeholder='Edit Btc address'
                   onChange={e => {
                     this.handleChange(e);
                   }}
                 />
               </div >
-              <div className="edit-phone">
+              <div id="" className="form-group">
                 <input
                   name='phone'
                   type='text'
-                  placeholder='Phone'
+                  placeholder='Edit Phone'
                   onChange={e => {
                     this.handleChange(e);
                   }}
                 />
               </div>
-              <div className="edit-password">
+              <div id="" className="form-group">
                 <input
                   name='password'
                   type='text'
-                  placeholder='Password'
+                  placeholder='Edit Password'
                   onChange={e => {
                     this.handleChange(e);
                   }}
                 />
               </div>
             </div>
-            <input type='submit' value='Submit'></input>
+            <br />
+            <input className="btn-primary" type='submit' value='Submit'></input>
           </form>
         </div>
       </Modal>
@@ -138,19 +146,26 @@ class AccountModal extends Component {
   }
 }
 
+AccountModal.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired
+}
+
 const mapStateToProps = (state) => {
   console.log('state.auth: ', state.auth);
   return {
     // auth needs to have same name as whats being exported from root reducer!
-    auth: state.auth
+    auth: state.auth,
+    alert: state.alert
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   console.log("dispatch: ", dispatch)
   return {
-    updateUser: (id) => { dispatch({ type: 'UPDATE_ACCOUNT', id: id }) }
+    setAlert,
+    updateUser
   }
 }
 
-export default connect(mapStateToProps, {mapDispatchToProps})(AccountModal);
+export default connect(mapStateToProps, mapDispatchToProps)(AccountModal);

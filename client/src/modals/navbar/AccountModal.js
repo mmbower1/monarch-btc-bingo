@@ -12,7 +12,7 @@ class AccountModal extends Component {
     this.state = {
       name: "",
       btcAddress : "",
-      phone : "",
+      phoneNumber : "",
       password : "",
       modalIsOpen: false
     };
@@ -41,11 +41,19 @@ class AccountModal extends Component {
     const { auth } = this.props;
     // let updateUser;
     // console.log("updateUser: " + updateUser);
-    axios.put(`/api/users/${auth.user._id}`, {
-      name: this.state.name,
-      phone: this.state.phone,
-      password: this.state.password
-    })
+    // Check which fields have been updated and then submit only those fields
+    let userInfo = {}
+    if(this.state.name != ""){
+      userInfo.name = this.state.name;
+    }
+    if(this.state.phone != ""){
+      userInfo.phoneNumber = this.state.phone;
+    }
+    if(this.state.btcAddress != ""){
+      userInfo.btcAddress = this.state.btcAddress;
+    }
+    console.log("userInfo: " + JSON.stringify(userInfo));
+    axios.put(`/api/users/${auth.user._id}`, userInfo)
     .then(res => {
       console.log('res: ' + JSON.stringify(res));
       this.setState({
@@ -54,8 +62,8 @@ class AccountModal extends Component {
         phone : "",
         password : "",
       });
-      this.state.modalIsOpen = this.props.close;
-      this.props.setAlert();
+      this.props.onClose();
+      this.props.setAlert('Account updated', );
     })
     .catch(err => {
       console.log(err);
@@ -126,7 +134,7 @@ class AccountModal extends Component {
                   }}
                 />
               </div>
-              <div id="" className="form-group">
+              {/* <div id="" className="form-group">
                 <input
                   name='password'
                   type='text'
@@ -135,7 +143,7 @@ class AccountModal extends Component {
                     this.handleChange(e);
                   }}
                 />
-              </div>
+              </div> */}
             </div>
             <br />
             <input className="btn-primary" type='submit' value='Submit'></input>

@@ -4,7 +4,7 @@ export class GamestreamModal extends Component {
     render() {
         return (
             <div>
-                
+                Game Stream 
             </div>
         )
     }

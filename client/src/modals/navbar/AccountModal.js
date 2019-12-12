@@ -1,17 +1,17 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import Modal from "react-modal";
 import axios from "axios";
-import {getCurrentProfile} from '../../actions/profile';
+import * as auth from '../../actions/auth';
 
 class AccountModal extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      email: "",
-      btcAddress: "",
-      phone: "",
-      password: "",
+      name : "",
+      btcAddress : "",
+      phone : "",
+      password : "",
       modalIsOpen: false
     };
 
@@ -32,39 +32,35 @@ class AccountModal extends Component {
     console.log("handleChange: " + e.target.value)
     this.setState({
       [e.target.name]: e.target.value
-    },this.checkFields);
+    }, this.checkFields);
   };
 
-  onSubmit(event){
-      event.preventDefault();
-      let id = getCurrentProfile;
-      console.log("id: " + id);
-      axios.put('/api/users/5df049aab5787023f34e00f7', {
-      name: this.state.name
+  onSubmit(e) {
+    e.preventDefault();
+    const { auth } = this.props;
+    // let updateUser;
+    // console.log("updateUser: " + updateUser);
+    axios.put(`/api/users/${auth.user}`, {
+      name: this.state.name,
+      btcAddress: this.state.btcAddress,
+      phone: this.state.phone,
+      password: this.state.password
     })
-    .then(response => {
-      console.log(response);
+    .then(res => {
+      console.log('res: ' + JSON.stringify(res));
     })
     .catch(err => {
       console.log(err);
     });
   }
 
-  // componentDidMount() {
-  //   fetch('/api/users')
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       this.setState({ loading: false, items: json })
-  //       console.log('subscribe: ', json);
-  //     })
-  //   }
-
-
   render() {
+    const { auth } = this.props;
+    console.log('auth.user account: ', auth.user);
+
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
-    var { loading, items } = this.state;
 
     return (
       <Modal
@@ -81,73 +77,80 @@ class AccountModal extends Component {
           Account
           <br />
           <br />
-          {this.state.items}
-            {/* {items.map(item => (
-              <li key={item.id}>
-                NAME: {item}
-              </li>
-            ))} */}
-
           <form className="edit-form" onSubmit={this.onSubmit}>
-            {/* <form className="edit-form" onSubmit={e => onSubmit(e)}> */}
-              <div className="edit-div">
-                <div className="form-group">
-                  <input
-                    name='name'
-                    type='text'
-                    placeholder='Name'
-                    onChange={e => {
-                      this.handleChange(e);  
-                    }}
-                  />
-                </div>
-                <div className="edit-email">
-                  <input
-                    name='email'
-                    type='email'
-                    placeholder='Email'
-                    onChange={e => {
-                      this.handleChange(e);  
-                    }}
-                  />
-                </div>
-                <div className="edit-btcAddress">
-                  <input
-                    name='btcAddress'
-                    type='text'
-                    placeholder='Btc address'
-                    onChange={e => {
-                      this.handleChange(e);  
-                    }}
-                  />
-                </div >
-                <div className="edit-phone">
-                  <input
-                    name='phone'
-                    type='text'
-                    placeholder='Phone'
-                    onChange={e => {
-                      this.handleChange(e);  
-                    }}
-                  />
-                </div>
-                <div className="edit-password">
-                  <input
-                    name='password'
-                    type='text'
-                    placeholder='Password'
-                    onChange={e => {
-                      this.handleChange(e);  
-                    }}
-                  />
-                </div>
+            <div className="edit-div">
+              <div className="form-group">
+                <input
+                  name='name'
+                  type='text'
+                  placeholder='Name'
+                  onChange={e => {
+                    this.handleChange(e);
+                  }}
+                />
               </div>
-              <input type='submit' value='Submit'></input>
-            </form>
+              {/* <div className="edit-email">
+                <input
+                  name='email'
+                  type='email'
+                  placeholder='Email'
+                  onChange={e => {
+                    this.handleChange(e);
+                  }}
+                />
+              </div> */}
+              <div className="edit-btcAddress">
+                <input
+                  name='btcAddress'
+                  type='text'
+                  placeholder='Btc address'
+                  onChange={e => {
+                    this.handleChange(e);
+                  }}
+                />
+              </div >
+              <div className="edit-phone">
+                <input
+                  name='phone'
+                  type='text'
+                  placeholder='Phone'
+                  onChange={e => {
+                    this.handleChange(e);
+                  }}
+                />
+              </div>
+              <div className="edit-password">
+                <input
+                  name='password'
+                  type='text'
+                  placeholder='Password'
+                  onChange={e => {
+                    this.handleChange(e);
+                  }}
+                />
+              </div>
+            </div>
+            <input type='submit' value='Submit'></input>
+          </form>
         </div>
       </Modal>
     );
   }
 }
 
-export default AccountModal;
+const mapStateToProps = (state) => {
+  console.log('state.auth: ', state.auth);
+  return {
+    // auth needs to have same name as whats being exported from root reducer!
+    auth: state.auth
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  console.log("dispatch: ", dispatch)
+  return {
+    updateUser: (id) => { dispatch({ type: 'UPDATE_ACCOUNT', id: id }) }
+  }
+}
+
+export default connect(mapStateToProps, {mapDispatchToProps})(AccountModal);

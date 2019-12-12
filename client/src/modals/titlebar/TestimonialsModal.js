@@ -39,7 +39,6 @@ class TestimonialsModal extends Component {
           Testimonials
           <br />
           <br />
-          <h3></h3>
         </div>
       </Modal>
     )

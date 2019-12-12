@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCurrentProfile } from '../../actions/profile';
+// import { getCurrentProfile } from '../../actions/profile';
 import Modal from "react-modal";
 
 class ProfileModal extends Component {
@@ -9,7 +9,6 @@ class ProfileModal extends Component {
     super(props);
     this.state = {
       modalIsOpen: false,
-      items: [],
     };
     this.props = props
     this.openModal = this.openModal.bind(this);
@@ -24,21 +23,17 @@ class ProfileModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  componentWillMount() {
-    this.props.getCurrentProfile()
-  }
+  // componentWillMount() {
+  //   this.props.getCurrentProfile()
+  // }
 
   render() {
+    const { auth } = this.props;
+    console.log('auth.user profile: ', auth.user);
+
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
-    var { items } = this.state;
-    console.log('items', items);
-    // const profileItems = this.props.items.map(item =>
-    //   <div key={item.id}>
-    //       <h3>{item.name}</h3>
-    //   </div>
-    // );
 
     return (
       <Modal
@@ -56,26 +51,23 @@ class ProfileModal extends Component {
           <br />
           <br />
           <ul>
-            <li>Name: {'Matt Bower'}<button type="button" className="btn"> Edit</button></li>
-            <li>Email: {'mttbwr91@gmail'}<button type="button" className="btn"> Edit</button></li>
+            <li>Name: {this.auth}</li>
+            <li>Email: {'mttbwr91@gmail'}</li>
             <li>Btc Address: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</li>
-            <li>Phone: {'(530)219-1250'}<button type="button" className="btn"> Edit</button></li>
-            <li>Password: {'******'}<button type="button" className="btn"> Edit</button></li>
+            <li>Phone: {'(530)219-1250'}</li>
+            <li>Password: {'******'}</li>
           </ul>
-          {items}
         </div>
       </Modal>
     );
   }
 }
 
-ProfileModal.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
-  items: PropTypes.array.isRequired
+// exported as same name (auth) from the root reducer
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth
+  }
 }
 
-const mapStateToProps = (state) => ({
-    items: state.getCurrentProfile
-})
-
-export default connect(mapStateToProps, { getCurrentProfile })(ProfileModal);
+export default connect(mapStateToProps, {})(ProfileModal);

@@ -7,7 +7,7 @@ import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import RandomNumber from './randNum/RandomNumber';
 import Gameboard from './gameboard/Gameboard';
-import Winner from './winner/Winner';
+// import Winner from './winner/Winner';
 // import axios from 'axios';
 
 // titlebar modals

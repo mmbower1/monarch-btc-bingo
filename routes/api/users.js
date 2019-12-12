@@ -78,7 +78,7 @@ router.post(
 });
 
 // @route    PUT api/users
-// @desc     Edit User
+// @desc     Update User
 // @access   Private
 router.put('/:id', async (req, res, next) => {
   const errors = validationResult(req);

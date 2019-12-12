@@ -78,20 +78,20 @@ export const login = (email, password) => async dispatch => {
 }
 
 // update user
-export const updateUser = ({ name, email, btcAddress, phoneNumber, password }) => async dispatch => {
+export const updateUser = ({ id, name, email, btcAddress, phoneNumber, password }) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   }
-  const body = JSON.stringify({ name, email, btcAddress, phoneNumber, password })
+  const body = JSON.stringify({ id ,name, email, btcAddress, phoneNumber, password })
   try {
     const res = await axios.put('/api/users', body, config);
     dispatch({
       type: UPDATE_ACCOUNT,
       payload: res.data
     });
-    dispatch(loadUser());
+    dispatch(setAlert('success'));
 
   } catch (err) {
     const errors = err.response.data.errors;
@@ -99,7 +99,7 @@ export const updateUser = ({ name, email, btcAddress, phoneNumber, password }) =
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
     }
     dispatch({
-      type: REGISTER_FAIL
+      type: AUTH_ERROR
     })
   }
 }

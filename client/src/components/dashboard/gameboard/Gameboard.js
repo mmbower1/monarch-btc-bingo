@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 // import RandomNumber from '../randNum/RandomNumber';
-import Winner from '../winner/Winner';
+// import Winner from '../winner/Winner';
 
 const Gameboard = ({ auth: { user } }) => {
   let elements = document.getElementsByClassName("bingo-square");
@@ -20,13 +20,13 @@ const Gameboard = ({ auth: { user } }) => {
       // 20
       //
       // Checking horizontally
-      if ((i % 5 == 0) && markers[i] && markers[i+1] && markers[i+2] && markers[i+3] && markers[i+4]){
-        console.log("Winner! horizontal " + i);
+      if ((i % 5 === 0) && markers[i] && markers[i+1] && markers[i+2] && markers[i+3] && markers[i+4]){
+        // console.log("Winner! horizontal " + i);
         // return <Winner />
       }
       // Check Vertically
       if ((i < 5) && markers[i] && markers[i+5] && markers[i+10] && markers[i+15] && markers[i+20]){
-        console.log("Winner! vertical " + i);
+        // console.log("Winner! vertical " + i);
         // return <Winner />
       }
       // Check Diagonally

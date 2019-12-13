@@ -43,23 +43,21 @@ class ProfileModal extends Component {
           <div className="close-modal" onClick={() => this.props.onClose()}>
             +
           </div>
-          Profile
           <br />
+          <h3>Profile</h3>
           <br />
-          <ul>
-            <li>Name: {this.props.name}</li>
-            <li>Email: {'mttbwr91@gmail'}</li>
-            <li>Btc Address: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</li>
-            <li>Phone: {'(530)219-1250'}</li>
-            <li>Password: {'******'}</li>
-          </ul>
+            <h4>Name: {this.state.name}</h4>
+            <h4>Email: {'mttbwr91@gmail'}</h4>
+            <h4>Btc Address: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</h4>
+            <h4>Phone: {'(530)219-1250'}</h4>
+            <h4>Password: {'******'}</h4>
         </div>
       </Modal>
     );
   }
 }
 
-// exported as same name (auth) from the root reducer
+// needs to be exported as same name (auth) from the root reducer
 const mapStateToProps = (state) => {
   console.log('state.auth: ', state.auth);
   return {

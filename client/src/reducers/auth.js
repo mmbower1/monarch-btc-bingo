@@ -6,7 +6,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
-  UPDATE_ACCOUNT
+  // UPDATE_ACCOUNT
 } from '../actions/types';
 
 const initialState = {
@@ -21,7 +21,7 @@ export default function(state = initialState, action) {
 
   switch(type) {
     case USER_LOADED:
-    case UPDATE_ACCOUNT:
+    // case UPDATE_ACCOUNT:
       return {
         ...state,
         isAuthenticated: true,

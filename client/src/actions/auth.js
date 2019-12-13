@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, CLEAR_PROFILE, UPDATE_ACCOUNT
+import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, CLEAR_PROFILE, SET_ALERT
  } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -61,10 +61,11 @@ export const login = (email, password) => async dispatch => {
   try {
     const res = await axios.post('/api/auth', body, config);
     dispatch({
-      type: LOGIN_SUCCESS,
+      type: LOGIN_SUCCESS, SET_ALERT,
       payload: res.data
     });
     dispatch(loadUser());
+    dispatch(setAlert('Login success', 'success'));
 
   } catch (err) {
     const errors = err.response.data.errors;
@@ -78,31 +79,31 @@ export const login = (email, password) => async dispatch => {
 }
 
 // update user
-export const updateUser = ({ id, name, email, btcAddress, phoneNumber, password }) => async dispatch => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-  const body = JSON.stringify({ id ,name, email, btcAddress, phoneNumber, password })
-  try {
-    const res = await axios.put('/api/users', body, config);
-    dispatch({
-      type: UPDATE_ACCOUNT,
-      payload: res.data
-    });
-    dispatch(setAlert('success'));
+// export const updateUser = ({ id, name, email, btcAddress, phoneNumber, password }) => async dispatch => {
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   }
+//   const body = JSON.stringify({ id ,name, email, btcAddress, phoneNumber, password })
+//   try {
+//     const res = await axios.put('/api/users', body, config);
+//     dispatch({
+//       type: UPDATE_ACCOUNT,
+//       payload: res.data
+//     });
+//     dispatch(setAlert('success'));
 
-  } catch (err) {
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
-    }
-    dispatch({
-      type: AUTH_ERROR
-    })
-  }
-}
+//   } catch (err) {
+//     const errors = err.response.data.errors;
+//     if (errors) {
+//       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+//     }
+//     dispatch({
+//       type: AUTH_ERROR
+//     })
+//   }
+// }
 
 // logout / clear profile
 export const logout = () => dispatch => {

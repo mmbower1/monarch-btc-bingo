@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Modal from "react-modal";
 import axios from "axios";
 import { setAlert } from "../../actions/alert";
-import { updateUser } from '../../actions/auth';
+// import { updateUser } from '../../actions/auth';
 
 class AccountModal extends Component {
   constructor() {
@@ -36,6 +36,7 @@ class AccountModal extends Component {
     }, this.checkFields);
   };
 
+  // this function can be replaced into a redux 'updateUser' action
   onSubmit = (e) => {
     e.preventDefault();
     const { auth } = this.props;
@@ -125,6 +126,7 @@ class AccountModal extends Component {
                   onChange={e => {
                     this.handleChange(e);
                   }}
+                  minLength='40'
                 />
               </div >
               <div id="" className="form-group">
@@ -135,6 +137,7 @@ class AccountModal extends Component {
                   onChange={e => {
                     this.handleChange(e);
                   }}
+                  minLength='10'
                 />
               </div>
               {/* <div id="" className="form-group">
@@ -159,7 +162,6 @@ class AccountModal extends Component {
 
 AccountModal.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  updateUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -167,16 +169,7 @@ const mapStateToProps = (state) => {
   return {
     // auth needs to have same name as whats being exported from root reducer!
     auth: state.auth,
-    alert: state.alert
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log("dispatch: ", dispatch)
-  return {
-    setAlert,
-    updateUser
-  }
-}
-
-export default connect(mapStateToProps, { setAlert, updateUser })(AccountModal);
+export default connect(mapStateToProps, { setAlert })(AccountModal);

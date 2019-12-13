@@ -62,8 +62,10 @@ class AccountModal extends Component {
         phone : "",
         password : "",
       });
+      // close modal
       this.props.onClose();
-      this.props.setAlert('Account updated', 'success');
+      // set alert
+      this.props.setAlert('Account updated!', 'success');
     })
     .catch(err => {
       console.log(err);
@@ -102,6 +104,7 @@ class AccountModal extends Component {
                   onChange={e => {
                     this.handleChange(e);
                   }}
+                  required
                 />
               </div>
               {/* <div className="edit-email">
@@ -169,11 +172,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  // console.log("dispatch: ", dispatch)
+  console.log("dispatch: ", dispatch)
   return {
     setAlert,
     updateUser
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountModal);
+export default connect(mapStateToProps, { setAlert, updateUser })(AccountModal);

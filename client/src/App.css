@@ -343,6 +343,10 @@ button {
   display: grid;
 }
 
+.dashboard-title {
+  text-decoration: underline;
+}
+
 .gameboard-top-row {
   color: blue;
   -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);

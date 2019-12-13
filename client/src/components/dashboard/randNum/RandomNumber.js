@@ -12,7 +12,7 @@ const RandomNumber = () => {
       if (currentRandomNumber) {
         // console.log("setting randomNumber to " + currentRandomNumber);
         setRandomNumber(currentRandomNumber);
-        console.log("currentRandomNumber state: " + randomNumber);
+        // console.log("currentRandomNumber state: " + randomNumber);
       }
       // console.log("currentRandomNumber state after if: " + randomNumber);
       return currentRandomNumber;
@@ -34,7 +34,7 @@ const RandomNumber = () => {
     }
     grabRandomNumber();
     grabAvailableNumbers();
-    console.log("Random number is set to the following: " + randomNumber);
+    // console.log("Random number is set to the following: " + randomNumber);
   }, [])
 
   return (

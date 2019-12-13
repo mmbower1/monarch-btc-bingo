@@ -33,6 +33,7 @@ const App = () => {
       <Router>
         <Fragment>
         <Navbar />
+        <Alert />
           <Route exact path="/" component={Landing} />
           <section className="container">
             <Switch>
@@ -44,7 +45,6 @@ const App = () => {
               <Route exact path='/stripe' component={Stripe} />
             </Switch>
             <br />
-            <Alert />
           </section>
         </Fragment>
       </Router>

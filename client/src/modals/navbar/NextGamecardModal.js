@@ -31,8 +31,6 @@ export class NextGamecardModal extends Component {
             >
                 <div className="modal-content">
                     <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-                    Next Gamecard
-                    <br />
                     <br />
                     <h3>Next Gamecard</h3>
                 </div>

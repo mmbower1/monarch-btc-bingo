@@ -23,13 +23,9 @@ class ProfileModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  // componentWillMount() {
-  //   this.props.getCurrentProfile()
-  // }
-
   render() {
     const { auth } = this.props;
-    // console.log('auth.user profile: ', auth.user);
+    console.log('auth.user profile: ', auth.user);
 
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
@@ -51,7 +47,7 @@ class ProfileModal extends Component {
           <br />
           <br />
           <ul>
-            <li>Name: {}</li>
+            <li>Name: {this.props.name}</li>
             <li>Email: {'mttbwr91@gmail'}</li>
             <li>Btc Address: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</li>
             <li>Phone: {'(530)219-1250'}</li>
@@ -65,6 +61,7 @@ class ProfileModal extends Component {
 
 // exported as same name (auth) from the root reducer
 const mapStateToProps = (state) => {
+  console.log('state.auth: ', state.auth);
   return {
     auth: state.auth
   }

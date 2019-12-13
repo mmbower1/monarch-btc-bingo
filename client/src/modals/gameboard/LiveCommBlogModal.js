@@ -31,10 +31,10 @@ export class LiveCommBlogModal extends Component {
             >
                 <div className="modal-content">
                     <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-                    Live Community Blog
-                    <br />
                     <br />
                     <h3>Live Community Blog</h3>
+                    <br />
+                    <h4>Live Community Blog</h4>
                 </div>
             </Modal>
         )

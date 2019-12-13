@@ -33,8 +33,6 @@ export class SettingsModal extends Component {
             >
                 <div className="modal-content">
                     <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-                    Security
-                    <br />
                     <br />
                     <h3>Settings</h3>
                 </div>

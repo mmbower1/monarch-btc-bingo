@@ -40,13 +40,13 @@ class RealTimeNewsModal extends Component  {
       <Modal className="bg-modal" isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} appElement={document.getElementById('root')}> 
         <div className="modal-content">
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-          Real Time News
           <br />
+          <h3>Real Time News</h3>
           <br />
             {items.map(item => (
-              <li key={item.id}>
+              <h4 key={item.id}>
                 NAME: {item.name},&nbsp;&nbsp; CITY: {item.address.city}
-              </li>
+              </h4>
             ))};
         </div>
       </Modal>

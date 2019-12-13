@@ -24,6 +24,9 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String
   },
+  avatar: {
+    type: String
+  },
   cardNumbers: {
     type: Array
   },
@@ -34,7 +37,8 @@ const UserSchema = new mongoose.Schema({
     type: Date
   },
   winner: {
-    type: Date
+    type: Date,
+    default: Date.now
   }
 });
 

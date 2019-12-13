@@ -36,7 +36,7 @@ class AccountModal extends Component {
     }, this.checkFields);
   };
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
     const { auth } = this.props;
     // let updateUser;
@@ -63,7 +63,7 @@ class AccountModal extends Component {
         password : "",
       });
       this.props.onClose();
-      this.props.setAlert('Account updated', );
+      this.props.setAlert('Account updated', 'success');
     })
     .catch(err => {
       console.log(err);
@@ -75,7 +75,7 @@ class AccountModal extends Component {
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
     const { auth } = this.props;
-    console.log('auth.user: ', auth.user);
+    // console.log('auth.user: ', auth.user);
 
     return (
       <Modal
@@ -160,7 +160,7 @@ AccountModal.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state.auth: ', state.auth);
+  // console.log('state.auth: ', state.auth);
   return {
     // auth needs to have same name as whats being exported from root reducer!
     auth: state.auth,
@@ -169,7 +169,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log("dispatch: ", dispatch)
+  // console.log("dispatch: ", dispatch)
   return {
     setAlert,
     updateUser

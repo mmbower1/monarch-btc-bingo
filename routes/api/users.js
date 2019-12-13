@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
+const gravatar = require('gravatar');
 const User = require('../../models/User');
 const generateCardNumbers = require('../../helpers/generateCardNumbers');
 const ErrorResponse = require('../../middleware/error');
@@ -35,12 +36,20 @@ router.post(
         return res.status(400).json({ errors: [{ msg: 'Email already taken!' }] });
       }
 
+      // gravatar
+      const avatar = gravatar.url(email, {
+        s: '100',
+        r: 'pg',
+        d: 'mm'
+      });
+
       user = new User({
         name,
         email,
         btcAddress,
         phoneNumber,
-        password
+        password,
+        avatar
       });
 
       // // bcrypt password
@@ -93,7 +102,9 @@ router.put('/:id', async (req, res, next) => {
     // using errorResponse instead of: return res.status(400).json({ success: false });
     return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
   }
-  res.status(200).send('UPDATED USER');
+  res.status(200).json({ success: true });
+  console.log(' ')
+  console.error('>>> UPDATED USER');
 });
 
 module.exports = router;

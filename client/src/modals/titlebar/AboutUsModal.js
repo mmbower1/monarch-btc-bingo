@@ -35,13 +35,13 @@ class AboutUsModal extends Component  {
       > 
         <div className="modal-content">
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-          About Us
           <br />
+          <h3>About Us</h3>
           <br />
-          <h3>Monarch Wallet is a universal decentralized cryptocurrency wallet that allows you to buy/sell crypto,
+          <h4>Monarch Wallet is a universal decentralized cryptocurrency wallet that allows you to buy/sell crypto,
             uses one KYC for all services, gain interest on crypto through interest, and provides all necessary crypto sources to stay updated.
             We are the first wallet to be decentralized wallet while gaining interest on assets. Not your keys, not your crypto!
-          </h3>
+          </h4>
         </div>
         
       </Modal>

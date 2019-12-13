@@ -37,10 +37,10 @@ class MeetOurTeamModal extends Component {
       > 
         <div className="modal-content">
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-          Meet Our Team
           <br />
+          <h3>Meet Our Team</h3>
           <br />
-          <h3>Matthew Bower is a full-stack software engineer at Monarch.</h3>
+          <h4>Matthew Bower is a full-stack software engineer at Monarch.</h4>
         </div>
       </Modal>
     )

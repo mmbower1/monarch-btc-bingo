@@ -71,23 +71,6 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
       <LiveCommBlogModal open={isLiveCommBlogModalOpen} onClose={() => setIsLiveCommBlogModalOpen(false)}/>
       <RealTimeNewsModal open={isRealTimeNewsModalOpen} onClose={() => setIsRealTimeNewsModalOpen(false)}/>
       <EducationModal open={isEducationModalOpen} onClose={() => setIsEducationModalOpen(false)}/>
-
-      <nav>
-        <h2 className="dashboard-title">Cryptocurrency Simplified for Mass Adoption</h2>
-        {loading && profile === null ? (
-          <Spinner />
-        ) : (
-          <Fragment>
-            <p className="welcome-title">
-              <i className="fa fa-angle-double-right"></i> Welcome { user && user.name } <i className="fa fa-angle-double-left"></i></p>
-            {/* {profile !== null ? (
-              <Fragment>has</Fragment>
-            ) : (
-              <Fragment>has not</Fragment>
-            )} */}
-          </Fragment>
-          )
-        }
         <table className="top-tr">
           <thead>
               <th id="aboutUs-modal" onClick={openAboutUsModal}>About Us</th>
@@ -98,14 +81,32 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
               <th id="bingoExplained-modal" onClick={openBingoExplainedModal}>Btc Bingo Info</th>
           </thead>
         </table>
+      <nav>
+        <br />
+        {loading && profile === null ? (
+          <Spinner />
+        ) : (
+          <Fragment>
+            <img className="gravatar" src={`${user && user.avatar}`} />
+            <p className="welcome-title">
+              <i className="fa fa-angle-double-right"></i> Welcome { user && user.name } <i className="fa fa-angle-double-left"></i>
+            </p>
+            {/* {profile !== null ? (
+              <Fragment>has</Fragment>
+            ) : (
+              <Fragment>has not</Fragment>
+            )} */}
+          </Fragment>
+          )
+        }
       </nav>
       <br />
+      <h2 className="dashboard-title">Cryptocurrency Simplified for Mass Adoption</h2>
       <RandomNumber />
       <br />
       {/* <Winner /> */}
       <div className="dashboard-body">
         <div className="row-1">
-          <br />
           <th id="gameStream-modal" className="gameStream-modal">Game Stream</th>
         </div>
         <br />

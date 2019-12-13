@@ -37,15 +37,15 @@ class EducationModal extends Component {
       > 
         <div className="modal-content">
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-          Educational Resources
           <br />
+          <h3>Educational Resources</h3>
           <br />
-          <li>
+          <h4>
             <a href="https://www.youtube.com/watch?v=L-Qhv8kLESY'">1. What is Bitcoin?</a>
-          </li>
-          <li>
+          </h4>
+          <h4>
             <a href="https://www.youtube.com/watch?v=lWnAr0vX3sg">2. How to play Bingo</a>
-          </li>
+          </h4>
         </div>
       </Modal>
     )

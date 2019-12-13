@@ -20,7 +20,8 @@ a {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Righteous', cursive;
+  /* font-family: "Montserrat", sans-serif; */
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -214,7 +215,8 @@ body {
 
 /* Utilities */
 .container {
-  max-width: 1100px;
+  background-color: #FFFAFA;
+  /* max-width: 1100px; */
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
@@ -234,6 +236,10 @@ body {
 
 .dashboard-body {
   display: block;
+}
+
+.dashboard-title {
+  
 }
 
 .error-modal-writing, .success-modal-writing {
@@ -332,7 +338,7 @@ button {
 
 .gameboard {
   margin-bottom: 25px;
-  margin-left: 350px;
+  margin-left: 750px;
   margin-top: 25px;
   display: grid;
 }
@@ -342,6 +348,11 @@ button {
   -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
   -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
   box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
+}
+
+.gravatar {
+  height: 80px;
+  border-radius: 50px;
 }
 
 .hide-sm {
@@ -396,7 +407,6 @@ button {
   background: red;
   border-radius: 50%;
   font-size: 14px;
-  padding: 4px;
 }
 
 .round-img {
@@ -409,7 +419,11 @@ button {
   margin-top: 10px;
 }
 
-.row-2, .row-3 {
+.row-2 {
+  display: inline-block;
+}
+
+.row-3 {
   display: inline-block;
 }
 
@@ -432,7 +446,6 @@ button {
 }
 
 th {
-  border: 1px solid black;
   padding: 20px;
 }
 

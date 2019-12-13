@@ -31,10 +31,10 @@ export class AdsBlockchainModal extends Component {
             >
                 <div className="modal-content">
                     <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
-                    Ads
-                    <br />
                     <br />
                     <h3>Ads</h3>
+                    <br />
+                    <h4>Coming soon</h4>
                 </div>
             </Modal>
         )

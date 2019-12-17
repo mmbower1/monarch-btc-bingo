@@ -3,11 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // import { getCurrentProfile } from '../../actions/profile';
 import Modal from "react-modal";
+import axios from 'axios';
 
 class ProfileModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
+      btcAddress : "",
+      phoneNumber : "",
+      password : "",
       modalIsOpen: false,
     };
     this.props = props
@@ -23,10 +28,29 @@ class ProfileModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  render() {
+  componentDidMount() {
     const { auth } = this.props;
-    console.log('auth.user profile: ', auth.user);
+    // axios.get(`/api/users/${auth.user._id}`)
+    // .then(res => {
+    //   console.log('res: ' + JSON.stringify(res));
+    //   this.setState({
+    //     name: auth.user.name,
+    //     btcAddress : "",
+    //     phone : "",
+    //     password : "",
+    //   });
+    //   // close modal
+    //   this.props.onClose();
+    //   // set alert
+    //   this.props.setAlert('Account Updated!', 'success');
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // });
+    console.log('this.state profile: ', this.state.name);
+  }
 
+  render() {
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
@@ -46,7 +70,8 @@ class ProfileModal extends Component {
           <br />
           <h3>Profile</h3>
           <br />
-            <h4>Name: {this.state.name}</h4>
+            <h4>Name: {this.props.auth}</h4>
+            {console.log('this.state ', this.state)}
             <h4>Email: {'mttbwr91@gmail'}</h4>
             <h4>Btc Address: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</h4>
             <h4>Phone: {'(530)219-1250'}</h4>
@@ -59,7 +84,7 @@ class ProfileModal extends Component {
 
 // needs to be exported as same name (auth) from the root reducer
 const mapStateToProps = (state) => {
-  console.log('state.auth: ', state.auth);
+  console.log('state.auth profile: ', state.auth);
   return {
     auth: state.auth
   }

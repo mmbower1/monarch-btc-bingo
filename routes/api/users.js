@@ -10,6 +10,20 @@ const generateCardNumbers = require('../../helpers/generateCardNumbers');
 const ErrorResponse = require('../../middleware/error');
 const request = require('request');
 
+router.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findOne({ user: req.user }).populate('user', ['name']);
+    if (!user) {
+      return res.status(400).json({ msg: 'There is no user for this id' });
+    }
+    res.json(user);
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error users');
+  }
+});
+
 
 // @route    POST api/users
 // @desc     Register User

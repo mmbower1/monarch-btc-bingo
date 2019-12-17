@@ -4,7 +4,7 @@ import moment from 'moment'
 const Winner = () => {
     return (
         <div className="bingo-winner">
-            {/* BINGO WINNER!  */}
+            BINGO WINNER!
             @ {moment().format('MMMM Do YYYY, h:mm:ss a')}
         </div>
     )

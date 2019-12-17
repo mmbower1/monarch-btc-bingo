@@ -33,6 +33,7 @@ app.use('/api/drawnNumbers', require('./routes/api/drawnNumbers'));
 app.use('/api/forgotPassword', require('./routes/api/forgot'));
 app.use('/api/resetPassword', require('./routes/api/reset'));
 app.use('/api/stripe', require('./routes/api/stripe'));
+app.use('/api/cycles', require('./routes/api/cycles'));
 app.use(errorHandler);
 
 app.get('/', (req, res) => res.send('API Running'));

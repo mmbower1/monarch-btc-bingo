@@ -14,7 +14,7 @@ const ForgotPassword = (email, { setAlert }) => {
         }
         const body = JSON.stringify({ email });
 
-        const res = await axios.get('/api/forgotPassword', body, config);
+        await axios.get('/api/forgotPassword', body, config);
         // if () {
         //     setAlert('Email does not exist');
         // } else {

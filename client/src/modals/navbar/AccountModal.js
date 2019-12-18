@@ -40,8 +40,6 @@ class AccountModal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { auth } = this.props;
-    // let updateUser;
-    // console.log("updateUser: " + updateUser);
     // Check which fields have been updated and then submit only those fields
     let userInfo = {}
     if(this.state.name != ""){
@@ -78,7 +76,6 @@ class AccountModal extends Component {
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
     const { auth } = this.props;
-    // console.log('auth.user: ', auth.user);
 
     return (
       <Modal

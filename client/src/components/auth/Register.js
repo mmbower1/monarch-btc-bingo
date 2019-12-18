@@ -99,7 +99,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           <h5>Please keep password stored somewhere safe!</h5>
           <input type="submit" className="btn-register btn-primary" value="Register" />
           <p className="my-1">
-            Already have an account? <Link to="/login">Sign In</Link>
+            Already have an account? <Link to="/login" className="sign-in">Sign In</Link>
           </p>
         </form>
         <h5 className="footer-register">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>

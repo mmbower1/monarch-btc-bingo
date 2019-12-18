@@ -32,27 +32,25 @@ const cronjob = () => {
         console.log("--> Create new DrawnNumbers");
         availableNumbersObj = new DrawnNumbers({ numbers: originalArray });
         availableNumbers = availableNumbersObj.numbers;
-      } else if (availableNumbersObj.numbers.length === 0){
+      } else if (availableNumbersObj.numbers.length === 0) {
         console.log("--> RESET DRAWN NUMBERS");
         availableNumbers = originalArray;
       } else {
         availableNumbers = availableNumbersObj.numbers;
       }
+      console.log(' ');
       console.log("availableNumbers length is: " + availableNumbers.length);
 
       // Pick a random number from this set
       let index =  Math.floor(Math.random() * availableNumbers.length);
       let random = availableNumbers[index];
-      console.log(" ");
       console.log("Random number picked: " + random);
 
       // Update / save available number set with the random number removed
       availableNumbers.splice(index, 1);
-      // console.log(" ");
-      // console.log("--> Updated availableNumbers: " + availableNumbers);
       // Save updated array to database
-       availableNumbersObj.numbers = availableNumbers;
-       availableNumbersObj.save(function (err, num) {
+      availableNumbersObj.numbers = availableNumbers;
+      availableNumbersObj.save(function (err, num) {
         if (err) {
           return console.error(err)
         };
@@ -64,11 +62,9 @@ const cronjob = () => {
       let randomNumberObj = await RandomNumber.findOne({}, {}, { sort: { 'created_at' : -1 } });
       randomNumberObj.random = random;
       randomNumberObj.save(function (err, num) {
-        if (err) {
-          return console.error(err)
-        };
-        console.log(" ");
-        console.log("--> Updated Random Numbers: " + randomNumberObj.random);
+      if (err) {
+        return console.error(err)
+      };
       });
 
     } catch (err) {

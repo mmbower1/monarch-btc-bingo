@@ -238,10 +238,6 @@ body {
   display: block;
 }
 
-.dashboard-title {
-  
-}
-
 .error-modal-writing, .success-modal-writing {
 	font-size: 10px;
 }
@@ -337,10 +333,11 @@ button {
 }
 
 .gameboard {
-  margin-bottom: 25px;
-  margin-left: 750px;
-  margin-top: 25px;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+  margin-right: 15px;
+  margin-top: 35px;
 }
 
 .dashboard-title {
@@ -380,9 +377,13 @@ button {
   margin-bottom: 1rem;
 }
 
-.logout-button:visited {
+.logout-button {
   color: white;
 }
+
+/* .logout-button:visited {
+  color: white;
+} */
 
 .modal-content {
   color: black;
@@ -420,15 +421,22 @@ button {
 .row-1 {
   display: inline-block;
   margin-bottom: 20px;
+  margin-right: 15px;
   margin-top: 10px;
 }
 
 .row-2 {
+  margin-right: 10px;
   display: inline-block;
 }
 
 .row-3 {
   display: inline-block;
+}
+
+.sign-up, .sign-in {
+  color: rgb(221, 149, 16);
+  cursor: pointer;
 }
 
 /* .table th,

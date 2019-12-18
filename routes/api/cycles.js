@@ -4,10 +4,9 @@ const auth = require('../../middleware/auth');
 const Cycles = require('../../models/Cycles');
 
 // @route    GET api/cycles
-// @desc     
+// @desc
 // @access   Public
 router.get('/', async (req, res) => {
-    console.log("api/cycles reached");
     try {
         const cycles = await Cycles.findOne({}, {}, { sort: { 'created_at': -1 } });
         res.json(cycles);
@@ -22,10 +21,12 @@ router.get('/', async (req, res) => {
 // @access   Public
 router.post('/addWinner', async (req, res) => {
     const id = req.body.id;
+    console.log(' ');
     console.log("--> You are adding: " + id + " to cycles winner array");
+    console.log(' ');
 
     let cycles = await Cycles.findOne({}, {}, { sort: { 'created_at': -1 } });
-    let winners = cycles.winners;
+    let winners = cycles;
     if (cycles == null) {
         console.log("--> No array found");
         // Create an array, add number and then add to database
@@ -33,7 +34,9 @@ router.post('/addWinner', async (req, res) => {
         tempArray.push(id);
         cycles = new Cycles({ winners: tempArray });
     } else {
+        console.log(' ');
         console.log("---> winners: " + winners);
+        console.log(' ');
         console.log("--> JSON..cycles: " + JSON.stringify(cycles));
         cycles.winners.push(id);
     }

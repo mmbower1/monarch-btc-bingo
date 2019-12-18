@@ -6,16 +6,16 @@ import Modal from "react-modal";
 import axios from 'axios';
 
 class ProfileModal extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       name: "",
       btcAddress : "",
       phoneNumber : "",
       password : "",
-      modalIsOpen: false,
+      modalIsOpen: false
     };
-    this.props = props
+
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -28,32 +28,33 @@ class ProfileModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  componentDidMount() {
+  // this function can be replaced into a redux 'updateUser' action
+  componentDidCatch = () => {
     const { auth } = this.props;
-    // axios.get(`/api/users/${auth.user._id}`)
-    // .then(res => {
-    //   console.log('res: ' + JSON.stringify(res));
-    //   this.setState({
-    //     name: auth.user.name,
-    //     btcAddress : "",
-    //     phone : "",
-    //     password : "",
-    //   });
-    //   // close modal
-    //   this.props.onClose();
-    //   // set alert
-    //   this.props.setAlert('Account Updated!', 'success');
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    // });
-    console.log('this.state profile: ', this.state.name);
+    axios.get(`/api/users/${auth.user._id}`)
+    .then(res => {
+      console.log('res: ' + JSON.stringify(res));
+      this.setState({
+        name: auth.user.name,
+        btcAddress : "",
+        phone : "",
+        password : "",
+      });
+      // close modal
+      this.props.onClose();
+      // set alert
+      this.props.setAlert('Account Updated!', 'success');
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   render() {
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
+    const { auth } = this.props;
 
     return (
       <Modal
@@ -70,13 +71,12 @@ class ProfileModal extends Component {
           <br />
           <h3>Profile</h3>
           <br />
-            <h4>Name: {this.props.auth}</h4>
-            {console.log('this.state ', this.state)}
-            <h4>Email: {'mttbwr91@gmail'}</h4>
-            <h4>Btc Address: {'1yfdf34t43f3fdfgdsfff4w3fswdfsd'}</h4>
-            <h4>Phone: {'(530)219-1250'}</h4>
-            <h4>Password: {'******'}</h4>
-        </div>
+          <h4>Name:</h4>
+          <h4>Email:</h4>
+          <h4>Btc Address:</h4>
+          <h4>Phone:</h4>
+          <h4>Password: {'hi'}</h4>
+          </div>
       </Modal>
     );
   }

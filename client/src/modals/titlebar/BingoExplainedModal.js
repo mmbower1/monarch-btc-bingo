@@ -41,7 +41,7 @@ class BingoExplainedModal extends Component  {
           <br />
           <h4>1. Confirm you are over 18 years old. <br /><br />2. Register a new account on the homescreen with all appropriate info.
               <br /><br /> 3. Bingo numbers are generated 1-75 once a day randomly on a timer, so check everyday if your number matched! Once you 
-              gain a whole row of numbers (up, down, diagonal) your winning time will be auto recorded so we know who wins at what
+              gain a whole row of numbers (up, down, diagonal) your winning time will be logged so we know who wins at what
               exact time.<br /><br /> 4. Goodluck!
           </h4>
         </div>

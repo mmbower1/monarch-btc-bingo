@@ -72,7 +72,9 @@ const Gameboard = ({ auth: { user } }) => {
 
   // fills gameboard
   useEffect(() => {
-    const setMarker = async () => {
+      const setMarker = async () => {
+      const randomObj = await axios.get('/api/randomNumber');
+      const cycles = await axios.get('/api/cycles');
       let availableNumbers = await axios.get('/api/drawnNumbers');
       let currentElement;
       let markers = [];
@@ -82,8 +84,6 @@ const Gameboard = ({ auth: { user } }) => {
         elements[i].className = "bingo-square";
       }
       availableNumbers = availableNumbers.data.numbers;
-      const randomObj = await axios.get('/api/randomNumber');
-      const cycles = await axios.get('/api/cycles');
       console.log("-----> availableNumbers: " + availableNumbers);
       // console.log("-----> elements: " + elements);
       // console.log("-----> elements.length: " + elements.length);

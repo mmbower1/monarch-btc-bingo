@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
 class BingoExplainedModal extends Component  {
@@ -42,7 +43,8 @@ class BingoExplainedModal extends Component  {
           <h4>1. Confirm you are over 18 years old. <br /><br />2. Register a new account on the homescreen with all appropriate info.
               <br /><br /> 3. Bingo numbers are generated 1-75 once a day randomly on a timer, so check everyday if your number matched! Once you 
               gain a whole row of numbers (up, down, diagonal) your winning time will be logged so we know who wins at what
-              exact time.<br /><br /> 4. Goodluck!
+              exact time.<br /><br /> 4. Create an account at "en.gravatar.com" with your Btc Bingo email address to use a profile avatar!
+              <br></br> <br></br>5. Goodluck!
           </h4>
         </div>
       </Modal>

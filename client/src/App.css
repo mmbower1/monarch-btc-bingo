@@ -362,6 +362,7 @@ button {
 
 .hide-sms {
   margin-top: 20px;
+  margin-right: 10px;
   color: #333;
 }
 
@@ -484,8 +485,8 @@ th {
   #settings-modal,
   #testimonials-modal,
   #profile-modal,
-  #wallet-modal {
-    font-size: 10px;
+  #wallet-modal, h4 {
+    font-size: 12px;
     padding: 4px;
   }
 
@@ -495,6 +496,16 @@ th {
   #live-community-blog,
   #realTimeNews-modal {
 	  font-size: 12px;
+  }
+
+  #aboutUs-modal,
+  #bingoExplained-modal,
+  #gameArchives-modal,
+  #meetOurTeam-modal,
+  #ourMission-modal,
+  #testimonials-modal, h3 {
+    line-height: 11px;
+    padding: 5px;
   }
 
   .dash-buttons a {

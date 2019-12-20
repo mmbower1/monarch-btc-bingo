@@ -75,11 +75,11 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
           <thead>
             <tr>
               <th id="aboutUs-modal" onClick={openAboutUsModal}>About Us</th>
-              <th id="ourMission-modal" onClick={openOurMissionModal}>Mission & Vision</th>
-              <th id="meetOurTeam-modal" onClick={openMeetOurTeamModal}>Meet Our Team</th>
-              <th id="testimonials-modal" onClick={openTestimonialsModal}>Testimonials</th>
-              <th id="gameArchives-modal" onClick={openGameArchivesModal}>Game Archives</th>
               <th id="bingoExplained-modal" onClick={openBingoExplainedModal}>Btc Bingo Info</th>
+              <th id="gameArchives-modal" onClick={openGameArchivesModal}>Game Archives</th>
+              <th id="meetOurTeam-modal" onClick={openMeetOurTeamModal}>Meet Our Team</th>
+              <th id="ourMission-modal" onClick={openOurMissionModal}>Mission & Vision</th>
+              <th id="testimonials-modal" onClick={openTestimonialsModal}>Testimonials</th>
               </tr>
           </thead>
         </table>
@@ -113,15 +113,15 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
         </div>
         <br />
         <div className="row-2">
-          <span id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News</span>&nbsp;&nbsp;&nbsp;
+          <span id="live-community-blog" onClick={openLiveCommBlogModal}>Live Community Blog</span>&nbsp;&nbsp;&nbsp;
             {/* <div className="winner-div">
             </div> */}
-          <span id="live-community-blog" onClick={openLiveCommBlogModal}>Live Community Blog</span>
+          <span id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News</span>
         </div>
         <Gameboard />
         <div className="row-3">
-          <span id="education-modal" onClick={openEducationModal}>Educational Resources</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span id="ads-relative-to-blockchain" onClick={openAdsModal}>Ads Relative to Blockchain</span>
+          <span id="ads-relative-to-blockchain" onClick={openAdsModal}>Ads Relative to Blockchain</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span id="education-modal" onClick={openEducationModal}>Educational Resources</span>
         </div>
         <br />
         <br />

@@ -1,23 +1,26 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import { getCurrentProfile } from '../../actions/profile';
 import Modal from "react-modal";
 import axios from 'axios';
 
 class ProfileModal extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: "",
       btcAddress : "",
       phoneNumber : "",
       password : "",
-      modalIsOpen: false
+      modalIsOpen: false,
     };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    // if (this.props.open == true) {
+    //   this.state.modalIsOpen = true
+    // }
   }
 
   openModal() {
@@ -52,7 +55,7 @@ class ProfileModal extends Component {
 
   render() {
     this.state.modalIsOpen = this.props.open;
-    // this.setState({ modelIsOpen: true });
+    // this.setState({ modalIsOpen: true });
     // this.setState({ modalIsOpen });
     const { auth } = this.props;
 

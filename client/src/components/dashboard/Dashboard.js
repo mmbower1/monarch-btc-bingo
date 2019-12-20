@@ -90,7 +90,7 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
           <Spinner />
         ) : (
           <Fragment>
-            <img className="gravatar" src={`${user && user.avatar}`} />
+            <img className="gravatar" src={`${user && user.avatar}`} alt="" />
             <p className="welcome-title">
               <i className="fa fa-angle-double-right"></i> Welcome { user && user.name } <i className="fa fa-angle-double-left"></i>
             </p>

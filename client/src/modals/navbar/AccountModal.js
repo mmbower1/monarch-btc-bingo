@@ -42,13 +42,13 @@ class AccountModal extends Component {
     const { auth } = this.props;
     // Check which fields have been updated and then submit only those fields
     let userInfo = {}
-    if(this.state.name != ""){
+    if(this.state.name !== ""){
       userInfo.name = this.state.name;
     }
-    if(this.state.phone != ""){
+    if(this.state.phone !== ""){
       userInfo.phoneNumber = this.state.phone;
     }
-    if(this.state.btcAddress != ""){
+    if(this.state.btcAddress !== ""){
       userInfo.btcAddress = this.state.btcAddress;
     }
     console.log("userInfo: " + JSON.stringify(userInfo));

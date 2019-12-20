@@ -20,38 +20,38 @@ const Gameboard = ({ auth: { user } }) => {
       // 15 ...
       // 20
       //
-      // Checking horizontally
+      // if horizontal bingo
       if ((i % 5 === 0) && markers[i] && markers[i + 1] && markers[i + 2] && markers[i + 3] && markers[i + 4]) {
         console.log("Winner! horizontal " + i);
         setWinner(true);
         localStorage.setItem('winner', true);
         try {
-          const res = await axios.post('/api/cycles/addWinner', { id: 5 });
-          console.log('res', res);
+          const id = await axios.post('/api/cycles/addWinner', { id: user._id });
+          console.log('id: ', id);
 
         } catch (err) {
           console.log(err)
         }
       }
-      // Check Vertically
+      // if vertical bingo
       if ((i < 5) && markers[i] && markers[i + 5] && markers[i + 10] && markers[i + 15] && markers[i + 20]) {
         // console.log("Winner! vertical " + i);
         setWinner(true);
         try {
-          const res = await axios.post('/api/cycles/addWinner', { id: 5 });
-          console.log('res', res);
+          const id = await axios.post('/api/cycles/addWinner', { id: user._id });
+          console.log('id: ', id);
 
         } catch (err) {
           console.log(err)
         }
       }
-      // Check Diagonally
+      // if diagonal bingo
       if ((i === 0) && markers[i] && markers[i + 6] && markers[i + 12] && markers[i + 18] && markers[i + 24]) {
         console.log("Winner! diagonal " + i);
         setWinner(true);
         try {
-          const res = await axios.post('/api/cycles/addWinner', { id: 5 });
-          console.log('res', res);
+          const id = await axios.post('/api/cycles/addWinner', { id: user._id });
+          console.log('id: ', id);
 
         } catch (err) {
           console.log(err)
@@ -60,8 +60,8 @@ const Gameboard = ({ auth: { user } }) => {
         console.log('Winner! Diagonal ' + i);
         setWinner(true);
         try {
-          const res = await axios.post('/api/cycles/addWinner', { id: 5 });
-          console.log('res', res);
+          const id = await axios.post('/api/cycles/addWinner', { id: user._id });
+          console.log('id: ', id);
 
         } catch (err) {
           console.log(err)
@@ -72,7 +72,7 @@ const Gameboard = ({ auth: { user } }) => {
 
   // fills gameboard
   useEffect(() => {
-      const setMarker = async () => {
+    const setMarker = async () => {
       const randomObj = await axios.get('/api/randomNumber');
       const cycles = await axios.get('/api/cycles');
       let availableNumbers = await axios.get('/api/drawnNumbers');
@@ -99,12 +99,14 @@ const Gameboard = ({ auth: { user } }) => {
             markers[i] = true;
           }
         }
+      } else if (winner) {
+        setRedMarker(false);
       }
       // check winning condition
       didPlayerWin(markers);
     }
     setMarker();
-  }, [redMarker])
+  }, [])
 
   const isWinner = winner;
   let winnerMessage;

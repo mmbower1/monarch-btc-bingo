@@ -45,7 +45,7 @@ router.post(
     const { name, email, btcAddress, phoneNumber, password } = req.body;
     try {
       // see if user exists
-      let user = await User.findOne({ email });
+      let user = await User.findOne({ email }, { unqiue: true });
       if (user) {
         return res.status(400).json({ errors: [{ msg: 'Email already taken!' }] });
       }

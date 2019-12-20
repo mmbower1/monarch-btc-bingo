@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import PropTypes from 'prop-types';
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 // import loginPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
 
 

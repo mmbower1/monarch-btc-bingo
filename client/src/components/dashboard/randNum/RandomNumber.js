@@ -17,7 +17,6 @@ const RandomNumber = () => {
       // console.log("currentRandomNumber state after if: " + randomNumber);
       return currentRandomNumber;
     }
-
     const grabAvailableNumbers = async () => {
       const availableNumbersObj = await axios.get('/api/drawnNumbers');
       const currentAvailableNumbers = availableNumbersObj.data.numbers;

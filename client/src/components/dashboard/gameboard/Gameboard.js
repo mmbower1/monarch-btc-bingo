@@ -26,11 +26,11 @@ const Gameboard = ({ auth: { user } }) => {
         setWinner(true);
         localStorage.setItem('winner', true);
         try {
-          const id = await axios.post('/api/cycles/addWinner', { id: user._id });
+          const id = await axios.post('/api/cycles/addWinner', { id: user && user._id });
           console.log('id: ', id);
 
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
       }
       // if vertical bingo
@@ -38,7 +38,7 @@ const Gameboard = ({ auth: { user } }) => {
         // console.log("Winner! vertical " + i);
         setWinner(true);
         try {
-          const id = await axios.post('/api/cycles/addWinner', { id: user._id });
+          const id = await axios.post('/api/cycles/addWinner', { id: user && user._id });
           console.log('id: ', id);
 
         } catch (err) {
@@ -50,7 +50,7 @@ const Gameboard = ({ auth: { user } }) => {
         console.log("Winner! diagonal " + i);
         setWinner(true);
         try {
-          const id = await axios.post('/api/cycles/addWinner', { id: user._id });
+          const id = await axios.post('/api/cycles/addWinner', { id: user && user._id });
           console.log('id: ', id);
 
         } catch (err) {
@@ -60,7 +60,7 @@ const Gameboard = ({ auth: { user } }) => {
         console.log('Winner! Diagonal ' + i);
         setWinner(true);
         try {
-          const id = await axios.post('/api/cycles/addWinner', { id: user._id });
+          const id = await axios.post('/api/cycles/addWinner', { id: user && user._id });
           console.log('id: ', id);
 
         } catch (err) {
@@ -73,22 +73,26 @@ const Gameboard = ({ auth: { user } }) => {
   // fills gameboard
   useEffect(() => {
     const setMarker = async () => {
-      const randomObj = await axios.get('/api/randomNumber');
-      const cycles = await axios.get('/api/cycles');
+      await axios.get('/api/randomNumber');
+      await axios.get('/api/cycles');
+
       let availableNumbers = await axios.get('/api/drawnNumbers');
       let currentElement;
       let markers = [];
+
       elements = document.getElementsByClassName("bingo-square");
       elements.className = "bingo-square";
+      availableNumbers = availableNumbers.data.numbers;
+
       for (var i = 0; i < elements.length; i++) {
         elements[i].className = "bingo-square";
       }
-      availableNumbers = availableNumbers.data.numbers;
+
       console.log("-----> availableNumbers: " + availableNumbers);
       // console.log("-----> elements: " + elements);
       // console.log("-----> elements.length: " + elements.length);
       if (!winner) {
-        for (var i = 0; i < elements.length; i++) {
+        for (i = 0; i < elements.length; i++) {
           currentElement = elements[i];
           currentNumber = Number(currentElement.innerHTML);
           // console.log("currentNumber: " + currentNumber);
@@ -99,8 +103,6 @@ const Gameboard = ({ auth: { user } }) => {
             markers[i] = true;
           }
         }
-      } else if (winner) {
-        setRedMarker(false);
       }
       // check winning condition
       didPlayerWin(markers);

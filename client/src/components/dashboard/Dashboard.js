@@ -14,7 +14,7 @@ import Gameboard from './gameboard/Gameboard';
 import AboutUsModal from '../../modals/titlebar/AboutUsModal';
 import MeetOurTeamModal from '../../modals/titlebar/MeetOurTeamModal';
 import OurMissionModal from '../../modals/titlebar/OurMissionModal';
-import TestimonialsModal from '../../modals/titlebar/TestimonialsModal';
+// import TestimonialsModal from '../../modals/titlebar/TestimonialsModal';
 import BingoExplainedModal from '../../modals/titlebar/BingoExplainedModal';
 import GameArchivesModal from '../../modals/titlebar/GameArchivesModal';
 // gameboard modals
@@ -31,12 +31,12 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
   const [isBingoExplainedModalOpen, setIsBingoExplainedModalOpen] = useState(false);
   const [isOurMissionModalOpen, setIsOurMissionModalOpen] = useState(false);
   const [isMeetOurTeamModalOpen, setIsMeetOurTeamModalOpen] = useState(false);
-  const [isTestimonialsModalOpen, setIsTestimonialsModalOpen] = useState(false);
+  // const [isTestimonialsModalOpen, setIsTestimonialsModalOpen] = useState(false);
   const [isGameArchivesModalOpen, setIsGameArchivesModalOpen] = useState(false);
   const openAboutUsModal = () => { setIsAboutUsModalOpen(true) }
   const openOurMissionModal = () => { setIsOurMissionModalOpen(true) }
   const openMeetOurTeamModal = () => { setIsMeetOurTeamModalOpen(true) }
-  const openTestimonialsModal = () => { setIsTestimonialsModalOpen(true) }
+  // const openTestimonialsModal = () => { setIsTestimonialsModalOpen(true) }
   const openGameArchivesModal = () => { setIsGameArchivesModalOpen(true) }
   const openBingoExplainedModal = () => { setIsBingoExplainedModalOpen(true) }
   // gameboard modals
@@ -63,7 +63,7 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
       <AboutUsModal open={isAboutUsModalOpen} onClose={() => setIsAboutUsModalOpen(false)}/>
       <OurMissionModal open={isOurMissionModalOpen} onClose={() => setIsOurMissionModalOpen(false)}/>
       <MeetOurTeamModal open={isMeetOurTeamModalOpen} onClose={() => setIsMeetOurTeamModalOpen(false)}/>
-      <TestimonialsModal open={isTestimonialsModalOpen} onClose={() => setIsTestimonialsModalOpen(false)}/>
+      {/* <TestimonialsModal open={isTestimonialsModalOpen} onClose={() => setIsTestimonialsModalOpen(false)}/> */}
       <GameArchivesModal open={isGameArchivesModalOpen} onClose={() => setIsGameArchivesModalOpen(false)}/>
       <BingoExplainedModal open={isBingoExplainedModalOpen} onClose={() => setIsBingoExplainedModalOpen(false)}/>
       {/* gameboard modals */}
@@ -79,7 +79,7 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
               <th id="gameArchives-modal" onClick={openGameArchivesModal}>Game Archives</th>
               <th id="meetOurTeam-modal" onClick={openMeetOurTeamModal}>Meet Our Team</th>
               <th id="ourMission-modal" onClick={openOurMissionModal}>Mission & Vision</th>
-              <th id="testimonials-modal" onClick={openTestimonialsModal}>Testimonials</th>
+              {/* <th id="testimonials-modal" onClick={openTestimonialsModal}>Testimonials</th> */}
               </tr>
           </thead>
         </table>

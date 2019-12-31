@@ -5,9 +5,10 @@ import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
-// import registerPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
+// import axios from 'axios';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +19,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   });
 
   const { name, email, btcAddress, phoneNumber, password, password2 } = formData;
+
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
   const onSubmit = e => {
     e.preventDefault();
     if (password !== password2) {

@@ -28,17 +28,18 @@ class RealTimeNewsModal extends Component  {
       .then(json => {
         this.setState({ loading: false, items: json })
       })
-    }
+      this.setState({})
+  }
 
   render() {
     var { loading, items } = this.state;
-
 
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modalIsOpen: true });
     return (
       <Modal className="bg-modal" isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} appElement={document.getElementById('root')}> 
         <div className="modal-content">
+          {/* {this.state.modalIsOpen ? this.props.onRequestClose : this.props.isOpen} */}
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
           <br />
           <h3>Real Time News</h3>

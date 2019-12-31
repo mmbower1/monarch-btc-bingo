@@ -62,6 +62,10 @@ const Login = ({ login, isAuthenticated }) => {
           </p>
           <Link to='/forgotPassword'>Forgot Password?</Link>
         </form>
+        <br />
+        <br />
+        <i class="fas fa-arrow-left"></i>&nbsp;
+        <Link to='/stripe'>Go Back</Link>
         <h5 className="footer-login">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
       </Fragment>
     </div>

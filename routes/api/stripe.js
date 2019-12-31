@@ -10,10 +10,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res, next) => {
-    let error;
-    let status;
+    // var error;
+    // var status;
     try {
         const { product, token } = req.body;
+        console.log('req.body: ', req.body)
         const customer = await stripe.customers.create({
             email: token.email,
             source: token.id
@@ -41,9 +42,9 @@ router.post('/', async (req, res, next) => {
             potencyKey
         })
         console.log("Charge:", { charge });
-        status = "success";
+        // status = "success";
     } catch (err) {
-        status = "failure"
+        // status = "failure"
         return next(new ErrorResponse('Stripe payment could not be sent', 500))
     }
 })

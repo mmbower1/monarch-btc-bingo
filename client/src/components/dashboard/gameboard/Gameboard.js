@@ -11,8 +11,10 @@ const Gameboard = ({ auth: { user } }) => {
   var currentNumber = 0;
   const [redMarker, setRedMarker] = useState(false);
   const [winner, setWinner] = useState(false);
+  console.log('TOP USER: '  + JSON.stringify(user));
 
   const didPlayerWin = async (markers) => {
+    console.log('didplayerwin: '  + JSON.stringify(user));
     for (var i = 0; i < markers.length; i++) {
       // 0 1 2 3 4
       // 5 6..

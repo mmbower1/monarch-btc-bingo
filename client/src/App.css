@@ -440,6 +440,12 @@ button {
   cursor: pointer;
 }
 
+.stripe-container {
+  margin: 20px 800px 0 800px;
+  padding-bottom: 50px;
+  outline: solid #26436fbb 1px;
+}
+
 /* .table th,
 .table td {
   padding: 1rem;

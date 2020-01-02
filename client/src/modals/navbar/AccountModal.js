@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { ModalContent, ModalTitle } from '../Modal.styles.js';
 import Modal from "react-modal";
 import axios from "axios";
 import { setAlert } from "../../actions/alert";
@@ -90,7 +91,7 @@ class AccountModal extends Component {
             +
           </div>
           <br />
-          <h3>Edit Account Info</h3>
+          <ModalTitle>Edit Account Info</ModalTitle>
           <br />
           <form id="edit-form" className="form" onSubmit={this.onSubmit}>
             <div className="edit-div">

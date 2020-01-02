@@ -1,14 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import { Footer } from '../../footer/Footer.styles.js';
 // import Navbar from '../layout/Navbar';
-import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
+import { setAlert } from '../../../actions/alert';
+import { register } from '../../../actions/auth';
 import PropTypes from 'prop-types';
 // import axios from 'axios';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,38 +44,38 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           <h1 className="large text-primary">Sign Up</h1>
           <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
           <div className="form-group">
-            <input 
-              type="text" 
-              placeholder="Name" 
-              name="name" 
-              value={name} 
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              value={name}
               onChange={e => onChange(e)}
             />
           </div>
           <div className="form-group">
-            <input 
-              type="email" 
-              placeholder="Email Address" 
+            <input
+              type="email"
+              placeholder="Email Address"
               name="email"
-              value={email} 
+              value={email}
               onChange={e => onChange(e)}
             />
           </div>
           <div className="form-group">
-            <input 
-              type="text" 
-              placeholder="BTC Address" 
+            <input
+              type="text"
+              placeholder="BTC Address"
               name="btcAddress"
-              value={btcAddress} 
+              value={btcAddress}
               onChange={e => onChange(e)}
             />
           </div>
           <div className="form-group">
-            <input 
-              type="phoneNumber" 
-              placeholder="Phone Number" 
+            <input
+              type="phoneNumber"
+              placeholder="Phone Number"
               name="phoneNumber"
-              value={phoneNumber} 
+              value={phoneNumber}
               onChange={e => onChange(e)}
             />
           </div>
@@ -85,7 +85,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               placeholder="Password"
               name="password"
               minLength="6"
-              value={password} 
+              value={password}
               onChange={e => onChange(e)}
             />
           </div>
@@ -95,7 +95,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               placeholder="Confirm Password"
               name="password2"
               minLength="6"
-              value={password2} 
+              value={password2}
               onChange={e => onChange(e)}
             />
           </div>
@@ -105,7 +105,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             Already have an account? <Link to="/login" className="sign-in">Sign In</Link>
           </p>
         </form>
-        <h5 className="footer-register">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
+        <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </Fragment>
     </div>
   )

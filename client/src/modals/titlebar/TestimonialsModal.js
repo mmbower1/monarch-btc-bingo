@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { ModalContent, ModalBody, ModalTitle } from '../Modal.styles.js';
 import Modal from 'react-modal';
 
 class TestimonialsModal extends Component {
   constructor() {
     super();
-    
+
 		this.state = {
 			modalIsOpen: false,
 		};
@@ -20,26 +21,27 @@ class TestimonialsModal extends Component {
 	closeModal() {
 		this.setState({ modalIsOpen: false });
 	}
-  
+
   render() {
     this.state.modalIsOpen = this.props.open;
     // this.setState({ modelIsOpen: true });
     // this.setState({ modalIsOpen });
 
     return (
-      <Modal 
-        className="bg-modal" 
-        isOpen={this.state.modalIsOpen} 
+      <Modal
+        className="bg-modal"
+        isOpen={this.state.modalIsOpen}
         onRequestClose={this.closeModal}
         // gets rid of ERR: 'Please use `Modal.setAppElement(el)` or set `appElement={el}` 
         appElement={document.getElementById('root')}
-      > 
-        <div className="modal-content">
+      >
+        <ModalContent>
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
           <br />
-          <h3>Testimonials</h3>
+          <ModalTitle>Testimonials</ModalTitle>
           <br />
-        </div>
+          <ModalBody>Coming soon</ModalBody>
+        </ModalContent>
       </Modal>
     )
   }

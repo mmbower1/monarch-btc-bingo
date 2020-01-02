@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// styled components
+import { Footer } from '../footer/Footer.styles.js';
+import { Row1, Row2, Row3 } from '../gameboard/Gameboard.styles.js';
+// actions
 import { getCurrentProfile } from '../../actions/profile';
-// import Navbar from '../layout/Navbar';
+// components
 import Spinner from '../layout/Spinner';
-import RandomNumber from './randNum/RandomNumber';
-import Gameboard from './gameboard/Gameboard';
-// import Winner from './winner/Winner';
-// import axios from 'axios';
-
+import RandomNumber from '../randNum/RandomNumber';
+import Gameboard from '../gameboard/Gameboard';
 // titlebar modals
 import AboutUsModal from '../../modals/titlebar/AboutUsModal';
 import MeetOurTeamModal from '../../modals/titlebar/MeetOurTeamModal';
@@ -19,6 +19,7 @@ import BingoExplainedModal from '../../modals/titlebar/BingoExplainedModal';
 import GameArchivesModal from '../../modals/titlebar/GameArchivesModal';
 // gameboard modals
 import RealTimeNewsModal from '../../modals/gameboard/RealTimeNewsModal';
+import GamestreamModal from '../../modals/gameboard/GamestreamModal';
 import EducationModal from '../../modals/gameboard/EduResourcesModal';
 import LiveCommBlogModal from '../../modals/gameboard/LiveCommBlogModal';
 import AdsRelativeToBlockchain from '../../modals/gameboard/AdsBlockchainModal';
@@ -42,10 +43,12 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
   // gameboard modals
   const [isAdsModalOpen, setIsAdsModalOpen] = useState(false);
   const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
+  const [isGamestreamModalOpen, setIsGamestreamModalOpen] = useState(false);
   const [isRealTimeNewsModalOpen, setIsRealTimeNewsModalOpen] = useState(false);
   const [isLiveCommBlogModalOpen, setIsLiveCommBlogModalOpen] = useState(false);
   const openAdsModal = () => { setIsAdsModalOpen(true) }
   const openEducationModal = () => { setIsEducationModalOpen(true) }
+  const openGamestreamModal = () => { setIsGamestreamModalOpen(true) }
   const openRealTimeNewsModal = () => { setIsRealTimeNewsModalOpen(true) }
   const openLiveCommBlogModal = () => { setIsLiveCommBlogModalOpen(true) }
 
@@ -69,6 +72,7 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
       {/* gameboard modals */}
       <AdsRelativeToBlockchain open={isAdsModalOpen} onClose={() => setIsAdsModalOpen(false)}/>
       <LiveCommBlogModal open={isLiveCommBlogModalOpen} onClose={() => setIsLiveCommBlogModalOpen(false)}/>
+      <GamestreamModal open={isGamestreamModalOpen} onClose={() => setIsGamestreamModalOpen(false)} />
       <RealTimeNewsModal open={isRealTimeNewsModalOpen} onClose={() => setIsRealTimeNewsModalOpen(false)}/>
       <EducationModal open={isEducationModalOpen} onClose={() => setIsEducationModalOpen(false)}/>
         <table className="top-tr">
@@ -108,25 +112,25 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
       <br />
       {/* <Winner /> */}
       <div className="dashboard-body">
-        <div className="row-1">
-          <span id="gameStream-modal" className="gameStream-modal">Game Stream</span>
-        </div>
+        <Row1>
+          <span id="gameStream-modal" className="gameStream-modal" onClick={openGamestreamModal}>Game Stream</span>
+        </Row1>
         <br />
-        <div className="row-2">
+        <Row2>
           <span id="live-community-blog" onClick={openLiveCommBlogModal}>Live Community Blog</span>&nbsp;&nbsp;&nbsp;
             {/* <div className="winner-div">
             </div> */}
           <span id="realTimeNews-modal" onClick={openRealTimeNewsModal}>Real Time News</span>
-        </div>
+        </Row2>
         <Gameboard />
-        <div className="row-3">
+        <Row3>
           <span id="ads-relative-to-blockchain" onClick={openAdsModal}>Ads Relative to Blockchain</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span id="education-modal" onClick={openEducationModal}>Educational Resources</span>
-        </div>
+        </Row3>
         <br />
         <br />
       </div>
-      <h5 className="footer-dashboard">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
+      <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import { ModalContent, ModalBody, ModalTitle } from '../Modal.styles.js';
 
 class RealTimeNewsModal extends Component  {
   constructor() {
@@ -38,18 +39,18 @@ class RealTimeNewsModal extends Component  {
     // this.setState({ modalIsOpen: true });
     return (
       <Modal className="bg-modal" isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} appElement={document.getElementById('root')}> 
-        <div className="modal-content">
+        <ModalContent>
           {/* {this.state.modalIsOpen ? this.props.onRequestClose : this.props.isOpen} */}
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
           <br />
-          <h3>Real Time News</h3>
+          <ModalTitle>Real Time News</ModalTitle>
           <br />
             {items.map(item => (
-              <h4 key={item.id}>
+              <ModalBody key={item.id}>
                 NAME: {item.name},&nbsp;&nbsp; CITY: {item.address.city}
-              </h4>
+              </ModalBody>
             ))};
-        </div>
+        </ModalContent>
       </Modal>
     )
   }

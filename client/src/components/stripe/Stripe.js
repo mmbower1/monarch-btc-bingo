@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
+import { Footer } from '../footer/Footer.styles.js'
+import { StripeContainer, StripeTest } from './Stripe.styles.js';
 
 export const Stripe = () => {
     const [product] = useState({
@@ -30,7 +32,7 @@ export const Stripe = () => {
 
     return (
       <div>
-        <div className='stripe-container'>
+        <StripeContainer>
             <br />
             <StripeCheckout
               label='Pay With Stripe'
@@ -44,16 +46,17 @@ export const Stripe = () => {
             />
               <br />
               <br />
-              <div className='test-warning'>
+              <StripeTest>
                 Test credit card:
                 <br />
                 4242 4242 4242 4242
                 Exp: 01/20 - CVV: 123
-              </div>
-            </div>
+              </StripeTest>
+            </StripeContainer>
           <br />
           <Link to='/login'> Skip</Link> &nbsp;
-          <i class="fas fa-arrow-right"></i>
+          <i className="fas fa-arrow-right"></i>
+          <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </div>
     )
 }

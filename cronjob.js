@@ -26,6 +26,7 @@ const cronjob = () => {
         console.log("--> Create new DrawnNumbers");
         availableNumbersObj = new DrawnNumbers({ numbers: originalArray });
         availableNumbers = availableNumbersObj.numbers;
+
       } else if (availableNumbersObj.numbers.length === 0) {
         console.log("--> RESET DRAWN NUMBERS");
         availableNumbers = originalArray;
@@ -58,7 +59,7 @@ const cronjob = () => {
       availableNumbers.splice(index, 1);
       // Save updated array to database
       availableNumbersObj.numbers = availableNumbers;
-      availableNumbersObj.save(function (err, num) {
+      availableNumbersObj.save((err, num) => {
         if (err) {
           return console.error(err)
         };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
+import { ModalContent, ModalBody, ModalTitle } from '../Modal.styles.js';
 // import { getCurrentProfile } from '../../actions/profile';
 import Modal from "react-modal";
 import axios from 'axios';
@@ -67,19 +68,21 @@ class ProfileModal extends Component {
         // gets rid of ERR: 'Please use `Modal.setAppElement(el)` or set `appElement={el}`
         appElement={document.getElementById("root")}
       >
-        <div className="modal-content">
+        <ModalContent>
           <div className="close-modal" onClick={() => this.props.onClose()}>
             +
           </div>
           <br />
-          <h3>Profile</h3>
+          <ModalTitle>Profile</ModalTitle>
           <br />
-          <h4>Name:</h4>
-          <h4>Email:</h4>
-          <h4>Btc Address:</h4>
-          <h4>Phone:</h4>
-          <h4>Password: {'hi'}</h4>
-          </div>
+          <ModalBody>
+            <h4>Name:</h4>
+            <h4>Email:</h4>
+            <h4>Btc Address:</h4>
+            <h4>Phone:</h4>
+            <h4>Password: {'hi'}</h4>
+          </ModalBody>
+        </ModalContent>
       </Modal>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import { ModalContent, ModalBody, ModalTitle } from '../Modal.styles.js';
 
 export class SecurityModal extends Component {
     constructor() {
@@ -31,13 +32,13 @@ export class SecurityModal extends Component {
                 // gets rid of ERR: 'Please use `Modal.setAppElement(el)` or set `appElement={el}` 
                 appElement={document.getElementById('root')}
             >
-                <div className="modal-content">
+                <ModalContent>
                     <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
                     <br />
-                    <h3>Security</h3>
+                    <ModalTitle>Security</ModalTitle>
                     <br />
-                    <h4>NodeJS, Express, Middleware authentication</h4>
-                </div>
+                    <ModalBody>NodeJS, Express, Middleware authentication</ModalBody>
+                </ModalContent>
             </Modal>
         )
     }

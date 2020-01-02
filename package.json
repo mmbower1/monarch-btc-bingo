@@ -32,6 +32,7 @@
     "react-stripe-checkout": "^2.6.3",
     "request": "^2.88.0",
     "stripe": "^7.14.0",
+    "styled-components": "^4.4.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {

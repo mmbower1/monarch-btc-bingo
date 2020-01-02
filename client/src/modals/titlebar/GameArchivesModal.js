@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ModalContent, ModalBody, ModalTitle } from '../Modal.styles.js';
 import Modal from 'react-modal';
 
 class GameArchivesModal extends Component  {
@@ -34,12 +35,13 @@ class GameArchivesModal extends Component  {
         // gets rid of ERR: 'Please use `Modal.setAppElement(el)` or set `appElement={el}` 
         appElement={document.getElementById('root')}
       > 
-        <div className="modal-content">
+        <ModalContent>
           <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
           <br />
-          <h3>Game Archives</h3>
+          <ModalTitle>Game Archives</ModalTitle>
           <br />
-        </div>
+          <ModalBody>Coming soon</ModalBody>
+        </ModalContent>
       </Modal>
     )
   }

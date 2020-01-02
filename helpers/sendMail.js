@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 
+// for password reset
 const sendEmail = async (options) => {
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ModalContent, ModalBody, ModalTitle } from '../Modal.styles.js';
 import Modal from "react-modal";
 // import axios from "axios";
 
@@ -34,16 +35,15 @@ class WalletModal extends Component {
         // gets rid of ERR: 'Please use `Modal.setAppElement(el)` or set `appElement={el}`
         appElement={document.getElementById("root")}
       >
-        <div className="modal-content">
+        <ModalContent>
           <div className="close-modal" onClick={() => this.props.onClose()}>
             +
           </div>
           <br />
-          <h3>Wallet</h3>
+          <ModalTitle>Wallet</ModalTitle>
           <br />
-          <h4>Coming Soon</h4>
-          <li>{this.getProfileData}</li>
-        </div>
+          <ModalBody>Coming Soon</ModalBody>
+        </ModalContent>
       </Modal>
     );
   }

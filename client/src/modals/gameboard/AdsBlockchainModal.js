@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ModalContent, ModalBody, ModalTitle } from '../Modal.styles.js';
 import Modal from 'react-modal';
 
 export class AdsBlockchainModal extends Component {
@@ -29,13 +30,13 @@ export class AdsBlockchainModal extends Component {
                 // gets rid of ERR: 'Please use `Modal.setAppElement(el)` or set `appElement={el}` 
                 appElement={document.getElementById('root')}
             >
-                <div className="modal-content">
+                <ModalContent>
                     <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
                     <br />
-                    <h3>Ads</h3>
+                    <ModalTitle>Ads</ModalTitle>
                     <br />
-                    <h4>Coming soon</h4>
-                </div>
+                    <ModalBody>Coming soon</ModalBody>
+                </ModalContent>
             </Modal>
         )
     }

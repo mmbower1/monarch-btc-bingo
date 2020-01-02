@@ -1,4 +1,4 @@
-function generateCardNumbers(){
+function generateCardNumbers() {
   //[] --> [1-15, 16-30, 31-45, 46-60, 61-75]
   let lowerRange = 1;
   let upperRange = 0;
@@ -10,7 +10,7 @@ function generateCardNumbers(){
     for (var j = 0; j < 5; j++) {
       // console.log("================= Inner loop ");
       let random = Math.floor(Math.random() * (upperRange - lowerRange + 1)) + lowerRange;
-      while(cardNumbers.indexOf(random) != -1){
+      while (cardNumbers.indexOf(random) != -1) {
         random = Math.floor(Math.random() * (upperRange - lowerRange + 1)) + lowerRange;
       }
       cardNumbers.push(random);

@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Footer } from '../../footer/Footer.styles.js';
 // import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types'
-import { login } from '../../actions/auth';
+import { login } from '../../../actions/auth';
 // import loginPageLlogo from '../../img/logo-concept_rev_w-cards_400.png';
 
 const Login = ({ login, isAuthenticated }) => {
@@ -51,7 +52,7 @@ const Login = ({ login, isAuthenticated }) => {
               placeholder="Password"
               name="password"
               minLength="6"
-              value={password} 
+              value={password}
               onChange={e => onChange(e)}
             />
           </div>
@@ -66,7 +67,7 @@ const Login = ({ login, isAuthenticated }) => {
         <br />
         <i class="fas fa-arrow-left"></i>&nbsp;
         <Link to='/stripe'>Go Back</Link>
-        <h5 className="footer-login">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
+        <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </Fragment>
     </div>
   )

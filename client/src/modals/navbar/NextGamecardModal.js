@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ModalContent, ModalBody, ModalTitle } from '../Modal.styles.js';
 import Modal from 'react-modal';
 
 export class NextGamecardModal extends Component {
@@ -29,11 +30,13 @@ export class NextGamecardModal extends Component {
                 // gets rid of ERR: 'Please use `Modal.setAppElement(el)` or set `appElement={el}` 
                 appElement={document.getElementById('root')}
             >
-                <div className="modal-content">
+                <ModalContent>
                     <div className="close-modal" onClick={() => this.props.onClose()}>+</div>
                     <br />
-                    <h3>Next Gamecard</h3>
-                </div>
+                    <ModalTitle>Next Gamecard</ModalTitle>
+                    <br />
+                    <ModalBody>Next gamecard</ModalBody>
+                </ModalContent>
             </Modal>
         )
     }

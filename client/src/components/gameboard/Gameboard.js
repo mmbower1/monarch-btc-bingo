@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 // import { loadUser } from '../../../actions/auth';
 import PropTypes from 'prop-types';
+import { GameboardContainer, GameboardTopRow } from './Gameboard.styles.js';
 import axios from 'axios';
 // import RandomNumber from '../randNum/RandomNumber';
 import Winner from '../winner/Winner';
@@ -11,7 +12,11 @@ const Gameboard = ({ auth: { user } }) => {
   var currentNumber = 0;
   const [redMarker, setRedMarker] = useState(false);
   const [winner, setWinner] = useState(false);
-  console.log('TOP USER: '  + JSON.stringify(user));
+  // const [user2, setUser2] = useState(false);
+  // console.log('TOP USER: '  + JSON.stringify(user));
+  // useEffect(() => {
+  //   setUser2(user);
+  // }, [user])
 
   const didPlayerWin = async (markers) => {
     console.log('didplayerwin: '  + JSON.stringify(user));
@@ -124,7 +129,7 @@ const Gameboard = ({ auth: { user } }) => {
         <br />
         {winnerMessage}
       </span>
-      <div className="gameboard">
+      <GameboardContainer>
         <table>
           <tbody>
             <tr>
@@ -171,7 +176,7 @@ const Gameboard = ({ auth: { user } }) => {
             </tr>
           </tbody>
         </table>
-      </div>
+      </GameboardContainer>
     </div>
   )
 }

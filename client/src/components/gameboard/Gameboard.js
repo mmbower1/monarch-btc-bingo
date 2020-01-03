@@ -2,12 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 // import { loadUser } from '../../../actions/auth';
 import PropTypes from 'prop-types';
-import { GameboardContainer, GameboardTopRow } from './Gameboard.styles.js';
+import { GameboardContainer } from './Gameboard.styles.js';
 import axios from 'axios';
 // import RandomNumber from '../randNum/RandomNumber';
 import Winner from '../winner/Winner';
 
+var user2 = "?";
 const Gameboard = ({ auth: { user } }) => {
+  console.log("LOOK HERE: ", JSON.stringify(user));
+  if (user != null) {
+    user2 = JSON.stringify(user);
+    console.log("LLOOOOKKKK HEEREE: ", JSON.stringify(user2));
+  } else {
+    console.log('OH NOOOOOO')
+  }
+
   let elements = document.getElementsByClassName("bingo-square");
   var currentNumber = 0;
   const [redMarker, setRedMarker] = useState(false);
@@ -19,7 +28,7 @@ const Gameboard = ({ auth: { user } }) => {
   // }, [user])
 
   const didPlayerWin = async (markers) => {
-    console.log('didplayerwin: '  + JSON.stringify(user));
+    console.log('didplayerwin: ', user2);
     for (var i = 0; i < markers.length; i++) {
       // 0 1 2 3 4
       // 5 6..

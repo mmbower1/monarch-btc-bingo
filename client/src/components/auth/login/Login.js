@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+// styles
+import { FormGroup } from './Login.styles.js';
 import { Footer } from '../../footer/Footer.styles.js';
 // import Navbar from '../layout/Navbar';
 import PropTypes from 'prop-types'
@@ -37,7 +39,7 @@ const Login = ({ login, isAuthenticated }) => {
         <form className="form" onSubmit={e => onSubmit(e)}>
           <h1 className="large text-primary">Sign In</h1>
           <p className="lead"><i className="fas fa-user"></i> Sign Into Your Account</p>
-          <div className="form-group">
+          <FormGroup>
             <input
               type="email"
               placeholder="Email Address"
@@ -45,8 +47,8 @@ const Login = ({ login, isAuthenticated }) => {
               value={email}
               onChange={e => onChange(e)}
             />
-          </div>
-          <div className="form-group">
+          </FormGroup>
+          <FormGroup>
             <input
               type="password"
               placeholder="Password"
@@ -55,7 +57,7 @@ const Login = ({ login, isAuthenticated }) => {
               value={password}
               onChange={e => onChange(e)}
             />
-          </div>
+          </FormGroup>
           <input type="submit" className="btn-login btn-primary" value="Login" />
           <br />
           <p className="my-1">

@@ -34,7 +34,7 @@ router.post(
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check('btcAddress', 'BTC Address needs atleast 40 characters').isLength({ min: 40 }),
-    check('phoneNumber', 'Phone number is required').isLength({ min: 10 }),
+    check('phoneNumber', 'Phone number needs 10 digits').isLength({ min: 10 }),
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 }),
   ],
   async (req, res) => {

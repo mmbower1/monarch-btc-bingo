@@ -14,8 +14,8 @@ import setAuthToken from './utils/setAuthToken';
 import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';
-import ForgotPassword from './components/forgot/ForgotPassword';
-import ResetPassword from './components/forgot/ResetPassword';
+import ForgotPassword from './components/password/forgot/ForgotPassword';
+import ResetPassword from './components/password/reset/ResetPassword';
 import { Stripe } from './components/stripe/Stripe';
 
 if (localStorage.token) {

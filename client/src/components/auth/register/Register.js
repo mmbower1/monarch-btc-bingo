@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+// styles
+import { FormGroup } from './Register.styles.js';
 import { Footer } from '../../footer/Footer.styles.js';
 // import Navbar from '../layout/Navbar';
 import { setAlert } from '../../../actions/alert';
@@ -22,7 +24,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
@@ -43,7 +45,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         <form className="form" onSubmit={e => onSubmit(e)}>
           <h1 className="large text-primary">Sign Up</h1>
           <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
-          <div className="form-group">
+          <FormGroup>
             <input
               type="text"
               placeholder="Name"
@@ -51,8 +53,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               value={name}
               onChange={e => onChange(e)}
             />
-          </div>
-          <div className="form-group">
+          </FormGroup>
+          <FormGroup>
             <input
               type="email"
               placeholder="Email Address"
@@ -60,8 +62,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               value={email}
               onChange={e => onChange(e)}
             />
-          </div>
-          <div className="form-group">
+          </FormGroup>
+          <FormGroup>
             <input
               type="text"
               placeholder="BTC Address"
@@ -69,8 +71,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               value={btcAddress}
               onChange={e => onChange(e)}
             />
-          </div>
-          <div className="form-group">
+          </FormGroup>
+          <FormGroup>
             <input
               type="phoneNumber"
               placeholder="Phone Number"
@@ -78,8 +80,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               value={phoneNumber}
               onChange={e => onChange(e)}
             />
-          </div>
-          <div className="form-group">
+          </FormGroup>
+          <FormGroup>
             <input
               type="password"
               placeholder="Password"
@@ -88,8 +90,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               value={password}
               onChange={e => onChange(e)}
             />
-          </div>
-          <div className="form-group">
+          </FormGroup>
+          <FormGroup>
             <input
               type="password"
               placeholder="Confirm Password"
@@ -98,7 +100,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               value={password2}
               onChange={e => onChange(e)}
             />
-          </div>
+          </FormGroup>
           <h5>Please keep password stored somewhere safe!</h5>
           <input type="submit" className="btn-register btn-primary" value="Register" />
           <p className="my-1">

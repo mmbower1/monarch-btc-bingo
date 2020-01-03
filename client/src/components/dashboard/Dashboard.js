@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // styled components
+import { DashboardBody, DashboardTitle } from './Dashboard.styles.js';
 import { Footer } from '../footer/Footer.styles.js';
 import { Row1, Row2, Row3 } from '../gameboard/Gameboard.styles.js';
 // actions
@@ -89,7 +90,7 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
         </table>
       <nav>
         <br />
-        <h2 className="dashboard-title">Cryptocurrency Simplified for Mass Adoption</h2>
+        <DashboardTitle>Cryptocurrency Simplified for Mass Adoption</DashboardTitle>
         {loading && profile === null ? (
           <Spinner />
         ) : (
@@ -111,7 +112,7 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
       <RandomNumber />
       <br />
       {/* <Winner /> */}
-      <div className="dashboard-body">
+      <DashboardBody>
         <Row1>
           <span id="gameStream-modal" className="gameStream-modal" onClick={openGamestreamModal}>Game Stream</span>
         </Row1>
@@ -129,7 +130,7 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
         </Row3>
         <br />
         <br />
-      </div>
+      </DashboardBody>
       <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
     </div>
   )

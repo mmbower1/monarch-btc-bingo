@@ -7,25 +7,18 @@ import axios from 'axios';
 // import RandomNumber from '../randNum/RandomNumber';
 import Winner from '../winner/Winner';
 
-var user2 = "?";
+var user2 = "";
 const Gameboard = ({ auth: { user } }) => {
-  console.log("LOOK HERE: ", JSON.stringify(user));
   if (user != null) {
     user2 = JSON.stringify(user);
-    console.log("LLOOOOKKKK HEEREE: ", JSON.stringify(user2));
+    console.log("User found: ", JSON.stringify(user2));
   } else {
-    console.log('OH NOOOOOO')
+    console.log('user not found')
   }
-
   let elements = document.getElementsByClassName("bingo-square");
   var currentNumber = 0;
   const [redMarker, setRedMarker] = useState(false);
   const [winner, setWinner] = useState(false);
-  // const [user2, setUser2] = useState(false);
-  // console.log('TOP USER: '  + JSON.stringify(user));
-  // useEffect(() => {
-  //   setUser2(user);
-  // }, [user])
 
   const didPlayerWin = async (markers) => {
     console.log('didplayerwin: ', user2);

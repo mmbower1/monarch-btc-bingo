@@ -55,10 +55,10 @@ class ProfileModal extends Component {
   }
 
   render() {
-    this.state.modalIsOpen = this.props.open;
+    const { open } = this.props;
+    this.state.modalIsOpen = open;
     // this.setState({ modalIsOpen: true });
     // this.setState({ modalIsOpen });
-    const { auth } = this.props;
 
     return (
       <Modal

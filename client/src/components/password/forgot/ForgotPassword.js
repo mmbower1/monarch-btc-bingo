@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+// styles
+import { Footer } from '../../footer/Footer.styles';
 import PropTypes from 'prop-types';
-import { setAlert } from '../../actions/alert';
+// actions
+import { setAlert } from '../../../actions/alert';
 import axios from 'axios';
+import nodemailer from 'nodemailer';
 
 const ForgotPassword = (email, { setAlert }) => {
     const onSubmit = async () => {
@@ -13,6 +17,9 @@ const ForgotPassword = (email, { setAlert }) => {
             }
         }
         const body = JSON.stringify({ email });
+        if (body == "") {
+            setAlert('Email is required', 'danger');
+        }
 
         await axios.get('/api/forgotPassword', body, config);
         // if () {
@@ -26,7 +33,7 @@ const ForgotPassword = (email, { setAlert }) => {
     return (
         <div className="row">
             <div className="col-md-12">
-                <form action="/forgotPassword" method="POST" onSubmit={onSubmit}>
+                <form action="/api/forgotPassword" method="POST" onSubmit={onSubmit}>
                     <h1>Forgot Password?</h1>
                     <div className="form-group-forgotPassword">
                         <br />
@@ -38,7 +45,7 @@ const ForgotPassword = (email, { setAlert }) => {
                     </div>
                     <Link to='/login'>Go Back</Link>
                 </form>
-                <h5 className="footer-login">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
+                <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
             </div>
         </div>
     )

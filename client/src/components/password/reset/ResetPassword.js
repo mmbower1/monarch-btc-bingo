@@ -1,4 +1,6 @@
 import React from 'react'
+// styles
+import { Footer } from '../../footer/Footer.styles';
 // import PropTypes from 'prop-types'
 
 const ResetPassword = props => {
@@ -35,7 +37,7 @@ const ResetPassword = props => {
                         <button type='submit' className='btn-login btn-primary'>Update Password</button>
                     </div>
                 </form>
-                <h5 className="footer-login">© 2019 Copyright. Blockchain Bingo, all rights reserved.</h5>
+                <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
             </div>
         </div>
     )

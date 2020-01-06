@@ -7,21 +7,25 @@ import axios from 'axios';
 // import RandomNumber from '../randNum/RandomNumber';
 import Winner from '../winner/Winner';
 
-var user2 = "";
+var userSet = null;
+
 const Gameboard = ({ auth: { user } }) => {
   if (user != null) {
-    user2 = JSON.stringify(user);
-    console.log("User found: ", JSON.stringify(user2));
+    console.log("USER SET!");    
+    userSet = user;
+    // console.log("User found: ", JSON.stringify(userSet));
   } else {
     console.log('user not found')
   }
+
   let elements = document.getElementsByClassName("bingo-square");
   var currentNumber = 0;
   const [redMarker, setRedMarker] = useState(false);
   const [winner, setWinner] = useState(false);
 
   const didPlayerWin = async (markers) => {
-    console.log('didplayerwin: ', user2);
+    console.log("checking if player won in didPlayerWin");
+    //console.log('didplayerwin: ', userSet);
     for (var i = 0; i < markers.length; i++) {
       // 0 1 2 3 4
       // 5 6..
@@ -31,11 +35,13 @@ const Gameboard = ({ auth: { user } }) => {
       //
       // if horizontal bingo
       if ((i % 5 === 0) && markers[i] && markers[i + 1] && markers[i + 2] && markers[i + 3] && markers[i + 4]) {
-        console.log("Winner! horizontal " + i);
+        // console.log("Winner! horizontal " + i);
         setWinner(true);
-        localStorage.setItem('winner', true);
         try {
-          const id = await axios.post('/api/cycles/addWinner', { id: user && user._id });
+          // console.log("====================");
+          // console.log("User found: ", JSON.stringify(userSet));
+          // console.log("user && user._id : " + userSet._id );
+          const id = await axios.post('/api/cycles/addWinner', { id: userSet._id });
           console.log('id: ', id);
 
         } catch (err) {
@@ -47,8 +53,11 @@ const Gameboard = ({ auth: { user } }) => {
         // console.log("Winner! vertical " + i);
         setWinner(true);
         try {
-          const id = await axios.post('/api/cycles/addWinner', { id: user && user._id });
-          console.log('id: ', id);
+          // console.log("====================");
+          // console.log("User found: ", JSON.stringify(userSet));
+          // console.log("user && user._id : " + userSet._id );
+          const id = await axios.post('/api/cycles/addWinner', { id: userSet._id });
+          // console.log('id: ', id);
 
         } catch (err) {
           console.log(err)
@@ -56,21 +65,27 @@ const Gameboard = ({ auth: { user } }) => {
       }
       // if diagonal bingo
       if ((i === 0) && markers[i] && markers[i + 6] && markers[i + 12] && markers[i + 18] && markers[i + 24]) {
-        console.log("Winner! diagonal " + i);
+        // console.log("Winner! diagonal " + i);
         setWinner(true);
         try {
-          const id = await axios.post('/api/cycles/addWinner', { id: user && user._id });
-          console.log('id: ', id);
+          // console.log("====================");
+          // console.log("User found: ", JSON.stringify(userSet));
+          // console.log("user && user._id : " + userSet._id );
+          const id = await axios.post('/api/cycles/addWinner', { id: userSet._id });
+          // console.log('id: ', id);
 
         } catch (err) {
           console.log(err)
         }
       } else if ((i === 4) && markers[i] && markers[i + 8] && markers[i + 12] && markers[i + 16] && markers[i + 20]) {
-        console.log('Winner! Diagonal ' + i);
+        // console.log('Winner! Diagonal ' + i);
         setWinner(true);
         try {
-          const id = await axios.post('/api/cycles/addWinner', { id: user && user._id });
-          console.log('id: ', id);
+          // console.log("====================");
+          // console.log("User found: ", JSON.stringify(userSet));
+          // console.log("user && user._id : " + userSet._id );
+          const id = await axios.post('/api/cycles/addWinner', { id: userSet._id });
+          // console.log('id: ', id);
 
         } catch (err) {
           console.log(err)
@@ -80,7 +95,8 @@ const Gameboard = ({ auth: { user } }) => {
   }
 
   // fills gameboard
-  useEffect(() => {
+  useEffect(async () => {
+    let winCycle = await wonAlready(); 
     const setMarker = async () => {
       await axios.get('/api/randomNumber');
       await axios.get('/api/cycles');
@@ -97,7 +113,7 @@ const Gameboard = ({ auth: { user } }) => {
         elements[i].className = "bingo-square";
       }
 
-      console.log("-----> availableNumbers: " + availableNumbers);
+      // console.log("-----> availableNumbers: " + availableNumbers);
       // console.log("-----> elements: " + elements);
       // console.log("-----> elements.length: " + elements.length);
       if (!winner) {
@@ -106,7 +122,10 @@ const Gameboard = ({ auth: { user } }) => {
           currentNumber = Number(currentElement.innerHTML);
           // console.log("currentNumber: " + currentNumber);
           // console.log("availableNumbers.include: " + availableNumbers.includes(currentNumber));
-          if (!availableNumbers.includes(currentNumber)) {
+          
+          //console.log("winCycle: "  + winCycle);
+          console.log("winCycle?: " + winCycle)
+          if (!availableNumbers.includes(currentNumber) && !winCycle) {
             elements[i].classList.add("redCell");
             setRedMarker(true);
             markers[i] = true;
@@ -114,10 +133,36 @@ const Gameboard = ({ auth: { user } }) => {
         }
       }
       // check winning condition
-      didPlayerWin(markers);
+      if(!winCycle){
+        //console.log("Checking if player won...");
+        didPlayerWin(markers);
+      }
     }
     setMarker();
   }, [])
+
+  const wonAlready = async () => {
+    let cycles = await axios.get('/api/cycles');
+    //console.log("cycles: " + JSON.stringify(cycles));
+    let winners = cycles.data.winners;
+    //console.log("winners.length: " + winners.length);
+    let userId = userSet ? userSet._id : null;
+    console.log("userSet: " + userSet);
+    console.log("userId: " + userId);
+
+    winners.forEach((id) => {
+      //console.log(" ");
+      //console.log("--------------");
+      //console.log("id: " + id);
+      //console.log("userId == id: " + userId == id);
+      if(userId == id){
+        console.log("user won already");
+        return true;
+      }
+      console.log("User has not won already");
+    }) 
+    return false;
+  }
 
   const isWinner = winner;
   let winnerMessage;

@@ -31,14 +31,16 @@ router.post('/addWinner', async (req, res) => {
         console.log("--> No array found");
         // Create an array, add number and then add to database
         let tempArray = [];
-        tempArray.push(id);
+        let idString = id.toString();
+        tempArray.push(idString);
         cycles = new Cycles({ winners: tempArray });
     } else {
         console.log(' ');
         console.log("---> winners: " + winners);
         console.log(' ');
         console.log("--> JSON..cycles: " + JSON.stringify(cycles));
-        cycles.winners.push(id);
+        let idString = id.toString();
+        cycles.winners.push(idString);
     }
 
     // save model to database
@@ -46,9 +48,9 @@ router.post('/addWinner', async (req, res) => {
         if (err) {
             return console.error(err)
         };
-        console.log("--> Created new Cycle");
+        console.log("--> Modified new Cycle succesfully");
     });
-    console.log("--> drawn numbers are: " + winners);
+    //console.log("--> drawn numbers are: " + winners);
     res.json(cycles);
 });
 

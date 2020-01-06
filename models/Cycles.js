@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const CyclesSchema = new mongoose.Schema({
     winners: {
-        type: [Number]
+        type: [String]
     }
 });
 

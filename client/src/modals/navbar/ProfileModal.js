@@ -90,7 +90,7 @@ class ProfileModal extends Component {
 
 // needs to be exported as same name (auth) from the root reducer
 const mapStateToProps = (state) => {
-  console.log('state.auth profile: ', state.auth);
+  // console.log('state.auth profile: ', state.auth);
   return {
     auth: state.auth
   }

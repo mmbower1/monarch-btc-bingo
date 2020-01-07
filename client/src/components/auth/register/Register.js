@@ -43,7 +43,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <Fragment>
         {/* <Navbar /> */}
         <form className="form" onSubmit={e => onSubmit(e)}>
-          <h1 className="large text-primary">Sign Up</h1>
+          {/* <h1 className="large text-primary">Sign Up</h1> */}
           <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
           <FormGroup>
             <input
@@ -101,11 +101,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               onChange={e => onChange(e)}
             />
           </FormGroup>
-          <h5>Please keep password stored somewhere safe!</h5>
-          <input type="submit" className="btn-register btn-primary" value="Register" />
-          <p className="my-1">
-            Already have an account? <Link to="/login" className="sign-in">Sign In</Link>
-          </p>
+          <h4>Please keep password stored somewhere safe!</h4>
+          <div className="register-button">
+            <input type="submit" className="btn-register btn-primary" value="REGISTER" />
+          </div>
+          <div className="no-account-container">
+            <p className="no-account">
+              Already registered?<br /><Link to="/login" className="sign-up">SIGN IN</Link>
+            </p>
+          </div>
         </form>
         <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </Fragment>

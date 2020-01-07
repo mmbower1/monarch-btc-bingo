@@ -17,7 +17,7 @@ const ForgotPassword = (email, { setAlert }) => {
             }
         }
         const body = JSON.stringify({ email });
-        if (body == "") {
+        if (body === "") {
             setAlert('Email is required', 'danger');
         }
 

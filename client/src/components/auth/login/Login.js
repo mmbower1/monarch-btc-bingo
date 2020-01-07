@@ -37,8 +37,8 @@ const Login = ({ login, isAuthenticated }) => {
           {/* <img src={loginPageLlogo} alt="login-page-logo" className="login-page-logo" /> */}
         </div>
         <form className="form" onSubmit={e => onSubmit(e)}>
-          <h1 className="large text-primary">Sign In</h1>
-          <p className="lead"><i className="fas fa-user"></i> Sign Into Your Account</p>
+          {/* <h1 className="large text-primary">Sign In</h1> */}
+          <p className="lead"><i className="fas fa-user"></i> Login</p>
           <FormGroup>
             <input
               type="email"
@@ -58,12 +58,16 @@ const Login = ({ login, isAuthenticated }) => {
               onChange={e => onChange(e)}
             />
           </FormGroup>
-          <input type="submit" className="btn-login btn-primary" value="Login" />
+          <div className="sign-in-button">
+            <input type="submit" className="btn-login btn-primary" value="SIGN IN" />
+          </div>
           <br />
-          <p className="my-1">
-            Don't have an account? <Link to="/register" className="sign-up">Sign Up</Link>
-          </p>
-          <Link to='/forgotPassword'>Forgot Password?</Link>
+          <Link className='forgot-password' to='/forgotPassword'>Forgot Password?</Link>
+          <div className="no-account-container">
+            <p className="no-account">
+              No account? Registration is free!<br /><Link to="/register" className="sign-up">REGISTER</Link>
+            </p>
+          </div>
         </form>
         <br />
         <br />

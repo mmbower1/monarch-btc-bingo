@@ -53,10 +53,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul>
-      <div>
+      <div className='welcome-title'>
         <h2>
-            Welcome to Bitcoin Bingo
-          </h2>
+            WELCOME
+        </h2>
       </div>
       {/* <ul><Link to="/register">Register&nbsp;</Link></ul>
       <ul><Link to="/login">&nbsp;Login</Link></ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
@@ -76,7 +76,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <WalletModal open={isWalletModalOpen} onClose={() => setIsWalletModalOpen(false)}/>
 
       <nav className="navbar bg-dark">
-          <img src={logo} className="bingo-logo-right" alt=""/>
+        <img src={logo} className="bingo-logo-right" alt=""/>
         
         { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>) }
       </nav>

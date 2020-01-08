@@ -76,7 +76,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <WalletModal open={isWalletModalOpen} onClose={() => setIsWalletModalOpen(false)}/>
 
       <nav className="navbar bg-dark">
-        <img src={logo} className="bingo-logo-right" alt=""/>
+        <img src={logo} className="bingo-logo-right" alt="" />
         
         { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>) }
       </nav>

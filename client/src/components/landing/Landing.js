@@ -23,6 +23,15 @@ const Landing = ({ isAuthenticated, setAlert }) => {
         <h2>Are you over 18?</h2>
         <Link to='/stripe' className="btn-landing btn-primary"><button className="yes-button">Yes</button></Link>&nbsp;
         <Link to='#!' className="btn-landing btn-primary"><button onClick={onClick} className="no-button">No</button></Link>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </LandingContainer>
   )

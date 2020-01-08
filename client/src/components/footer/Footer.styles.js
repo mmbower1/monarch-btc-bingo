@@ -11,4 +11,7 @@ export const Footer = styled.div`
     position: fixed;
     width: 100%;
     text-align: center;
+    @media (max-width: 700px) {
+        font-size: 13px;
+    }
 `;

@@ -101,7 +101,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               onChange={e => onChange(e)}
             />
           </FormGroup>
-          <h4>Please keep password stored somewhere safe!</h4>
+          <p className="lead">Please keep password stored somewhere safe!</p>
           <div className="register-button">
             <input type="submit" className="btn-register btn-primary" value="REGISTER" />
           </div>

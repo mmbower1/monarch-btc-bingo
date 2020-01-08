@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // styles
 import { Footer } from '../../footer/Footer.styles';
+import { FormGroup } from '../../auth/login/Login.styles';
 import PropTypes from 'prop-types';
 // actions
 import { setAlert } from '../../../actions/alert';
 import axios from 'axios';
-import nodemailer from 'nodemailer';
+// import nodemailer from 'nodemailer';
 
 const ForgotPassword = (email, { setAlert }) => {
-    const onSubmit = async () => {
+    const onSubmit = async (e) => {
+        e.preventDefault();
         const config = {
             headers: {
               'Content-Type': 'application/json'
@@ -21,7 +23,7 @@ const ForgotPassword = (email, { setAlert }) => {
             setAlert('Email is required', 'danger');
         }
 
-        await axios.get('/api/forgotPassword', body, config);
+        await axios.put('/api/forgotPassword', body, config);
         // if () {
         //     setAlert('Email does not exist');
         // } else {
@@ -31,23 +33,35 @@ const ForgotPassword = (email, { setAlert }) => {
     }
 
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <form action="/api/forgotPassword" method="POST" onSubmit={onSubmit}>
-                    <h1>Forgot Password?</h1>
-                    <div className="form-group-forgotPassword">
-                        <br />
-                        <label htmlFor="email">Enter Your Email: </label>
-                        <input type="email" name="email" autoFocus className="form-control" />
-                    </div>
-                    <div className="form-group" >
-                        <input type="submit" className="btn-login btn-primary" value="Reset" />
-                    </div>
-                    <Link to='/login'>Go Back</Link>
-                </form>
-                <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
+        <Fragment>
+            <div className="row">
+                <div className="col-md-12">
+                    <form action="/api/forgotPassword" method="POST" onSubmit={onSubmit}>
+                        <h1>Forgot Password?</h1>
+                        <div className="form-group-forgotPassword">
+                            <FormGroup className="form">
+                                <input
+                                    type="forgotPassword"
+                                    name="email"
+                                    autoFocus
+                                    className="form-control"
+                                    placeholder="Enter Email"
+                                />
+                            </FormGroup>
+                        </div>
+                        <div className="form-group" >
+                            <input type="submit" className="btn-login btn-primary" value="RESET" />
+                        </div>
+                        <Link to='/login'>Go Back</Link>
+                    </form>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
+                </div>
             </div>
-        </div>
+        </Fragment>
     )
 }
 

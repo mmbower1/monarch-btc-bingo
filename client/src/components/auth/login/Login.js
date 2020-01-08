@@ -71,7 +71,7 @@ const Login = ({ login, isAuthenticated }) => {
         </form>
         <br />
         <br />
-        <i class="fas fa-arrow-left"></i>&nbsp;
+        <i className="fas fa-arrow-left"></i>&nbsp;
         <Link to='/stripe'>Go Back</Link>
         <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </Fragment>

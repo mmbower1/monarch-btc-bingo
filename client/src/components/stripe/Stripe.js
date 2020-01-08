@@ -42,7 +42,6 @@ export const Stripe = () => {
               shippingAddress
               token={handleToken}
               amount={product.price * 100}
-              name={product.name}
             />
               <br />
               <br />
@@ -56,6 +55,8 @@ export const Stripe = () => {
           <br />
           <Link to='/login'> Skip</Link> &nbsp;
           <i className="fas fa-arrow-right"></i>
+          <br />
+          <br />
           <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </div>
     )

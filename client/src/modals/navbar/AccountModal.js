@@ -52,10 +52,8 @@ class AccountModal extends Component {
     if(this.state.btcAddress !== ""){
       userInfo.btcAddress = this.state.btcAddress;
     }
-    console.log("userInfo: " + JSON.stringify(userInfo));
     axios.put(`/api/users/${auth.user._id}`, userInfo)
     .then(res => {
-      console.log('res: ' + JSON.stringify(res));
       this.setState({
         name: "",
         btcAddress : "",
@@ -63,9 +61,8 @@ class AccountModal extends Component {
         password : "",
       });
       // close modal
-      this.props.onClose();
-      // set alert
       this.props.setAlert('Account updated!', 'success');
+      this.props.onClose();
     })
     .catch(err => {
       console.log(err);
@@ -74,9 +71,6 @@ class AccountModal extends Component {
 
   render() {
     this.state.modalIsOpen = this.props.open;
-    // this.setState({ modelIsOpen: true });
-    // this.setState({ modalIsOpen });
-    const { auth } = this.props;
 
     return (
       <Modal
@@ -93,7 +87,7 @@ class AccountModal extends Component {
           <br />
           <ModalTitle>Edit Account Info</ModalTitle>
           <br />
-          <form id="edit-form" className="form" onSubmit={this.onSubmit}>
+          <form id="accountModal-edit" className="form" onSubmit={this.onSubmit}>
             <div className="edit-div">
               <div id="" className="form-group">
                 <input
@@ -103,7 +97,6 @@ class AccountModal extends Component {
                   onChange={e => {
                     this.handleChange(e);
                   }}
-                  required
                 />
               </div>
               {/* <div className="edit-email">

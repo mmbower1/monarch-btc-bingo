@@ -6,6 +6,7 @@ import { GameboardContainer } from './Gameboard.styles.js';
 import axios from 'axios';
 // import RandomNumber from '../randNum/RandomNumber';
 import Winner from '../winner/Winner';
+import moment from 'moment';
 
 var userSet = null;
 
@@ -25,7 +26,6 @@ const Gameboard = ({ auth: { user } }) => {
 
   const didPlayerWin = async (markers) => {
     console.log("checking if player won in didPlayerWin");
-    //console.log('didplayerwin: ', userSet);
     for (var i = 0; i < markers.length; i++) {
       // 0 1 2 3 4
       // 5 6..
@@ -38,11 +38,10 @@ const Gameboard = ({ auth: { user } }) => {
         // console.log("Winner! horizontal " + i);
         setWinner(true);
         try {
-          // console.log("====================");
-          // console.log("User found: ", JSON.stringify(userSet));
-          // console.log("user && user._id : " + userSet._id );
-          const id = await axios.post('/api/cycles/addWinner', { id: userSet._id });
-          console.log('id: ', id);
+          await axios.post('/api/cycles/addWinner', { id: userSet._id });
+          await axios.put(`/api/users/${userSet._id}`, {
+            winner: moment().format('MMMM Do YYYY, h:mm:ss a') 
+          });
 
         } catch (err) {
           console.log(err);
@@ -53,14 +52,11 @@ const Gameboard = ({ auth: { user } }) => {
         // console.log("Winner! vertical " + i);
         setWinner(true);
         try {
-          // console.log("====================");
-          // console.log("User found: ", JSON.stringify(userSet));
-          // console.log("user && user._id : " + userSet._id );
           await axios.post('/api/cycles/addWinner', { id: userSet._id });
-          // console.log('id: ', id);
-
+          await axios.put(`/api/users/${userSet._id}`, { winner: moment().format('MMMM Do YYYY, h:mm:ss a') });
+          
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
       }
       // if diagonal bingo
@@ -68,27 +64,21 @@ const Gameboard = ({ auth: { user } }) => {
         // console.log("Winner! diagonal " + i);
         setWinner(true);
         try {
-          // console.log("====================");
-          // console.log("User found: ", JSON.stringify(userSet));
-          // console.log("user && user._id : " + userSet._id );
           await axios.post('/api/cycles/addWinner', { id: userSet._id });
-          // console.log('id: ', id);
+          await axios.put(`/api/users/${userSet._id}`, { winner: moment().format('MMMM Do YYYY, h:mm:ss a') });
 
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
       } else if ((i === 4) && markers[i] && markers[i + 8] && markers[i + 12] && markers[i + 16] && markers[i + 20]) {
         // console.log('Winner! Diagonal ' + i);
         setWinner(true);
         try {
-          // console.log("====================");
-          // console.log("User found: ", JSON.stringify(userSet));
-          // console.log("user && user._id : " + userSet._id );
           await axios.post('/api/cycles/addWinner', { id: userSet._id });
-          // console.log('id: ', id);
+          await axios.put(`/api/users/${userSet._id}`, { winner: moment().format('MMMM Do YYYY, h:mm:ss a') });
 
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
       }
     }
@@ -143,7 +133,7 @@ const Gameboard = ({ auth: { user } }) => {
       //console.log("cycles: " + JSON.stringify(cycles));
       let winners = cycles.data.winners;
       //console.log("winners.length: " + winners.length);
-      let userId = userSet ? userSet._id : null;
+      let userId = userSet ? userSet._id : userSet;
       console.log("userSet: " + JSON.stringify(userSet));
       console.log("userId: " + userId);
 

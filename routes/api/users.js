@@ -101,7 +101,7 @@ router.post(
 });
 
 // @route    PUT api/users
-// @desc     Update User
+// @desc     Edit Name, Btc, Phone in account modal, and updates winner field with moment
 // @access   Private
 router.put('/:id', async (req, res, next) => {
   const errors = validationResult(req);
@@ -118,7 +118,7 @@ router.put('/:id', async (req, res, next) => {
   }
   res.status(200).json({ success: true });
   console.log(' ')
-  console.error('>>> UPDATED USER');
+  console.log('>>> UPDATED USER');
 });
 
 module.exports = router;

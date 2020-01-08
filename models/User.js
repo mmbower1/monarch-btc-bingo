@@ -37,7 +37,7 @@ const UserSchema = new mongoose.Schema({
     type: Date
   },
   winner: {
-    type: Date
+    type: String
   }
 });
 

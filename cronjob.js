@@ -16,7 +16,7 @@ const cronjob = () => {
     "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64",
     "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75"
   ];
-  cron.schedule("*/3 * * * * *", async () => {
+  cron.schedule("*/1 * * * * *", async () => {
     try {
       // in the cronjob every n seconds retrieve current set of available numbers
       let availableNumbersObj = await DrawnNumbers.findOne({}, {}, { sort: { 'created_at' : -1 } });
@@ -28,8 +28,13 @@ const cronjob = () => {
         availableNumbers = availableNumbersObj.numbers;
 
       } else if (availableNumbersObj.numbers.length === 0) {
+        console.log('============================================');
         console.log("--> RESET DRAWN NUMBERS");
-        availableNumbers = originalArray;
+        console.log('============================================');
+        // prevents numbers from decreasing by one in each cycle after reset
+        originalArray.forEach((num, i) => {
+          availableNumbers[i] = num;
+        });
         // reset cycle
         let cycles = await Cycles.findOne({}, {}, { sort: { 'created_at' : -1 } });
         // creates new field in mongo
@@ -42,17 +47,19 @@ const cronjob = () => {
             console.log('Couldnt save cycles in cronjob');
             return console.error(err);
           };
-          console.log('Cycle saved');
+          console.log('============================================');
+          console.log('--> CYCLE SAVED');
+          console.log('============================================');
         });
       } else {
         availableNumbers = availableNumbersObj.numbers;
       }
-      console.log(' ');
       console.log("availableNumbers length is: " + availableNumbers.length);
 
       // Pick a random number from this set
       let index =  Math.floor(Math.random() * availableNumbers.length);
       let random = availableNumbers[index];
+      console.log(' ')
       console.log("Random number picked: " + random);
 
       // Update / save available number set with the random number removed

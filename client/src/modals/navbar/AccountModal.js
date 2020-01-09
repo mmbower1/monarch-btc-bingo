@@ -8,8 +8,8 @@ import { setAlert } from "../../actions/alert";
 // import { updateUser } from '../../actions/auth';
 
 class AccountModal extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: "",
       btcAddress : "",
@@ -53,7 +53,7 @@ class AccountModal extends Component {
       userInfo.btcAddress = this.state.btcAddress;
     }
     axios.put(`/api/users/${auth.user._id}`, userInfo)
-    .then(res => {
+    .then(() => {
       this.setState({
         name: "",
         btcAddress : "",

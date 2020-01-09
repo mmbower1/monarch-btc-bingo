@@ -8,9 +8,10 @@ import { Row1, Row2, Row3 } from '../gameboard/Gameboard.styles.js';
 // actions
 import { getCurrentProfile } from '../../actions/profile';
 // components
-import Spinner from '../layout/Spinner';
+import Countdown from '../countdown/Countdown';
 import RandomNumber from '../randNum/RandomNumber';
 import Gameboard from '../gameboard/Gameboard';
+import Spinner from '../layout/Spinner';
 // titlebar modals
 import AboutUsModal from '../../modals/titlebar/AboutUsModal';
 import MeetOurTeamModal from '../../modals/titlebar/MeetOurTeamModal';
@@ -52,6 +53,8 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
   const openGamestreamModal = () => { setIsGamestreamModalOpen(true) }
   const openRealTimeNewsModal = () => { setIsRealTimeNewsModalOpen(true) }
   const openLiveCommBlogModal = () => { setIsLiveCommBlogModalOpen(true) }
+
+  const [deadline, setDeadline] = useState(false);
 
   // const [randomNumber, setRandomNumber] = useState(0);
 
@@ -99,6 +102,7 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
             <p className="welcome-title">
               <i className="fa fa-angle-double-right"></i> Welcome { user && user.name } <i className="fa fa-angle-double-left"></i>
             </p>
+            <Countdown />
             {/* {profile !== null ? (
               <Fragment>has</Fragment>
             ) : (

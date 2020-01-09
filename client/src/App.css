@@ -168,6 +168,9 @@ body {
 .bingo-winner {
   color: green;
   font-size: 25px;
+  margin: auto;
+  outline: 5px solid green;
+  width: 35%;
 }
 
 .bg-modal {

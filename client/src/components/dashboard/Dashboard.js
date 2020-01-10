@@ -26,6 +26,7 @@ import EducationModal from '../../modals/gameboard/EduResourcesModal';
 import LiveCommBlogModal from '../../modals/gameboard/LiveCommBlogModal';
 import AdsRelativeToBlockchain from '../../modals/gameboard/AdsBlockchainModal';
 
+
 // import cronjob from '../../cronjob.js';
 
 const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loading } } ) => {
@@ -54,14 +55,14 @@ const Dashboard = ( { getCurrentProfile, auth: { user }, profile: { profile, loa
   const openRealTimeNewsModal = () => { setIsRealTimeNewsModalOpen(true) }
   const openLiveCommBlogModal = () => { setIsLiveCommBlogModalOpen(true) }
 
-  const [deadline, setDeadline] = useState(false);
-
   // const [randomNumber, setRandomNumber] = useState(0);
 
   // empty array at end allows it only run once
   useEffect(() => {
     getCurrentProfile();
   }, []);
+
+  
 
   return (
     <div className="dashboard-container">

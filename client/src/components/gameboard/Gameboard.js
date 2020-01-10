@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { GameboardContainer } from './Gameboard.styles.js';
 import axios from 'axios';
 // import RandomNumber from '../randNum/RandomNumber';
-import Winner from '../winner/Winner';
 import moment from 'moment';
+import Winner from '../winner/Winner';
 
 var userSet = null;
 

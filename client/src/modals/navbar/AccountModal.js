@@ -58,11 +58,12 @@ class AccountModal extends Component {
         name: "",
         btcAddress : "",
         phone : "",
-        password : "",
       });
       // close modal
-      this.props.setAlert('Account updated!', 'success');
-      this.props.onClose();
+      if (this.state.name !== '' && this.state.btcAddress !== '' && this.state.phone !== '') {
+        this.props.setAlert('Account updated!', 'success');
+        this.props.onClose();
+      }
     })
     .catch(err => {
       console.log(err);
@@ -131,16 +132,6 @@ class AccountModal extends Component {
                   minLength='10'
                 />
               </div>
-              {/* <div id="" className="form-group">
-                <input
-                  name='password'
-                  type='text'
-                  placeholder='Edit Password'
-                  onChange={e => {
-                    this.handleChange(e);
-                  }}
-                />
-              </div> */}
             </div>
             <br />
             <input className="btn-primary" type='submit' value='Submit'></input>

@@ -38,8 +38,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               <span className="hide-sm"><i className="fas fa-sign-out-alt"></i>&nbsp;Logout</span>
             </a>
             <div className="hide-sms">
-            <span id="account-modal" className="hide-sm" onClick={openAccountModal}>Account</span>
-            <span id="nextGamecard-modal" className="hide-sm" onClick={openNextGamecardModal}>Next Card</span>
+              <span id="account-modal" className="hide-sm" onClick={openAccountModal}>Account</span>
+              <span id="nextGamecard-modal" className="hide-sm" onClick={openNextGamecardModal}>Next Card</span>
               <span id="profile-modal" className="hide-sm" onClick={openProfileModal}>Profile</span>
               <span id="security-modal" className="hide-sm" onClick={openSecurityModal}>Security</span>
               <span id="settings-modal" className="hide-sm" onClick={openSettingsModal}>Settings</span>

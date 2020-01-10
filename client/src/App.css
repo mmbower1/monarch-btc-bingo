@@ -339,11 +339,6 @@ button {
   padding: 4px;
 }
 
-.random-number {
-  font-size: 40px;
-  /* outline: 2px solid blue; */
-}
-
 .redCell {
   background: red;
   border-radius: 50%;

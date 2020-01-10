@@ -40,9 +40,9 @@ class ProfileModal extends Component {
       console.log('res: ' + JSON.stringify(res));
       this.setState({
         name: auth.user.name,
-        btcAddress : "",
-        phone : "",
-        password : "",
+        btcAddress: "",
+        phone: "",
+        password: "",
       });
       // close modal
       this.props.onClose();

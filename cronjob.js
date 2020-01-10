@@ -21,73 +21,84 @@ const cronjob = () => {
       // in the cronjob every n seconds retrieve current set of available numbers
       let availableNumbersObj = await DrawnNumbers.findOne({}, {}, { sort: { 'created_at' : -1 } });
       let availableNumbers = [];
-      // Check if available numbers have been exhausted
-      if (!availableNumbersObj) {
-        console.log("--> Create new DrawnNumbers");
-        availableNumbersObj = new DrawnNumbers({ numbers: originalArray });
-        availableNumbers = availableNumbersObj.numbers;
+      // cronjob timeout
+      // if (availableNumbers.length === 0) {
+      //   console.log('--> CRONJOB TIMEOUT');
+      //   setTimeout(() => {
+      //     cronjob();
+      //   }, 10000)
+      // } else {
+      //   processNumbers();
+      // }
+      // async function processNumbers() {
+        // Check if available numbers have been exhausted
+        if (!availableNumbersObj) {
+          console.log("--> Create new DrawnNumbers");
+          availableNumbersObj = new DrawnNumbers({ numbers: originalArray });
+          availableNumbers = availableNumbersObj.numbers;
 
-      } else if (availableNumbersObj.numbers.length === 0) {
-        console.log('============================================');
-        console.log("--> RESET DRAWN NUMBERS");
-        console.log('============================================');
-        // prevents numbers from decreasing by one in each cycle after reset
-        originalArray.forEach((num, i) => {
-          availableNumbers[i] = num;
-        });
-        // reset cycle
-        let cycles = await Cycles.findOne({}, {}, { sort: { 'created_at' : -1 } });
-        // creates new field in mongo
-        if (!cycles) {
-          cycles = new Cycles({ winners: [] });
+        } else if (availableNumbersObj.numbers.length === 0) {
+          console.log('============================================');
+          console.log("--> RESET DRAWN NUMBERS");
+          console.log('============================================');
+          // prevents numbers from decreasing by one in each cycle after reset
+          originalArray.forEach((num, i) => {
+            availableNumbers[i] = num;
+          });
+          // reset cycle
+          let cycles = await Cycles.findOne({}, {}, { sort: { 'created_at' : -1 } });
+          // creates new field in mongo
+          if (!cycles) {
+            cycles = new Cycles({ winners: [] });
+          }
+          cycles.winners = [];
+          cycles.save((err) => {
+            if (err) {
+              console.log('Couldnt save cycles in cronjob');
+              return console.error(err);
+            };
+            console.log('============================================');
+            console.log('--> CYCLE SAVED');
+            console.log('============================================');
+          });
+        } else {
+          availableNumbers = availableNumbersObj.numbers;
         }
-        cycles.winners = [];
-        cycles.save((err, cycle) => {
+        console.log("availableNumbers length is: " + availableNumbers.length);
+
+        // Pick a random number from this set
+        let index =  Math.floor(Math.random() * availableNumbers.length);
+        let random = availableNumbers[index];
+        console.log(' ')
+        console.log("Random number picked: " + random);
+
+        // Update / save available number set with the random number removed
+        availableNumbers.splice(index, 1);
+        // Save updated array to database
+        availableNumbersObj.numbers = availableNumbers;
+        availableNumbersObj.save((err, num) => {
           if (err) {
-            console.log('Couldnt save cycles in cronjob');
-            return console.error(err);
+            return console.error(err)
           };
-          console.log('============================================');
-          console.log('--> CYCLE SAVED');
-          console.log('============================================');
         });
-      } else {
-        availableNumbers = availableNumbersObj.numbers;
-      }
-      console.log("availableNumbers length is: " + availableNumbers.length);
 
-      // Pick a random number from this set
-      let index =  Math.floor(Math.random() * availableNumbers.length);
-      let random = availableNumbers[index];
-      console.log(' ')
-      console.log("Random number picked: " + random);
-
-      // Update / save available number set with the random number removed
-      availableNumbers.splice(index, 1);
-      // Save updated array to database
-      availableNumbersObj.numbers = availableNumbers;
-      availableNumbersObj.save((err, num) => {
-        if (err) {
-          return console.error(err)
-        };
-      });
-
-      // Step 4)
-      // Generate the set of number already picked
-      // Send random number to backend so it can be saved in the db
-      let randomNumberObj = await RandomNumber.findOne({}, {}, { sort: { 'created_at' : -1 } });
-      // create new field in mongo
-      if (!randomNumberObj) {
-        randomNumberObj = new RandomNumber({
-          random
+        // Step 4)
+        // Generate the set of number already picked
+        // Send random number to backend so it can be saved in the db
+        let randomNumberObj = await RandomNumber.findOne({}, {}, { sort: { 'created_at' : -1 } });
+        // create new field in mongo
+        if (!randomNumberObj) {
+          randomNumberObj = new RandomNumber({
+            random
+          });
+        }
+        randomNumberObj.random = random;
+        randomNumberObj.save((err, num) => {
+          if (err) {
+            return console.error(err)
+          };
         });
-      }
-      randomNumberObj.random = random;
-      randomNumberObj.save((err, num) => {
-        if (err) {
-          return console.error(err)
-        };
-      });
+      //}
 
     } catch (err) {
       console.error(err.message);

@@ -20,6 +20,15 @@ a {
   text-decoration: underline;
 }
 
+.number{
+  margin: 2px;
+}
+
+.red-strike-through{
+  text-decoration: line-through;
+  color: red;
+}
+
 body {
   background: url(./img/img_bingo_cards-balls_800.png), linear-gradient(180deg, #0089aa 0%, #003241 90%);
   background-size: auto;
@@ -555,3 +564,4 @@ th {
 :-ms-input-placeholder {
   text-align: center;
 }
+

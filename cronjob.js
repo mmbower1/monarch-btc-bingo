@@ -16,30 +16,50 @@ const cronjob = () => {
     "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64",
     "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75"
   ];
-  cron.schedule("*/1 * * * * *", async () => {
+
+  
+
+  let cronJob = cron.schedule("*/1 * * * * *", async () => {
     try {
       // in the cronjob every n seconds retrieve current set of available numbers
       let availableNumbersObj = await DrawnNumbers.findOne({}, {}, { sort: { 'created_at' : -1 } });
       let availableNumbers = [];
+      availableNumbers = availableNumbersObj.numbers;
       // cronjob timeout
-      // if (availableNumbers.length === 0) {
-      //   console.log('--> CRONJOB TIMEOUT');
-      //   setTimeout(() => {
-      //     cronjob();
-      //   }, 10000)
-      // } else {
-      //   processNumbers();
-      // }
-      // async function processNumbers() {
+      if (availableNumbers.length === 0) {
+        console.log(' ')
+        console.log(' ')
+        console.log('--> 1) CRONJOB TIMEOUT');
+        pauseCronJob();
+        setTimeout(() => {
+          startCronJob();
+        }, 4000)
+        
+      } else {
+        processNumbers();
+      }
+      
+      async function startCronJob(){
+        console.log('--> 2) Start cron job');
+        await processNumbers();
+        cronJob.start();
+      }
+    
+      function pauseCronJob(){
+        console.log('--> 3) Pause cron job');
+        cronJob.stop();
+      }
+
+      async function processNumbers() {
         // Check if available numbers have been exhausted
         if (!availableNumbersObj) {
-          console.log("--> Create new DrawnNumbers");
+          console.log("--> 4) Create new DrawnNumbers");
           availableNumbersObj = new DrawnNumbers({ numbers: originalArray });
           availableNumbers = availableNumbersObj.numbers;
 
         } else if (availableNumbersObj.numbers.length === 0) {
           console.log('============================================');
-          console.log("--> RESET DRAWN NUMBERS");
+          console.log("--> 4) RESET DRAWN NUMBERS");
           console.log('============================================');
           // prevents numbers from decreasing by one in each cycle after reset
           originalArray.forEach((num, i) => {
@@ -64,12 +84,13 @@ const cronjob = () => {
         } else {
           availableNumbers = availableNumbersObj.numbers;
         }
+        console.log(' ')
         console.log("availableNumbers length is: " + availableNumbers.length);
 
         // Pick a random number from this set
         let index =  Math.floor(Math.random() * availableNumbers.length);
         let random = availableNumbers[index];
-        console.log(' ')
+        
         console.log("Random number picked: " + random);
 
         // Update / save available number set with the random number removed
@@ -98,7 +119,7 @@ const cronjob = () => {
             return console.error(err)
           };
         });
-      //}
+      }
 
     } catch (err) {
       console.error(err.message);

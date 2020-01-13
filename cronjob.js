@@ -16,10 +16,7 @@ const cronjob = () => {
     "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64",
     "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75"
   ];
-
-  
-
-  let cronJob = cron.schedule("*/1 * * * * *", async () => {
+  let cronJob = cron.schedule("*/2 * * * * *", async () => {
     try {
       // in the cronjob every n seconds retrieve current set of available numbers
       let availableNumbersObj = await DrawnNumbers.findOne({}, {}, { sort: { 'created_at' : -1 } });
@@ -28,25 +25,24 @@ const cronjob = () => {
       // cronjob timeout
       if (availableNumbers.length === 0) {
         console.log(' ')
+        console.log('--> CRONJOB TIMEOUT');
         console.log(' ')
-        console.log('--> 1) CRONJOB TIMEOUT');
+        console.log(' ')
         pauseCronJob();
         setTimeout(() => {
           startCronJob();
-        }, 4000)
+        }, 10000)
         
       } else {
         processNumbers();
       }
       
-      async function startCronJob(){
-        console.log('--> 2) Start cron job');
+      async function startCronJob() {
         await processNumbers();
         cronJob.start();
       }
-    
-      function pauseCronJob(){
-        console.log('--> 3) Pause cron job');
+
+      function pauseCronJob() {
         cronJob.stop();
       }
 

@@ -11,6 +11,11 @@ import Winner from '../winner/Winner';
 var userSet = null;
 
 const Gameboard = ({ auth: { user } }) => {
+  let elements = document.getElementsByClassName("bingo-square");
+  var currentNumber = 0;
+  const [redMarker, setRedMarker] = useState(false);
+  const [winner, setWinner] = useState(false);
+
   if (user != null) {
     console.log("USER SET!");
     userSet = user;
@@ -18,11 +23,6 @@ const Gameboard = ({ auth: { user } }) => {
   } else {
     console.log('user not found')
   }
-
-  let elements = document.getElementsByClassName("bingo-square");
-  var currentNumber = 0;
-  const [redMarker, setRedMarker] = useState(false);
-  const [winner, setWinner] = useState(false);
 
   const didPlayerWin = async (markers) => {
     console.log("checking if player won in didPlayerWin");
@@ -103,17 +103,10 @@ const Gameboard = ({ auth: { user } }) => {
       for (var i = 0; i < elements.length; i++) {
         elements[i].className = "bingo-square";
       }
-
-      // console.log("-----> availableNumbers: " + availableNumbers);
-      // console.log("-----> elements: " + elements);
-      // console.log("-----> elements.length: " + elements.length);
       if (!winner) {
         for (i = 0; i < elements.length; i++) {
           currentElement = elements[i];
           currentNumber = Number(currentElement.innerHTML);
-          // console.log("currentNumber: " + currentNumber);
-          // console.log("availableNumbers.include: " + availableNumbers.includes(currentNumber));
-          //console.log("winCycle: "  + winCycle);
           console.log("winCycle?: " + winCycle)
           if (!availableNumbers.includes(currentNumber) && !winCycle) {
             elements[i].classList.add("redCell");
@@ -130,18 +123,12 @@ const Gameboard = ({ auth: { user } }) => {
     }
     const wonAlready = async () => {
       let cycles = await axios.get('/api/cycles');
-      //console.log("cycles: " + JSON.stringify(cycles));
       let winners = cycles.data.winners;
-      //console.log("winners.length: " + winners.length);
       let userId = userSet ? userSet._id : userSet;
       console.log("userSet: " + JSON.stringify(userSet));
       console.log("userId: " + userId);
 
       winners.forEach((id) => {
-        //console.log(" ");
-        //console.log("--------------");
-        //console.log("id: " + id);
-        //console.log("userId == id: " + userId == id);
         if (userId == id) {
           console.log("user won already");
           return true;

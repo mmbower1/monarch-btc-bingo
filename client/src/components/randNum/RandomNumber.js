@@ -3,14 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { RandomNumberContainer, RandNum } from './RandomNumber.styles';
 import axios from 'axios';
 
-const originalNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+const originalNumbers = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
   19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
   35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
   51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66,
-  67, 68, 69, 70, 71, 72, 73, 74, 75];
-
-  
-
+  67, 68, 69, 70, 71, 72, 73, 74, 75
+];
 
 const RandomNumber = () => {
   const createOriginalNumbers = () => {
@@ -30,10 +29,8 @@ const RandomNumber = () => {
   }
 
   const setupOriginalNumbers = (drawnNumbers) => {
-    console.log("---------> setupOriginalNumbers ----------------------");
     console.log("---------> drawnNumbers ----------------------" + drawnNumbers.length);
     for(let i = 0; i < drawnNumbers.length; i++){
-      console.log("---------> updating " + drawnNumbers[i] + " ----------------------");
       updateNumber(drawnNumbers[i]);
     }
   }
@@ -53,7 +50,6 @@ const RandomNumber = () => {
       // console.log("currentRandomNumber state after if: " + randomNumber);
       return currentRandomNumber;
     }
-    // availableNumbersObj will be disguised as a red cross out line on its according number in the UI
     const grabAvailableNumbers = async () => {
       const availableNumbersObj = await axios.get('/api/drawnNumbers');
       const currentAvailableNumbers = availableNumbersObj.data.numbers;
@@ -61,22 +57,16 @@ const RandomNumber = () => {
       if (currentAvailableNumbers) {
         for (let i = 1; i < 75; i++) {
           if (currentAvailableNumbers.indexOf(i) === -1) {
-            // push red cross-out line
             drawnNumbers.push(i);
           }
         }
-      console.log("---------> 1) setavailableNumbers length ----------------------" + drawnNumbers.length);
-      setavailableNumbers(drawnNumbers);
+        setavailableNumbers(drawnNumbers);
       }
-      console.log("---------> 2) setavailableNumbers length ----------------------" + drawnNumbers.length);
       setupOriginalNumbers(drawnNumbers);
       return drawnNumbers;
     }
     grabRandomNumber();
     grabAvailableNumbers();
-    
-    
-    // console.log("Random number is set to the following: " + randomNumber);
   }, [])
 
   return (

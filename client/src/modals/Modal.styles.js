@@ -30,3 +30,13 @@ export const ModalTitle = styled.h2`
 export const ModalBody = styled.div`
     font-size: 12px;
 `;
+
+export const NextGameCardShuffle = styled.button`
+    background: var(--primary-color);
+    border-radius: 4px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 6px;
+    width: 150px;
+    
+`;

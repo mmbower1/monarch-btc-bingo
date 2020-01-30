@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-// import { loadUser } from '../../../actions/auth';
+import { loadUser } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import { GameboardContainer } from './Gameboard.styles.js';
 import axios from 'axios';
@@ -129,7 +129,7 @@ const Gameboard = ({ auth: { user } }) => {
       console.log("userId: " + userId);
 
       winners.forEach((id) => {
-        if (userId == id) {
+        if (userId === id) {
           console.log("user won already");
           return true;
         }

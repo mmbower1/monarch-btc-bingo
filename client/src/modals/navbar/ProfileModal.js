@@ -37,7 +37,7 @@ class ProfileModal extends Component {
     const { auth } = this.props;
     axios.get(`/api/users/${auth.user._id}`)
     .then(res => {
-      console.log('res: ' + JSON.stringify(res));
+      //console.log('res: ' + JSON.stringify(res));
       this.setState({
         name: auth.user.name,
         btcAddress: "",

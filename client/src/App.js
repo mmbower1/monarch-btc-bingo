@@ -24,6 +24,7 @@ if (localStorage.token) {
 
 const App = () => {
   // used in functional components, not class based components where componentDidMount() is used instead
+  // userSet data keeps reverting back to inital state, check if session token is in localstorage and exists, if not - send back to login. If yes - loadUser(), wait for it to finish to show UI.
   useEffect(() => {
     store.dispatch(loadUser());
   }, [])

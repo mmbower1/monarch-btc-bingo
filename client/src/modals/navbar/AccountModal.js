@@ -43,14 +43,18 @@ class AccountModal extends Component {
     const { auth } = this.props;
     // Check which fields have been updated and then submit only those fields
     let userInfo = {}
-    if(this.state.name !== ""){
+    if (this.state.name !== ""){
       userInfo.name = this.state.name;
     }
-    if(this.state.phone !== ""){
+    if (this.state.phone !== ""){
       userInfo.phoneNumber = this.state.phone;
     }
-    if(this.state.btcAddress !== ""){
+    if (this.state.btcAddress !== ""){
       userInfo.btcAddress = this.state.btcAddress;
+    }
+     // close modal
+    if (this.state.name === '' && this.state.btcAddress === '' && this.state.phone === '') {
+      ////////??
     }
     axios.put(`/api/users/${auth.user._id}`, userInfo)
     .then(() => {
@@ -59,11 +63,8 @@ class AccountModal extends Component {
         btcAddress : "",
         phone : "",
       });
-      // close modal
-      if (this.state.name !== '' && this.state.btcAddress !== '' && this.state.phone !== '') {
-        this.props.setAlert('Account updated!', 'success');
-        this.props.onClose();
-      }
+      this.props.setAlert('Account updated!', 'success');
+      this.props.onClose();
     })
     .catch(err => {
       console.log(err);

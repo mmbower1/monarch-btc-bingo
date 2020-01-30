@@ -101,7 +101,7 @@ router.post(
 });
 
 // @route    PUT api/users
-// @desc     Edit Name, Btc, Phone in account modal, and updates winner field with moment
+// @desc     1. Edit Name, Btc, Phone in account modal. 2. Updates winner field with moment. 3. And onClick cardNumbers update
 // @access   Private
 router.put('/:id', async (req, res, next) => {
   const errors = validationResult(req);

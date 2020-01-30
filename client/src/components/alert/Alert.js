@@ -5,7 +5,8 @@ import { AlertContainer } from './Alert.styles.js'
 
 const Alert = ({ alerts }) => alerts !== null && alerts.length > 0 && alerts.map(alert => (
   <AlertContainer key={alert.id} className={`alert alert-${alert.alertType}`}>
-    { alert.msg }
+    <i className="fa fa-exclamation-circle"></i>
+    { ' ' + alert.msg }
   </AlertContainer>
 ))
 

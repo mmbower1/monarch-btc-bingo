@@ -31,22 +31,18 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <Fragment>
       <div>
-        <ul className="nav-table">
-          <div className="nav-table-children">
-            <h2>Bitcoin Bingo playcard</h2>
-            <a href="#!" onClick={logout} className="logout-button">
-              <span className="hide-sm"><i className="fas fa-sign-out-alt"></i>&nbsp;Logout</span>
-            </a>
-            <div className="hide-sms">
-              <span id="account-modal" className="hide-sm" onClick={openAccountModal}>Account</span>
-              <span id="nextGamecard-modal" className="hide-sm" onClick={openNextGamecardModal}>Next Card</span>
-              <span id="profile-modal" className="hide-sm" onClick={openProfileModal}>Profile</span>
-              <span id="security-modal" className="hide-sm" onClick={openSecurityModal}>Security</span>
-              <span id="settings-modal" className="hide-sm" onClick={openSettingsModal}>Settings</span>
-              <span id="wallet-modal" className="hide-sm" onClick={openWalletModal}>Wallet</span>
-            </div>
-          </div>
-        </ul>
+        <h2>Bitcoin Bingo playcard</h2>
+        <a href="#!" onClick={logout} className="logout-button">
+          <span className="hide-sm"><i className="fas fa-sign-out-alt"></i>&nbsp;Logout</span>
+        </a>
+        <div className="hide-sms">
+          <span id="account-modal" className="hide-sm" onClick={openAccountModal}>Account</span>
+          <span id="nextGamecard-modal" className="hide-sm" onClick={openNextGamecardModal}>Next Card</span>
+          <span id="profile-modal" className="hide-sm" onClick={openProfileModal}>Profile</span>
+          <span id="security-modal" className="hide-sm" onClick={openSecurityModal}>Security</span>
+          <span id="settings-modal" className="hide-sm" onClick={openSettingsModal}>Settings</span>
+          <span id="wallet-modal" className="hide-sm" onClick={openWalletModal}>Wallet</span>
+        </div>
       </div>
     </Fragment>
   );

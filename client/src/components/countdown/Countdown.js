@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // styles
-import { CountdownContainer, ClockContainer } from './Countdown.styles';
+import { CountdownContainer } from './Countdown.styles';
+import axios from 'axios';
 
 class Countdown extends React.Component {
-
     constructor(props) {
         super(props)
         this.state = {
@@ -17,7 +17,6 @@ class Countdown extends React.Component {
                 count: prevState.count - 1
             }))
         }, 1000)
-        
     }
 
     componentWillUnmount() {
@@ -27,7 +26,7 @@ class Countdown extends React.Component {
     render() {
         const { count } = this.state;
         if (count === -1) {
-            this.setState({ count: 5 })
+            this.setState({ count: 5 });
         }
 
         return (

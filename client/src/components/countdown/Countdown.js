@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 // styles
 import { CountdownContainer } from './Countdown.styles';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Countdown extends React.Component {
     constructor(props) {

@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import { ModalContent, ModalBody, ModalTitle, NextGameCardShuffle } from '../Modal.styles.js';
 import Modal from 'react-modal';
 import axios from 'axios';
-// import generateCardNumbers from '../../../../helpers/generateCardNumbers'
+import generateCardNumbers from '../../utils/generateCardNumbers'
 
 export class NextGamecardModal extends Component {
     constructor() {
         super();
         this.state = {
             modalIsOpen: false,
-            suffleCards: false
         };
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -26,16 +25,15 @@ export class NextGamecardModal extends Component {
 
     shuffleCards = () => {
         const { auth } = this.props;
-        this.setState({ suffleCards: true });
         axios.put(`/api/users/${auth.user._id}`)
             .then(() => this.setState({
                 shuffleCards: true,
             }),
-            //generateCardNumbers()
+            generateCardNumbers(),
+            console.log("CARDS SHUFFLED!")
         ).catch(err => console.error(err))
         // console.log('nextGameCardClick: ', nextGameCardClick);
         this.props.onClose();
-        console.log("CARDS SHUFFLED!");
     }
 
     render() {

@@ -111,7 +111,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             </p>
           </div>
         </form>
-        <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
+        <Footer>© 2020 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </Fragment>
     </div>
   )

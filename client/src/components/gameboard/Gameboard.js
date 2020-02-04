@@ -127,7 +127,6 @@ const Gameboard = ({ auth: { user } }) => {
       let userId = userSet ? userSet._id : userSet;
       console.log("userSet: " + JSON.stringify(userSet));
       console.log("userId: " + userId);
-
       winners.forEach((id) => {
         if (userId === id) {
           console.log("user won already");

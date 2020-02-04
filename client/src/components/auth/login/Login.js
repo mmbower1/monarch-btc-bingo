@@ -73,7 +73,7 @@ const Login = ({ login, isAuthenticated }) => {
         <br />
         <i className="fas fa-arrow-left"></i>&nbsp;
         <Link to='/stripe'>Go Back</Link>
-        <Footer>© 2019 Copyright. Blockchain Bingo, all rights reserved.</Footer>
+        <Footer>© 2020 Copyright. Blockchain Bingo, all rights reserved.</Footer>
       </Fragment>
     </div>
   )

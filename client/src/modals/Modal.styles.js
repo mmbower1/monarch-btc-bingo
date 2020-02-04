@@ -23,12 +23,12 @@ export const ModalContent = styled.div`
 `;
 
 export const ModalTitle = styled.h2`
-    font-size: 20px;
+    font-size: 22px;
     padding: 4px;
 `;
 
 export const ModalBody = styled.div`
-    font-size: 12px;
+    font-size: 16px;
 `;
 
 export const NextGameCardShuffle = styled.button`

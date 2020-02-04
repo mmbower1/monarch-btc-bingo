@@ -33,7 +33,7 @@ router.post(
   [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
-    check('btcAddress', 'BTC Address needs atleast 40 characters').isLength({ min: 40 }),
+    check('btcAddress', 'BTC Address needs atleast 34 characters').isLength({ min: 34 }),
     check('phoneNumber', 'Phone number needs 10 digits').isLength({ min: 10 }),
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 }),
   ],
@@ -44,10 +44,15 @@ router.post(
     }
     const { name, email, btcAddress, phoneNumber, password } = req.body;
     try {
-      // see if user exists
+      // see if email already exists
       let user = await User.findOne({ email }, { unqiue: true });
       if (user) {
         return res.status(400).json({ errors: [{ msg: 'Email already taken!' }] });
+      }
+      // see if btc address already exists
+      let btc = await User.findOne({ btcAddress }, { unique: true });
+      if (btc) {
+        return res.status(400).json({ errors: [{ msg: 'Bitcoin address already taken!' }] });
       }
 
       // gravatar

@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+export const Controls = styled.h2`
+    align-items: center;
+    background-color: #333;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 60%;
+`;
+
+
 export const ModalContent = styled.div`
     color: black;
     background-color: white;
@@ -38,5 +51,22 @@ export const NextGameCardShuffle = styled.button`
     margin-top: 5px;
     padding: 6px;
     width: 150px;
-    
+`;
+
+export const Screen = styled.div`
+    background-color: #000 !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    height: 100%;
+    width: 60%;
+`;
+
+export const VideoContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Questrial', sans-serif;
+    justify-content: center;
+    margin: 0;
 `;

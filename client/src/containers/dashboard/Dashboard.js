@@ -2,16 +2,16 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // styled components
-import { DashboardBody, DashboardTitle } from './Dashboard.styles.js';
-import { Footer } from '../footer/Footer.styles.js';
-import { Row1, Row2, Row3 } from '../gameboard/Gameboard.styles.js';
+import { DashboardBody, DashboardTitle } from './Dashboard.styles.js.js';
+import { Footer } from '../../components/footer/Footer.styles.js';
+import { Row1, Row2, Row3 } from '../../components/gameboard/Gameboard.styles.js';
 // actions
 import { getCurrentProfile } from '../../actions/profile';
 // components
-import Countdown from '../countdown/Countdown';
-import RandomNumber from '../randNum/RandomNumber';
-import Gameboard from '../gameboard/Gameboard';
-import Spinner from '../layout/Spinner';
+import Countdown from '../../components/countdown/Countdown';
+import RandomNumber from '../../components/randNum/RandomNumber';
+import Gameboard from '../../components/gameboard/Gameboard';
+import Spinner from '../../components/layout/Spinner';
 // titlebar modals
 import AboutUsModal from '../../modals/titlebar/AboutUsModal';
 import MeetOurTeamModal from '../../modals/titlebar/MeetOurTeamModal';

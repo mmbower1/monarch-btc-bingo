@@ -1,6 +1,6 @@
 import React from 'react'
 // styles
-import { Footer } from '../../footer/Footer.styles';
+import { Footer } from '../../../components/footer/Footer.styles';
 // import PropTypes from 'prop-types'
 
 const ResetPassword = props => {

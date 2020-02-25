@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { Footer } from '../../components/footer/Footer.styles.js'
-import { StripeContainer, StripeTest } from './Stripe.styles.js.js';
+import { StripeContainer, StripeTest } from './Stripe.styles.js';
 import axios from 'axios';
 
 export const Stripe = ({ price }) => {

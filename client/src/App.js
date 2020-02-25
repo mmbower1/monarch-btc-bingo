@@ -1,11 +1,16 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
-import Landing from './components/landing/Landing';
+// containers
+import Landing from './containers/landing/Landing';
+import Dashboard from './containers/dashboard/Dashboard';
+import { Stripe } from './containers/stripe/Stripe';
+import ForgotPassword from './containers/password/forgot/ForgotPassword';
+import ResetPassword from './containers/password/reset/ResetPassword';
+// components
 import Register from './components/auth/register/Register';
 import Login from './components/auth/login/Login';
 import Alert from './components/alert/Alert';
-import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 // import  boardSetup  from './actions/boardSetup';
@@ -14,9 +19,6 @@ import setAuthToken from './utils/setAuthToken';
 import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';
-import ForgotPassword from './components/password/forgot/ForgotPassword';
-import ResetPassword from './components/password/reset/ResetPassword';
-import { Stripe } from './components/stripe/Stripe';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);

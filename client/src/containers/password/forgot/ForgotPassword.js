@@ -2,8 +2,8 @@ import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // styles
-import { Footer } from '../../footer/Footer.styles';
-import { FormGroup } from '../../auth/login/Login.styles';
+import { Footer } from '../../../components/footer/Footer.styles';
+import { FormGroup } from '../../../components/auth/login/Login.styles';
 import PropTypes from 'prop-types';
 // actions
 import { setAlert } from '../../../actions/alert';

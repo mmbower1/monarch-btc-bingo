@@ -15,6 +15,8 @@ connectDB();
 
 cronjob();
 
+app.use(express.static("public"));
+
 // bodyparser middleware, handles http requests
 app.use(bodyParser.urlencoded({ extended: true }));
 

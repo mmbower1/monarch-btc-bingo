@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const connectDB = async () => {
   try {
+    console.log('Connecting MongoDB: ' + process.env.MONGODB_URI);
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/monarch-btc-bingo' 
       // useNewUrlParser: true,
       // useUnifiedTopology: true,

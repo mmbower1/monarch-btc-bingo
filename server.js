@@ -7,7 +7,7 @@ const errorHandler = require('./middleware/error');
 const cronjob = require('./cronjob');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const PORT = process.env.PORT || 5000;
+var PORT = process.env.PORT || 5000;
 // load env vars. this goes before route files so api works
 dotenv.config({ path: './config/config.env' });
 

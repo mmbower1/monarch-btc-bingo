@@ -1,6 +1,9 @@
 {
   "mongoURI": "mongodb://localhost:27017/monarch-btc-bingo",
+  "mlab": "mongodb://mmbower1:Philly#1002@ds119113.mlab.com:19113/heroku_mhqs2rw0",
+
   "jwtSecret": "mysecrettoken",
+  
   "SMTP_HOST": "smtp.mailtrap.io",
   "SMTP_PORT": 587,
   "SMTP_EMAIL": "a6f60fbc042cab",
